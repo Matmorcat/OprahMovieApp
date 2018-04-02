@@ -1,0 +1,14 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+android:layout_height="match_parent"
+    tools:context="com.example.android.OprahMovieApp.MainActivity">
+
+<GridView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:columnWidth="150dp"
+    android:numColumns="auto_fit"
+    android:id="@+id/grid_view_layout" />
+
+</RelativeLayout>

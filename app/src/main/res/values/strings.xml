@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Popular Movies</string>
+
+    <string name="sort_user_rating">Sort By User Rating</string>
+    <string name="title_activity_details">Movie Details</string>
+    <string name="action_settings">Settings</string>
+    <string name="sort_popularity">Sort By Popularity</string>
+    <string name="title_activity_detail">Movie Details</string>
+    <string name="tmdb_api_key">5b64200ad380b583694cc584abe83484</string>
+    <string name="movie_string">Movie</string>
+    <string name="rating_scale"> out of 10</string>
+</resources>
