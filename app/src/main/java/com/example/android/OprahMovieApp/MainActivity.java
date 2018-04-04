@@ -28,15 +28,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
+/**
+ * Class MainActivity represents the view and controller for the main screen of the application
+ */
 public class MainActivity extends AppCompatActivity {
     private MovieAdapter movieAdapter;
     private String sort; //preference for sorting movies
 
+    /**
+     * onCreate is the Android system callback method that is called upon creation of the application
+     * @param savedInstanceState any saved information from a previous run, i.e. if the device is
+     *                           rotated, a new instance of the app is created with saved information
+     *                           from the previous run
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (savedInstanceState != null) {
+            //Sort option - dafault : sort by popularity
             sort = savedInstanceState.getString("USER_SORT");
         } else {
             sort = "popular";
@@ -70,6 +79,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Android system callback method which is called when the app is terminated
+     * @param savedInstanceState The information to be saved
+     */
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         // Save the user's current sort state
@@ -77,6 +90,11 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(savedInstanceState);
     }
 
+    /**
+     * Android callback method which creates a menu in the action bar in the upper-right corner of the screen
+     * @param menu A "menu" layout
+     * @return A Boolean variable
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -84,11 +102,14 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Android callback method to handle action bar item clicks. The action bar will handle
+     * clicks on the Home/Up button
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         if (id == R.id.action_sort) {
@@ -110,14 +131,26 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Method to determine whether the device being used has internet access
+     * @return True if network is available, false otherwise
+     */
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
+    /**
+     * Class FetchMoviesTask creates a separate thread on which to fetch movie data from the TMDB server
+     */
     public class FetchMoviesTask extends AsyncTask<String, Void, List<Movie>> {
 
+        /**
+         * Required method for AsyncTask that defines what operations are to be done on the thread
+         * @param params
+         * @return A list of movies
+         */
         @Override
         protected List<Movie> doInBackground(String... params) {
             //fetch three pages of results
@@ -137,6 +170,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+        /**
+         * Method to fetch the movie data from the TMDB server
+         * @param page Data from the server are separated into pages, this determines what page is fetched
+         * @param sortBy The method of sorting movies
+         * @return The String containing the movies data
+         */
         private String getData(int page, String sortBy) {
             String moviesData = null;
             for (int i = 1; i <= 3; i++) {
