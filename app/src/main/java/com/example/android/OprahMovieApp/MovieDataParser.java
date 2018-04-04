@@ -18,8 +18,8 @@ public class MovieDataParser {
     public static final String POSTER_PATH_KEY = "poster_path";
     private final JSONObject jsonObject;
 
-    public MovieDataParser(String data) throws JSONException {
-        jsonObject = new JSONObject(data);
+    public MovieDataParser(String _data) throws JSONException {
+        jsonObject = new JSONObject(_data);
     }
 
 

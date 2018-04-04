@@ -12,37 +12,37 @@ public class Movie implements Serializable {
     private String releaseDate;
     private String picUrl;
 
-    public Movie(String title, double userRating, String releaseDate, String plotSynopsis, String picUrl) {
-        this.title = title;
-        this.userRating = userRating;
-        this.releaseDate = releaseDate;
-        this.plotSynopsis = plotSynopsis;
-        this.picUrl = "http://image.tmdb.org/t/p/w185/" + picUrl;
+    public Movie(String _title, double _userRating, String _releaseDate, String _plotSynopsis, String _picUrl) {
+        this.title = _title;
+        this.userRating = _userRating;
+        this.releaseDate = _releaseDate;
+        this.plotSynopsis = _plotSynopsis;
+        this.picUrl = "http://image.tmdb.org/t/p/w185/" + _picUrl;
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     public double getUserRating() {
-        return userRating;
+        return this.userRating;
     }
 
     public String getPlotSynopsis() {
-        return plotSynopsis;
+        return this.plotSynopsis;
     }
 
     public String getReleaseDate() {
-        return releaseDate;
+        return this.releaseDate;
     }
 
     public String getPicUrl() {
-        return picUrl;
+        return this.picUrl;
     }
 
     public String toString() {
-        return "Movie Title: " + title + "\nUser Rating: " + userRating + "\nRelease Date: " + releaseDate +
-                "\nPlot Synopsis: " + plotSynopsis + "Poster URL: " + picUrl;
+        return "Movie Title: " + this.title + "\nUser Rating: " + this.userRating + "\nRelease Date: " + this.releaseDate +
+                "\nPlot Synopsis: " + this.plotSynopsis + "Poster URL: " + this.picUrl;
     }
 }
 
