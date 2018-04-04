@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 public class MainActivity extends AppCompatActivity {
     private MovieAdapter movieAdapter;
     private String sort; //preference for sorting movies
