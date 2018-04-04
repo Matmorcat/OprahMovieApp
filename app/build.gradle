@@ -2,10 +2,10 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion '25.0.0'
+    buildToolsVersion '27.0.3'
 
     defaultConfig {
-        applicationId "com.example.android.popularmovies"
+        applicationId "com.example.android.OprahMovieApp"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
