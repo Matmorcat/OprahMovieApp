@@ -33,7 +33,7 @@ import java.util.List;
  */
 public class MainActivity extends AppCompatActivity {
     private MovieAdapter movieAdapter;
-    private String sort; //preference for sorting movies
+    private String sort; //preference for sorting movie
 
     /**
      * onCreate is the Android system callback method that is called upon creation of the application
