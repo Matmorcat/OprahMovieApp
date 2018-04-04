@@ -18,9 +18,9 @@ public class DetailActivityFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater _inflater, ViewGroup _container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
+        View rootView = _inflater.inflate(R.layout.fragment_detail, _container, false);
         Intent intent = getActivity().getIntent();
         if (intent != null && intent.hasExtra(getString(R.string.movie_string))) {
             Movie movie = (Movie) intent.getSerializableExtra(getString(R.string.movie_string));

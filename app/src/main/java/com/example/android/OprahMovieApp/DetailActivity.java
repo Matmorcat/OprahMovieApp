@@ -7,15 +7,13 @@ import android.view.Menu;
 public class DetailActivity extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu (Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_detail, menu);
+    public boolean onCreateOptionsMenu (Menu _menu) {
+        getMenuInflater().inflate(R.menu.menu_detail, _menu);
         return true;
     }
-
+    @Override
+    protected void onCreate(Bundle _savedInstanceState) {
+        super.onCreate(_savedInstanceState);
+        setContentView(R.layout.activity_detail);
+    }
 }

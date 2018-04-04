@@ -25,38 +25,38 @@ public class MovieAdapter extends BaseAdapter {
     }
 
     public List<com.example.android.OprahMovieApp.Movie> getMovies() {
-        return movies;
+        return this.movies;
     }
 
     public com.example.android.OprahMovieApp.Movie getItem(int position) {
-        return movies.get(position);
+        return this.movies.get(position);
     }
 
-    public long getItemId(int position) {
-        return position;
+    public long getItemId(int _position) {
+        return _position;
     }
 
     public int getCount() {
-        return movies.size();
+        return this.movies.size();
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ImageView view = (ImageView) convertView;
+    public View getView(int _position, View _convertView, ViewGroup _parent) {
+        ImageView view = (ImageView) _convertView;
 
         if (view == null) {
-            view = (ImageView) LayoutInflater.from(context).inflate(
-                    R.layout.grid_view_pic, parent, false);
+            view = (ImageView) LayoutInflater.from(this.context).inflate(
+                    R.layout.grid_view_pic, _parent, false);
         }
 
-        String url = getItem(position).getPicUrl();
-        Picasso.with(context).load(url).into(view);
+        String url = getItem(_position).getPicUrl();
+        Picasso.with(this.context).load(url).into(view);
         return view;
 
     }
 
-    public void updateValues(List<com.example.android.OprahMovieApp.Movie> movies) {
-        this.movies = movies;
+    public void updateValues(List<com.example.android.OprahMovieApp.Movie> _movies) {
+        this.movies = _movies;
         notifyDataSetChanged();
     }
 }
