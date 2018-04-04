@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             //Sort option - default : sort by popularity
             sort = savedInstanceState.getString("USER_SORT");
         } else {
-            // sort by popularity if new activity
+            //Sort option - default : sort by popularity
             sort = "popular";
         }
         setContentView(R.layout.activity_main);
