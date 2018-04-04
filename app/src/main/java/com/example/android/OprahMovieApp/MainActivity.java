@@ -44,12 +44,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //there is some information from a previous build
         if (savedInstanceState != null) {
-            //Sort option - dafault : sort by popularity
+
+            //Sort option - default : sort by popularity
             sort = savedInstanceState.getString("USER_SORT");
         } else {
+            // sort by popularity if new activity
             sort = "popular";
-        } // sort by popularity if new activity
+        }
         setContentView(R.layout.activity_main);
         List<Movie> items = new ArrayList<>();
         movieAdapter =
@@ -92,8 +96,8 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Android callback method which creates a menu in the action bar in the upper-right corner of the screen
-     * @param menu A "menu" layout
-     * @return A Boolean variable
+     * @param menu A "menu" layout file
+     * @return True by default
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -227,6 +231,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+        /**
+         * AsyncTask method which defines what is to be done after finishing the task - in our case,
+         * it sends the movie data to the movie adapter
+         * @param result
+         */
         @Override
         protected void onPostExecute(List<Movie> result) {
             if (result != null) {
