@@ -31,7 +31,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.android.OprahMovieApp.MainActivity" />
         </activity>
-        <activity android:name=".FavoritesActivity"></activity>
+
+        <activity
+            android:name=".FavoritesActivity"
+            android:label="@string/title_activity_favorites"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.OprahMovieApp.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

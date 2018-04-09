@@ -3,6 +3,7 @@ package com.example.android.OprahMovieApp;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+// TODO: Implement favorites activity - code started
 public class FavoritesActivity extends AppCompatActivity {
 
     @Override

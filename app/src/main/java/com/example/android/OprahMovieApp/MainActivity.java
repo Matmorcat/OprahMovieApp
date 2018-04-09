@@ -131,6 +131,11 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+        if (id == R.id.action_favorites) {
+            Intent favoritesActivityIntent = new Intent(getApplicationContext(), FavoritesActivity.class);
+            startActivity(favoritesActivityIntent);
+        }
+
 
         return super.onOptionsItemSelected(item);
     }
