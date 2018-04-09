@@ -9,4 +9,5 @@
     <string name="tmdb_api_key">5b64200ad380b583694cc584abe83484</string>
     <string name="movie_string">Movie</string>
     <string name="rating_scale"> out of 10</string>
+    <string name="add_favorites">Add to Favorites</string>
 </resources>
