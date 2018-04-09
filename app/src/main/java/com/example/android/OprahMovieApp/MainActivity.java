@@ -116,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
+        // Change sorting order of movies
         if (id == R.id.action_sort) {
             if (sort.equals("popular")) {
                 sort = "top_rated";
@@ -131,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+        // Take the user to the favorites view
         if (id == R.id.action_favorites) {
             Intent favoritesActivityIntent = new Intent(getApplicationContext(), FavoritesActivity.class);
             startActivity(favoritesActivityIntent);
