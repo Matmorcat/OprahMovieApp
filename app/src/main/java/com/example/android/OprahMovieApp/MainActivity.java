@@ -48,13 +48,20 @@ public class MainActivity extends AppCompatActivity {
         //there is some information from a previous build
         if (savedInstanceState != null) {
 
-            //Sort option - default : sort by popularity
+            //Get sort option
             sort = savedInstanceState.getString("USER_SORT");
         } else {
             //Sort option - default : sort by popularity
             sort = "popular";
         }
-        setContentView(R.layout.activity_main);
+
+        setMainScreen(R.layout.activity_main);
+
+    }
+
+    protected void setMainScreen (int contentView) {
+
+        setContentView(contentView);
         List<Movie> items = new ArrayList<>();
         movieAdapter =
                 new MovieAdapter(getApplicationContext(), R.layout.grid_view_pic, items);
@@ -80,6 +87,10 @@ public class MainActivity extends AppCompatActivity {
         } else {
             movieAdapter.updateValues(movies);
         }
+    }
+
+    protected void bindAdapterToView () {
+
     }
 
 
