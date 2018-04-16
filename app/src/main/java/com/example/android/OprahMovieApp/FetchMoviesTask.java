@@ -22,6 +22,7 @@ import java.util.List;
  */
 public class FetchMoviesTask extends AsyncTask<String, Void, List<Movie>> {
     final String API_KEY = "5b64200ad380b583694cc584abe83484";
+    final int NUM_PAGES = 3;
 
     /**
      * Required method for AsyncTask that defines what operations are to be done on the thread
@@ -33,7 +34,7 @@ public class FetchMoviesTask extends AsyncTask<String, Void, List<Movie>> {
         //fetch three pages of results
         List<Movie> Movies = new ArrayList<>();
         try {
-            for (int i = 1; i < 4; i++) {
+            for (int i = 1; i < (NUM_PAGES + 1); i++) {
                 String page = getData(i, params[0]);
                 MovieDataParser dataParser = new MovieDataParser(page);
                 List<Movie> movies = dataParser.getMovies();
@@ -45,6 +46,7 @@ public class FetchMoviesTask extends AsyncTask<String, Void, List<Movie>> {
         }
         return null;
     }
+
 
 
     /**
