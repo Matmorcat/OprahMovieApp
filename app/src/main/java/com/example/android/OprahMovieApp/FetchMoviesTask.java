@@ -15,7 +15,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.provider.Settings.Global.getString;
+
 
 /**
  * Class FetchMoviesTask creates a separate thread on which to fetch movie data from the TMDB server
