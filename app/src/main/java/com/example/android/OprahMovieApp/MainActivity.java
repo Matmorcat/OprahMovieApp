@@ -57,16 +57,22 @@ public class MainActivity extends AppCompatActivity {
 
         setMainScreen(R.layout.activity_main);
 
+
     }
 
-    protected void setMainScreen (int contentView) {
+    protected void setMainScreen (int layout) {
+        setContentView(layout);
 
-        setContentView(contentView);
+        bindAdapterToView(R.layout.grid_view_pic, R.id.grid_view_layout);
+
+    }
+
+    protected void bindAdapterToView (int imageLayout, int viewLayout) {
         List<Movie> items = new ArrayList<>();
         movieAdapter =
-                new MovieAdapter(getApplicationContext(), R.layout.grid_view_pic, items);
+                new MovieAdapter(getApplicationContext(), imageLayout, items);
 
-        GridView gridView = (GridView) findViewById(R.id.grid_view_layout);
+        GridView gridView = (GridView) findViewById(viewLayout);
         gridView.setAdapter(movieAdapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -87,10 +93,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             movieAdapter.updateValues(movies);
         }
-    }
-
-    protected void bindAdapterToView () {
-
     }
 
 
