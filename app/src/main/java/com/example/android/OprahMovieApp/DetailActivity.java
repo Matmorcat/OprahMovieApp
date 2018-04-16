@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -28,6 +29,10 @@ public class DetailActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_add_favorite) {
+            //Toast to display confirmation that movie has been added to favorites
+            Toast addFavoritesToast = new Toast(getApplicationContext());
+            addFavoritesToast.makeText(getApplicationContext(), R.string.favorites_toast_text, Toast.LENGTH_SHORT);
+
             // TODO: Implement passing of movie information to database and favorites activity
         }
 
