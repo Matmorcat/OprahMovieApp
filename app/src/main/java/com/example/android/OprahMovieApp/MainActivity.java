@@ -165,6 +165,10 @@ public class MainActivity extends AppCompatActivity {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
+    /**
+     * Method to return the movieAdapter member to be acted upon by FetchMoviesTask
+     * @return The movieAdapter member variable
+     */
     protected static MovieAdapter getMovieAdapter() {
         return movieAdapter;
     }

@@ -31,7 +31,7 @@ public class FetchMoviesTask extends AsyncTask<String, Void, List<Movie>> {
      */
     @Override
     protected List<Movie> doInBackground(String... params) {
-        //fetch three pages of results
+        //fetch NUM_PAGES pages of movie data
         List<Movie> Movies = new ArrayList<>();
         try {
             for (int i = 1; i < (NUM_PAGES + 1); i++) {
