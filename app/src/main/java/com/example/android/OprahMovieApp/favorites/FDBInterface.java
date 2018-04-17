@@ -1,5 +1,6 @@
 package com.example.android.OprahMovieApp.favorites;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -41,6 +42,23 @@ public class FDBInterface extends SQLiteOpenHelper {
 
         // Create a new table
         this.onCreate(db);
+    }
+
+    protected void addEntry(String title) {
+
+        // Get the reference to writable database
+        SQLiteDatabase db = getWritableDatabase();
+
+        // Create ContentValues to add key "column"/value
+        ContentValues values = new ContentValues();
+        values.put(FDBInfo.KEY_TITLE, title); // Get title
+
+        // Insert into the table
+        db.insert(FDBInfo.TABLE_NAME,
+                null, //nullColumnHack
+                values); // key/value -> keys = column names/ values = column values
+
+        db.close();
     }
 
 }
