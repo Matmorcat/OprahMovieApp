@@ -6,18 +6,24 @@ import java.io.Serializable;
 
 
 public class Movie implements Serializable {
+    private int movieID;
     private String title;
     private double userRating;
     private String plotSynopsis;
     private String releaseDate;
     private String picUrl;
 
-    public Movie(String _title, double _userRating, String _releaseDate, String _plotSynopsis, String _picUrl) {
+    public Movie(int _movieID, String _title, double _userRating, String _releaseDate, String _plotSynopsis, String _picUrl) {
+        this.movieID = _movieID;
         this.title = _title;
         this.userRating = _userRating;
         this.releaseDate = _releaseDate;
         this.plotSynopsis = _plotSynopsis;
         this.picUrl = "http://image.tmdb.org/t/p/w185/" + _picUrl;
+    }
+
+    public int getMovieID() {
+        return this.movieID;
     }
 
     public String getTitle() {
@@ -41,8 +47,12 @@ public class Movie implements Serializable {
     }
 
     public String toString() {
-        return "Movie Title: " + this.title + "\nUser Rating: " + this.userRating + "\nRelease Date: " + this.releaseDate +
-                "\nPlot Synopsis: " + this.plotSynopsis + "Poster URL: " + this.picUrl;
+        return "Movie ID: " + this.movieID +
+                "\nMovie Title: " + this.title +
+                "\nUser Rating: " + this.userRating +
+                "\nRelease Date: " + this.releaseDate +
+                "\nPlot Synopsis: " + this.plotSynopsis +
+                "\nPoster URL: " + this.picUrl;
     }
 }
 
