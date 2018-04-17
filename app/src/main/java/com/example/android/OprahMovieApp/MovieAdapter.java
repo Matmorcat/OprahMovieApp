@@ -16,15 +16,15 @@ public class MovieAdapter extends BaseAdapter {
 
     private Context context;
     private int resource;
-    private List<com.example.android.OprahMovieApp.Movie> movies;
+    private List<Movie> movies;
 
-    public MovieAdapter(Context context, int resource, List<com.example.android.OprahMovieApp.Movie> movies) {
+    public MovieAdapter(Context context, int resource, List<Movie> movies) {
         this.context = context;
         this.resource = resource;
         this.movies = movies;
     }
 
-    public List<com.example.android.OprahMovieApp.Movie> getMovies() {
+    public List<Movie> getMovies() {
         return this.movies;
     }
 
@@ -55,7 +55,7 @@ public class MovieAdapter extends BaseAdapter {
 
     }
 
-    public void updateValues(List<com.example.android.OprahMovieApp.Movie> _movies) {
+    public void updateValues(List<Movie> _movies) {
         this.movies = _movies;
         notifyDataSetChanged();
     }
