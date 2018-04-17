@@ -31,7 +31,8 @@ public class DetailActivity extends AppCompatActivity {
         if (id == R.id.action_add_favorite) {
             //Toast to display confirmation that movie has been added to favorites
             Toast addFavoritesToast = new Toast(getApplicationContext());
-            addFavoritesToast.makeText(getApplicationContext(), R.string.favorites_toast_text, Toast.LENGTH_SHORT);
+            addFavoritesToast.makeText(getApplicationContext(), R.string.favorites_toast_text, Toast.LENGTH_SHORT).show();
+
 
             // TODO: Implement passing of movie information to database and favorites activity
         }
