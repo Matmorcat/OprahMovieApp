@@ -1,4 +1,4 @@
-package com.example.android.OprahMovieApp;
+package com.example.android.OprahMovieApp.data;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
+import com.example.android.OprahMovieApp.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class MovieAdapter extends BaseAdapter {
     private int resource;
     private List<Movie> movies;
 
-    MovieAdapter(Context _context, int _resource, List<Movie> _movies) {
+    public MovieAdapter(Context _context, int _resource, List<Movie> _movies) {
         this.context = _context;
         this.resource = _resource;
         this.movies = _movies;

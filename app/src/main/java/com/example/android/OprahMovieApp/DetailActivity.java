@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.android.OprahMovieApp.data.Movie;
 import com.example.android.OprahMovieApp.favorites.FavoritesModel;
 
 public class DetailActivity extends AppCompatActivity {
@@ -50,8 +51,7 @@ public class DetailActivity extends AppCompatActivity {
                 if (favoritesModel.isInFavoriteMovies(movie)){
 
                     //Toast to display confirmation that movie is already in favorites
-                    Toast addFavoritesToast = new Toast(getApplicationContext());
-                    addFavoritesToast.makeText(getApplicationContext(), R.string.favorites_toast_exists, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.favorites_toast_exists, Toast.LENGTH_SHORT).show();
 
                 } else {
 
@@ -59,8 +59,7 @@ public class DetailActivity extends AppCompatActivity {
                     favoritesModel.addMovie(movie);
 
                     //Toast to display confirmation that movie has been added to favorites
-                    Toast addFavoritesToast = new Toast(getApplicationContext());
-                    addFavoritesToast.makeText(getApplicationContext(), R.string.favorites_toast_added, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.favorites_toast_added, Toast.LENGTH_SHORT).show();
                 }
                 // TODO: Add ability to remove movies from favorites list
             }

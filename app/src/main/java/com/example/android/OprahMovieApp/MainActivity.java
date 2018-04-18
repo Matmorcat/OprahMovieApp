@@ -13,7 +13,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
-import com.example.android.OprahMovieApp.favorites.FavoritesActivity;
+import com.example.android.OprahMovieApp.data.FetchMoviesTask;
+import com.example.android.OprahMovieApp.data.Movie;
+import com.example.android.OprahMovieApp.data.MovieAdapter;
 import com.example.android.OprahMovieApp.favorites.FavoritesModel;
 
 import java.util.ArrayList;

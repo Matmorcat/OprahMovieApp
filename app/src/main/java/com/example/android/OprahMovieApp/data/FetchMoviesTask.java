@@ -1,8 +1,10 @@
-package com.example.android.OprahMovieApp;
+package com.example.android.OprahMovieApp.data;
 
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
+
+import com.example.android.OprahMovieApp.MainActivity;
 
 import org.json.JSONException;
 
@@ -21,8 +23,8 @@ import java.util.List;
  * Class FetchMoviesTask creates a separate thread on which to fetch movie data from the TMDB server
  */
 public class FetchMoviesTask extends AsyncTask<String, Void, List<Movie>> {
-    final String API_KEY = "5b64200ad380b583694cc584abe83484";
-    final int NUM_PAGES = 3;
+    private final String API_KEY = "5b64200ad380b583694cc584abe83484";
+    private final int NUM_PAGES = 3;
 
     /**
      * Required method for AsyncTask that defines what operations are to be done on the thread

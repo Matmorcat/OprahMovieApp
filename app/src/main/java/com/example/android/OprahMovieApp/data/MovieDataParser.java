@@ -1,4 +1,4 @@
-package com.example.android.OprahMovieApp;
+package com.example.android.OprahMovieApp.data;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -9,17 +9,17 @@ import java.util.List;
 
 
 public class MovieDataParser {
-    public static final String RESULTS_KEY = "results";
-    public static final String PAGE_NUMBER_KEY = "page";
-    public static final String MOVIE_ID = "id";
-    public static final String ORIGINAL_TITLE_KEY = "original_title";
-    public static final String VOTE_AVERAGE_KEY = "vote_average";
-    public static final String RELEASE_DATE_KEY = "release_date";
-    public static final String OVERVIEW_KEY = "overview";
-    public static final String POSTER_PATH_KEY = "poster_path";
+    private static final String RESULTS_KEY = "results";
+    private static final String PAGE_NUMBER_KEY = "page";
+    private static final String MOVIE_ID = "id";
+    private static final String ORIGINAL_TITLE_KEY = "original_title";
+    private static final String VOTE_AVERAGE_KEY = "vote_average";
+    private static final String RELEASE_DATE_KEY = "release_date";
+    private static final String OVERVIEW_KEY = "overview";
+    private static final String POSTER_PATH_KEY = "poster_path";
     private final JSONObject jsonObject;
 
-    public MovieDataParser(String _data) throws JSONException {
+    MovieDataParser(String _data) throws JSONException {
         jsonObject = new JSONObject(_data);
     }
 

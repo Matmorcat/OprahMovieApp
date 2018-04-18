@@ -4,8 +4,8 @@ import android.content.Context;
 import android.util.Log;
 
 import com.example.android.OprahMovieApp.MainActivity;
-import com.example.android.OprahMovieApp.Movie;
-import com.example.android.OprahMovieApp.MovieAdapter;
+import com.example.android.OprahMovieApp.data.Movie;
+import com.example.android.OprahMovieApp.data.MovieAdapter;
 
 import java.util.LinkedList;
 import java.util.List;
