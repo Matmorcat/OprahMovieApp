@@ -3,6 +3,7 @@ package com.example.android.OprahMovieApp.favorites;
 import android.content.Context;
 import android.util.Log;
 
+import com.example.android.OprahMovieApp.MainActivity;
 import com.example.android.OprahMovieApp.Movie;
 import com.example.android.OprahMovieApp.MovieAdapter;
 
@@ -14,9 +15,9 @@ public class FavoritesModel{
     private FDBInterface db;
     private MovieAdapter movieAdapter;
 
-    public FavoritesModel(Context _context, MovieAdapter _movieAdapter) {
+    FavoritesModel(Context _context) {
         this.db = new FDBInterface(_context);
-        this.movieAdapter = _movieAdapter;
+        movieAdapter = MainActivity.getMovieAdapter();
     }
 
     /**
@@ -52,5 +53,11 @@ public class FavoritesModel{
      * Remove a movie from the user's favorite movies
      * @param movie The movie to remove from favorites
      */
-    public void removeMovie(Movie movie){}
+    public void removeMovie(Movie movie){
+
+        //Log that a movie was removed
+        Log.d("removeMovie", movie.toString());
+
+        db.removeEntry(movie.getMovieID());
+    }
 }

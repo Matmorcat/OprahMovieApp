@@ -9,6 +9,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * An interface that allows for the storage of movie IDs into a favorite movies database
+ * Uses an SQLite database via SQLiteOpenHelper, built into Android
+ */
 public class FDBInterface extends SQLiteOpenHelper {
 
     FDBInterface(Context context) {
@@ -63,6 +67,7 @@ public class FDBInterface extends SQLiteOpenHelper {
                 null,
                 values);
 
+        // Close the database
         db.close();
     }
 
@@ -89,10 +94,29 @@ public class FDBInterface extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
 
+        // Close the database
         db.close();
         cursor.close();
 
         return movies;
+    }
+
+    /**
+     * Remove a movie from the favorite movies database
+     * @param id The movie ID
+     */
+    protected void removeEntry(int id) {
+
+        // Get the reference to writable database
+        SQLiteDatabase db = getWritableDatabase();
+
+        // Delete the movie
+        db.delete(FDBInfo.TABLE_NAME,
+                FDBInfo.KEY_MOVIE_ID + " = ?",
+                new String[] { String.valueOf(id) });
+
+        // Close the database
+        db.close();
     }
 
 }
