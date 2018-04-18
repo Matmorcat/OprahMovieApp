@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
      * Method to determine whether the device being used has internet access
      * @return True if network is available, false otherwise
      */
-    private boolean isNetworkAvailable() {
+    private boolean isNetworkAvailable() throws NullPointerException {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
