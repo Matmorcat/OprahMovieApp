@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
+import com.example.android.OprahMovieApp.favorites.FavoritesModel;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -17,11 +18,15 @@ public class MovieAdapter extends BaseAdapter {
     private Context context;
     private int resource;
     private List<Movie> movies;
+    private static FavoritesModel favoritesModel;
 
-    public MovieAdapter(Context context, int resource, List<Movie> movies) {
-        this.context = context;
-        this.resource = resource;
-        this.movies = movies;
+    public MovieAdapter(Context _context, int _resource, List<Movie> _movies) {
+        this.context = _context;
+        this.resource = _resource;
+        this.movies = _movies;
+
+        // Initialize the favorites model for storing favorite movies
+        favoritesModel = new FavoritesModel(_context);
     }
 
     public List<Movie> getMovies() {
@@ -97,6 +102,10 @@ public class MovieAdapter extends BaseAdapter {
     public void updateValues(List<Movie> _movies) {
         this.movies = _movies;
         notifyDataSetChanged();
+    }
+
+    public static FavoritesModel getFavoritesModel(){
+        return favoritesModel;
     }
 }
 

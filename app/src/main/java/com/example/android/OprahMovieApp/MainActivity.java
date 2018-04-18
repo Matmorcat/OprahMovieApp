@@ -13,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.example.android.OprahMovieApp.favorites.FavoritesActivity;
-import com.example.android.OprahMovieApp.favorites.FavoritesModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +23,6 @@ import java.util.List;
  */
 public class MainActivity extends AppCompatActivity {
     private static MovieAdapter movieAdapter;
-    private static FavoritesModel favoritesModel;
     private String sort; //preference for sorting movie
 
     /**
@@ -48,9 +46,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         setMainScreen(R.layout.activity_main);
-
-
-        favoritesModel = new FavoritesModel(this);
 
     }
 
@@ -165,10 +160,6 @@ public class MainActivity extends AppCompatActivity {
      */
     public static MovieAdapter getMovieAdapter() {
         return movieAdapter;
-    }
-
-    public static FavoritesModel getFavoritesModel(){
-        return favoritesModel;
     }
 }
 
