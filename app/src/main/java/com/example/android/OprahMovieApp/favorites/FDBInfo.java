@@ -13,8 +13,7 @@ public class FDBInfo {
     protected static final String TABLE_NAME = "favorite_movies";
 
     // Columns of table
-    protected static final String KEY_ID = "id";
-    protected static final String KEY_TITLE = "title";
+    protected static final String KEY_MOVIE_ID = "movieid";
 
-    protected static final String[] COLUMNS = {KEY_ID,KEY_TITLE};
+    protected static final String[] COLUMNS = {KEY_MOVIE_ID};
 }

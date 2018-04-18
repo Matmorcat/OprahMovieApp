@@ -4,17 +4,23 @@ import android.content.Context;
 import android.util.Log;
 
 import com.example.android.OprahMovieApp.Movie;
+import com.example.android.OprahMovieApp.MovieAdapter;
 
-public class FavoritesModel {
+import java.util.LinkedList;
+import java.util.List;
 
-    FDBInterface db;
+public class FavoritesModel{
 
-    public FavoritesModel(Context context) {
-        db = new FDBInterface(context);
+    private FDBInterface db;
+    private MovieAdapter movieAdapter;
+
+    public FavoritesModel(Context _context, MovieAdapter _movieAdapter) {
+        this.db = new FDBInterface(_context);
+        this.movieAdapter = _movieAdapter;
     }
 
     /**
-     * Add a favorite movie to the favorite movies database
+     * Add a movie to the user's favorite movies
      * @param movie The movie to add to favorites
      */
     public void addMovie(Movie movie){
@@ -22,10 +28,29 @@ public class FavoritesModel {
         //Log that a movie was added
         Log.d("addMovie", movie.toString());
 
-        db.addEntry(movie.getTitle());
+        db.addEntry(movie.getMovieID());
     }
 
-    //public Movie[] getFavoriteMovies(){}
+    /**
+     * Get a list of all the user's favorite movies
+     * @return The list of favorite movies
+     */
+    public List<Movie> getFavoriteMovies(){
 
+        List<Movie> movies = new LinkedList<>();
+
+        // Loop through all the movie titles and build objects out of them
+        for (int movieID : db.getEntries()) {
+            movies.add(movieAdapter.getMovieByID(movieID));
+        }
+
+        return movies;
+    }
+
+
+    /**
+     * Remove a movie from the user's favorite movies
+     * @param movie The movie to remove from favorites
+     */
     public void removeMovie(Movie movie){}
 }
