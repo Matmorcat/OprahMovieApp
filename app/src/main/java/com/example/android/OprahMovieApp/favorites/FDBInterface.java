@@ -15,8 +15,15 @@ import java.util.List;
  */
 public class FDBInterface extends SQLiteOpenHelper {
 
+    // Constants for SQLite connection
+    private static final int DATABASE_VERSION = 1;                    // Database Version
+    private static final String DATABASE_NAME = "FavoriteMoviesDB";   // Database Name
+    private static final String TABLE_NAME = "favorite_movies";       // Table Name
+
+    private static final String KEY_MOVIE_ID = "movieid";             // Table Columns
+
     FDBInterface(Context context) {
-        super(context, FDBInfo.DATABASE_NAME, null, FDBInfo.DATABASE_VERSION);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     /**
@@ -26,8 +33,8 @@ public class FDBInterface extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         // SQL command to create a favorite movies database
-        String CREATE_FAVORITE_MOVIES = "CREATE TABLE " + FDBInfo.TABLE_NAME +
-                " ( " + FDBInfo.KEY_MOVIE_ID + " INTEGER )";
+        String CREATE_FAVORITE_MOVIES = "CREATE TABLE " + TABLE_NAME +
+                " ( " + KEY_MOVIE_ID + " INTEGER )";
 
         // Create the new table in the database
         db.execSQL(CREATE_FAVORITE_MOVIES);
@@ -43,7 +50,7 @@ public class FDBInterface extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
         // Drop an old version of the database if it exists
-        db.execSQL("DROP TABLE IF EXISTS " + FDBInfo.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
 
         // Create a new table
         this.onCreate(db);
@@ -60,10 +67,10 @@ public class FDBInterface extends SQLiteOpenHelper {
 
         // Create ContentValues to add key "column"/value
         ContentValues values = new ContentValues();
-        values.put(FDBInfo.KEY_MOVIE_ID, id);
+        values.put(KEY_MOVIE_ID, id);
 
         // Insert into the table
-        db.insert(FDBInfo.TABLE_NAME,
+        db.insert(TABLE_NAME,
                 null,
                 values);
 
@@ -79,7 +86,7 @@ public class FDBInterface extends SQLiteOpenHelper {
         List<Integer> movies = new LinkedList<>();
 
         // Make a query
-        String query = "SELECT  * FROM " + FDBInfo.TABLE_NAME;
+        String query = "SELECT  * FROM " + TABLE_NAME;
 
         // Get the reference to writable database
         SQLiteDatabase db = this.getWritableDatabase();
@@ -111,8 +118,8 @@ public class FDBInterface extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
 
         // Delete the movie
-        db.delete(FDBInfo.TABLE_NAME,
-                FDBInfo.KEY_MOVIE_ID + " = ?",
+        db.delete(TABLE_NAME,
+                KEY_MOVIE_ID + " = ?",
                 new String[] { String.valueOf(id) });
 
         // Close the database
