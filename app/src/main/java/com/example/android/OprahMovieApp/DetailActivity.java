@@ -21,18 +21,12 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
     }
 
-    /**
-     * Android callback method to handle action bar item clicks. The action bar will handle
-     * clicks on the Home/Up button
-     * @param item
-     * @return
-     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_add_favorite) {
 
-            //intent to retrieve movie information
+            // Intent to retrieve movie information
             Intent intent = this.getIntent();
             if (intent != null && intent.hasExtra(getString(R.string.movie_string))) {
                 Movie movie = (Movie) intent.getSerializableExtra(getString(R.string.movie_string));
