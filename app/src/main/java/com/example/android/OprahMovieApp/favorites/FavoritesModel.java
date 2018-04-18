@@ -2,8 +2,10 @@ package com.example.android.OprahMovieApp.favorites;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.android.OprahMovieApp.MainActivity;
+import com.example.android.OprahMovieApp.R;
 import com.example.android.OprahMovieApp.data.Movie;
 import com.example.android.OprahMovieApp.data.MovieAdapter;
 
@@ -14,9 +16,11 @@ public class FavoritesModel{
 
     private FDBInterface db;
     private MovieAdapter movieAdapter;
+    private Context context;
 
     public FavoritesModel(Context _context) {
         this.db = new FDBInterface(_context);
+        this.context = _context;
         movieAdapter = MainActivity.getMovieAdapter();
     }
 
@@ -29,7 +33,22 @@ public class FavoritesModel{
         //Log that a movie was added
         Log.d("addMovie", movie.toString());
 
-        db.addEntry(movie.getMovieID());
+        FavoritesModel favoritesModel = MainActivity.getFavoritesModel();
+
+        // Check to see if the movie selected is already in the favorites list
+        if (isInFavoriteMovies(movie)){
+
+            //Toast to display confirmation that movie is already in favorites
+            Toast.makeText(context.getApplicationContext(), R.string.favorites_toast_exists, Toast.LENGTH_SHORT).show();
+
+        } else {
+
+            // If the movie is not in the favorites list, add it
+            db.addEntry(movie.getMovieID());
+
+            //Toast to display confirmation that movie has been added to favorites
+            Toast.makeText(context.getApplicationContext(), R.string.favorites_toast_added, Toast.LENGTH_SHORT).show();
+        }
     }
 
     /**

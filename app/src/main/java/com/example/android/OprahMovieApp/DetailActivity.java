@@ -3,13 +3,10 @@ package com.example.android.OprahMovieApp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.example.android.OprahMovieApp.data.Movie;
-import com.example.android.OprahMovieApp.favorites.FavoritesModel;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -40,28 +37,8 @@ public class DetailActivity extends AppCompatActivity {
             if (intent != null && intent.hasExtra(getString(R.string.movie_string))) {
                 Movie movie = (Movie) intent.getSerializableExtra(getString(R.string.movie_string));
 
-
-                // Adding the movie to the favorites database
-                Log.d("DetailActivity", "Adding movie with ID: " + movie.getMovieID() + " through the detailed view...");
-                FavoritesModel favoritesModel = MainActivity.getFavoritesModel();
-
-
-                // TODO: Move this if & else part into the FavoritesModel.java as part of the add method
-                // Check to see if the movie selected is already in the favorites list
-                if (favoritesModel.isInFavoriteMovies(movie)){
-
-                    //Toast to display confirmation that movie is already in favorites
-                    Toast.makeText(getApplicationContext(), R.string.favorites_toast_exists, Toast.LENGTH_SHORT).show();
-
-                } else {
-
-                    // If the movie is not in the favorites list, add it
-                    favoritesModel.addMovie(movie);
-
-                    //Toast to display confirmation that movie has been added to favorites
-                    Toast.makeText(getApplicationContext(), R.string.favorites_toast_added, Toast.LENGTH_SHORT).show();
-                }
-                // TODO: Add ability to remove movies from favorites list
+                // Add the movie to the favorites list
+                MainActivity.getFavoritesModel().addMovie(movie);
             }
         }
 
