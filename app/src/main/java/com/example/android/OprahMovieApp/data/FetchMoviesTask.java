@@ -1,10 +1,12 @@
 package com.example.android.OprahMovieApp.data;
 
+import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.example.android.OprahMovieApp.MainActivity;
+import com.example.android.OprahMovieApp.R;
 
 import org.json.JSONException;
 
@@ -12,6 +14,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -23,9 +26,13 @@ import java.util.List;
  * Class FetchMoviesTask creates a separate thread on which to fetch movie data from the TMDB server
  */
 public class FetchMoviesTask extends AsyncTask<String, Void, List<Movie>> {
-    private final String API_KEY = "5b64200ad380b583694cc584abe83484";
     private final int NUM_PAGES = 3;
+    private WeakReference<Context> weakContext;
 
+public FetchMoviesTask(Context _context){
+    weakContext = new WeakReference<>(_context);
+
+}
     /**
      * Required method for AsyncTask that defines what operations are to be done on the thread
      * @param params
@@ -62,6 +69,7 @@ public class FetchMoviesTask extends AsyncTask<String, Void, List<Movie>> {
         for (int i = 1; i <= 3; i++) {
             HttpURLConnection httpURLConnection = null;
             BufferedReader reader = null;
+            final String API_KEY = weakContext.get().getResources().getString(R.string.tmdb_api_key);
             String SERVER_BASE_URL = "https://api.tmdb.org/3/movie/" + sortBy + "?language=en&api_key=" + API_KEY + "&page=" + page;
             Uri uri = Uri.parse(SERVER_BASE_URL);
             try {
