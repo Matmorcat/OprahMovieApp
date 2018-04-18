@@ -1,14 +1,11 @@
 package com.example.android.OprahMovieApp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
-
-import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,36 +13,64 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
-import org.json.JSONException;
+import com.example.android.OprahMovieApp.data.FetchMoviesTask;
+import com.example.android.OprahMovieApp.data.Movie;
+import com.example.android.OprahMovieApp.data.MovieAdapter;
+import com.example.android.OprahMovieApp.favorites.FavoritesModel;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * Class MainActivity represents the view and controller for the main screen of the application
+ */
 public class MainActivity extends AppCompatActivity {
-    private MovieAdapter movieAdapter;
-    private String sort; //preference for sorting movies
+    private static MovieAdapter movieAdapter;
+    private static FavoritesModel favoritesModel;
+    private String sort; //preference for sorting movie
 
+    /**
+     * onCreate is the Android system callback method that is called upon creation of the application
+     * @param savedInstanceState any saved information from a previous run, i.e. if the device is
+     *                           rotated, a new instance of the app is created with saved information
+     *                           from the previous run
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //there is some information from a previous build
         if (savedInstanceState != null) {
+
+            //Get sort option
             sort = savedInstanceState.getString("USER_SORT");
         } else {
+            //Sort option - default : sort by popularity
             sort = "popular";
-        } // sort by popularity if new activity
-        setContentView(R.layout.activity_main);
+        }
+
+        setMainScreen(R.layout.activity_main);
+
+        // Initialize the favorites model for storing favorite movies
+        favoritesModel = new FavoritesModel(this);
+
+    }
+
+    protected void setMainScreen (int layout) {
+        setContentView(layout);
+
+        bindAdapterToView(R.layout.grid_view_pic, R.id.grid_view_layout);
+
+    }
+
+    protected void bindAdapterToView (int imageLayout, int viewLayout) {
         List<Movie> items = new ArrayList<>();
         movieAdapter =
-                new MovieAdapter(getApplicationContext(), R.layout.grid_view_pic, items);
+                new MovieAdapter(getApplicationContext(), imageLayout, items);
+        Log.d("bindAdapterToView", "Adapter created");
 
-        GridView gridView = (GridView) findViewById(R.id.grid_view_layout);
+        GridView gridView = (GridView) findViewById(viewLayout);
         gridView.setAdapter(movieAdapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -69,6 +94,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Android system callback method which is called when the app is terminated
+     * @param savedInstanceState The information to be saved
+     */
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         // Save the user's current sort state
@@ -76,6 +105,11 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(savedInstanceState);
     }
 
+    /**
+     * Android callback method which creates a menu in the action bar in the upper-right corner of the screen
+     * @param menu A "menu" layout file
+     * @return True by default
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -83,13 +117,17 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Android callback method to handle action bar item clicks. The action bar will handle
+     * clicks on the Home/Up button
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+        // Change sorting order of movies
         if (id == R.id.action_sort) {
             if (sort.equals("popular")) {
                 sort = "top_rated";
@@ -105,96 +143,36 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+        // Take the user to the favorites view
+        if (id == R.id.action_favorites) {
+            Intent favoritesActivityIntent = new Intent(getApplicationContext(), FavoritesActivity.class);
+            startActivity(favoritesActivityIntent);
+        }
+
 
         return super.onOptionsItemSelected(item);
     }
 
-    private boolean isNetworkAvailable() {
+    /**
+     * Method to determine whether the device being used has internet access
+     * @return True if network is available, false otherwise
+     */
+    private boolean isNetworkAvailable() throws NullPointerException {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
-    public class FetchMoviesTask extends AsyncTask<String, Void, List<Movie>> {
+    /**
+     * Method to return the movieAdapter member to be acted upon by FetchMoviesTask and FavoritesModel
+     * @return The movieAdapter member variable
+     */
+    public static MovieAdapter getMovieAdapter() {
+        return movieAdapter;
+    }
 
-        @Override
-        protected List<Movie> doInBackground(String... params) {
-            //fetch three pages of results
-            List<Movie> Movies = new ArrayList<>();
-            try {
-                for (int i = 1; i < 4; i++) {
-                    String page = getData(i, params[0]);
-                    MovieDataParser dataParser = new MovieDataParser(page);
-                    List<Movie> movies = dataParser.getMovies();
-                    Movies.addAll(movies);
-                }
-                return Movies;
-            } catch (JSONException e) {
-                Log.e("MainActivity", e.getMessage(), e);
-            }
-            return null;
-        }
-
-
-        private String getData(int page, String sortBy) {
-            String moviesData = null;
-            for (int i = 1; i <= 3; i++) {
-                HttpURLConnection httpURLConnection = null;
-                BufferedReader reader = null;
-                final String API_KEY = getString(R.string.tmdb_api_key);
-                String SERVER_BASE_URL = "https://api.tmdb.org/3/movie/" + sortBy + "?language=en&api_key=" + API_KEY + "&page=" + page;
-                Uri uri = Uri.parse(SERVER_BASE_URL);
-                try {
-                    httpURLConnection = (HttpURLConnection) new URL(uri.toString()).openConnection();
-                    httpURLConnection.setRequestMethod("GET");
-                    httpURLConnection.connect();
-
-                    InputStream inputStream = httpURLConnection.getInputStream();
-                    StringBuffer buffer = new StringBuffer();
-                    if (inputStream == null) {
-                        return null;
-                    }
-                    reader = new BufferedReader(new InputStreamReader(inputStream));
-
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        buffer.append(line + "\n");
-                    }
-
-                    if (buffer.length() == 0) {
-                        return null;
-                    }
-
-                    moviesData = buffer.toString();
-
-                } catch (IOException e) {
-                    return null;
-                } finally {
-                    if (httpURLConnection != null) {
-                        httpURLConnection.disconnect();
-                    }
-                    if (reader != null) {
-                        try {
-                            reader.close();
-                        } catch (final IOException e) {
-                            Log.e("MainActivity", "Error closing stream", e);
-                        }
-                    }
-                }
-            }
-
-            return moviesData;
-        }
-
-
-        @Override
-        protected void onPostExecute(List<Movie> result) {
-            if (result != null) {
-                movieAdapter.updateValues(result);
-            }
-        }
-
-
+    public static FavoritesModel getFavoritesModel(){
+        return favoritesModel;
     }
 }
 

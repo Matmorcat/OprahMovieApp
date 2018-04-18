@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.OprahMovieApp.FavoritesActivity">
+
+    <TextView
+        android:id="@+id/movie_favorites"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="@color/colorAccent"
+        android:padding="8dp"
+        android:textColor="@android:color/white"
+        android:textSize="32sp"
+        android:fontFamily="sans-serif-medium"
+        android:textStyle="italic"
+
+        />
+</ListView>

@@ -1,14 +1,15 @@
 package com.example.android.OprahMovieApp;
 
 import android.content.Intent;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.android.OprahMovieApp.data.Movie;
 import com.squareup.picasso.Picasso;
 
 
@@ -18,9 +19,9 @@ public class DetailActivityFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater _inflater, ViewGroup _container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
+        View rootView = _inflater.inflate(R.layout.fragment_detail, _container, false);
         Intent intent = getActivity().getIntent();
         if (intent != null && intent.hasExtra(getString(R.string.movie_string))) {
             Movie movie = (Movie) intent.getSerializableExtra(getString(R.string.movie_string));
