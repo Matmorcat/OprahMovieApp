@@ -19,15 +19,36 @@
             android:id="@+id/movie_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:background="@color/colorAccent"
-            android:padding="8dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
             android:textColor="@android:color/white"
             android:textSize="32sp"
             android:fontFamily="sans-serif-medium"
             android:textStyle="italic"
 
             />
+
+        <TextView
+            android:id="@+id/movie_release_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/movie_rating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,8 +58,8 @@
 
             <ImageView
                 android:id="@+id/movie_poster"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="500dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:minWidth="150dp"
@@ -46,34 +67,20 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="400dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-
                 <TextView
-                    android:id="@+id/movie_rating"
-                    android:layout_width="wrap_content"
-                    android:layout_height="150dp"
-                    android:padding="8dp"
-                    android:textStyle="bold"
-                    android:gravity="center_vertical"/>
-
-                <TextView
-                    android:id="@+id/movie_release_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:textStyle="bold" />
+                    android:id="@+id/movie_plot"
+                    android:layout_width="match_parent"
+                    android:layout_height="321dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:textSize="18sp" />
             </LinearLayout>
 
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/movie_plot"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp" />
 
 
     </LinearLayout>
