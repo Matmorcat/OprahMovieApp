@@ -33,7 +33,7 @@
         </activity>
 
         <activity
-            android:name=".FavoritesActivity"
+            android:name=".favorites.FavoritesActivity"
             android:label="@string/title_activity_favorites"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme">

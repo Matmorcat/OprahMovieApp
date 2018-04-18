@@ -6,15 +6,16 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.android.OprahMovieApp.Movie;
-
 import java.util.LinkedList;
 import java.util.List;
 
-// TODO: Create a database interface (SQLite)
+/**
+ * An interface that allows for the storage of movie IDs into a favorite movies database
+ * Uses an SQLite database via SQLiteOpenHelper, built into Android
+ */
 public class FDBInterface extends SQLiteOpenHelper {
 
-    public FDBInterface(Context context) {
+    FDBInterface(Context context) {
         super(context, FDBInfo.DATABASE_NAME, null, FDBInfo.DATABASE_VERSION);
     }
 
@@ -25,10 +26,8 @@ public class FDBInterface extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         // SQL command to create a favorite movies database
-        String CREATE_FAVORITE_MOVIES = "CREATE TABLE " + FDBInfo.TABLE_NAME + " ( " +
-                FDBInfo.KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                FDBInfo.KEY_TITLE + " TEXT, " +
-                " )";
+        String CREATE_FAVORITE_MOVIES = "CREATE TABLE " + FDBInfo.TABLE_NAME +
+                " ( " + FDBInfo.KEY_MOVIE_ID + " INTEGER )";
 
         // Create the new table in the database
         db.execSQL(CREATE_FAVORITE_MOVIES);
@@ -51,32 +50,33 @@ public class FDBInterface extends SQLiteOpenHelper {
     }
 
     /**
-     * Add a movie title to the favorite movies database
-     * @param title The movie title (ID)
+     * Add a movie to the favorite movies database
+     * @param id The movie ID
      */
-    protected void addEntry(String title) {
+    protected void addEntry(int id) {
 
         // Get the reference to writable database
         SQLiteDatabase db = getWritableDatabase();
 
         // Create ContentValues to add key "column"/value
         ContentValues values = new ContentValues();
-        values.put(FDBInfo.KEY_TITLE, title); // Get title
+        values.put(FDBInfo.KEY_MOVIE_ID, id);
 
         // Insert into the table
         db.insert(FDBInfo.TABLE_NAME,
-                null, //nullColumnHack
-                values); // key/value -> keys = column names/ values = column values
+                null,
+                values);
 
+        // Close the database
         db.close();
     }
 
     /**
-     * Get a list of all movie titles in the favorite movies database
-     * @return A list of all movie titles (IDs)
+     * Get a list of all movies in the favorite movies database
+     * @return A list of all movie IDs
      */
-    public LinkedList<String> getEntries() {
-        LinkedList<String> movies = new LinkedList<String>();
+    public List<Integer> getEntries() {
+        List<Integer> movies = new LinkedList<>();
 
         // Make a query
         String query = "SELECT  * FROM " + FDBInfo.TABLE_NAME;
@@ -90,11 +90,33 @@ public class FDBInterface extends SQLiteOpenHelper {
         // Scan through the rows and add each movie in database to a list
         if (cursor.moveToFirst()) {
             do {
-                movies.add(cursor.getString(1));
+                movies.add(cursor.getInt(0));
             } while (cursor.moveToNext());
         }
 
+        // Close the database
+        db.close();
+        cursor.close();
+
         return movies;
+    }
+
+    /**
+     * Remove a movie from the favorite movies database
+     * @param id The movie ID
+     */
+    protected void removeEntry(int id) {
+
+        // Get the reference to writable database
+        SQLiteDatabase db = getWritableDatabase();
+
+        // Delete the movie
+        db.delete(FDBInfo.TABLE_NAME,
+                FDBInfo.KEY_MOVIE_ID + " = ?",
+                new String[] { String.valueOf(id) });
+
+        // Close the database
+        db.close();
     }
 
 }

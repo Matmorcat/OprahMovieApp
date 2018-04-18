@@ -13,4 +13,6 @@
     <string name="add_favorites">Add to Favorites</string>
     <string name="favorites_list">Go To Favorites</string>
     <string name="favorites_toast_text">Movie added to favorites</string>
+
+    <string name="db_type">SQLite</string>
 </resources>

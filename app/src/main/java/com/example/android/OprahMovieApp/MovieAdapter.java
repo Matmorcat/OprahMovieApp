@@ -16,26 +16,65 @@ public class MovieAdapter extends BaseAdapter {
 
     private Context context;
     private int resource;
-    private List<com.example.android.OprahMovieApp.Movie> movies;
+    private List<Movie> movies;
 
-    public MovieAdapter(Context context, int resource, List<com.example.android.OprahMovieApp.Movie> movies) {
+    public MovieAdapter(Context context, int resource, List<Movie> movies) {
         this.context = context;
         this.resource = resource;
         this.movies = movies;
     }
 
-    public List<com.example.android.OprahMovieApp.Movie> getMovies() {
+    public List<Movie> getMovies() {
         return this.movies;
     }
 
-    public com.example.android.OprahMovieApp.Movie getItem(int position) {
+    public Movie getItem(int position) {
         return this.movies.get(position);
+    }
+
+    /**
+     * Checks to see if there is a movie by the given ID cached locally
+     * @param movieID The id of the movie to search for in cache
+     * @return True if the movie is locally saved, false if not
+     */
+    public boolean isCachedMovieByID(int movieID) {
+        for (Movie movie : movies) {
+
+            // The movie matches the id provided
+            if (movie.getMovieID() == movieID){
+                return true;
+            }
+        }
+        // No movie matches the id provided
+        return false;
+    }
+
+    /**
+     * Get a movie and its information by providing the movie ID
+     * @param movieID The movie ID of the movie to retrieve
+     * @return The movie information
+     */
+    public Movie getMovieByID(int movieID) {
+        for (Movie movie : movies) {
+
+            // The movie matches the id provided
+            if (movie.getMovieID() == movieID){
+                return movie;
+            }
+        }
+
+        // TODO: Perform a search query on the server to find a movie by this ID (This is a temporary return statement)
+        return (new Movie(movieID, "Unknown", 0, null, null, null));
     }
 
     public long getItemId(int _position) {
         return _position;
     }
 
+    /**
+     * Get the number of movies saved in the local cache
+     * @return The amount of movies saved locally
+     */
     public int getCount() {
         return this.movies.size();
     }
@@ -55,7 +94,7 @@ public class MovieAdapter extends BaseAdapter {
 
     }
 
-    public void updateValues(List<com.example.android.OprahMovieApp.Movie> _movies) {
+    public void updateValues(List<Movie> _movies) {
         this.movies = _movies;
         notifyDataSetChanged();
     }
