@@ -1,20 +1,19 @@
 package com.example.android.OprahMovieApp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
-
-import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+
+import com.example.android.OprahMovieApp.favorites.FavoritesActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -157,10 +156,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Method to return the movieAdapter member to be acted upon by FetchMoviesTask
+     * Method to return the movieAdapter member to be acted upon by FetchMoviesTask and FavoritesModel
      * @return The movieAdapter member variable
      */
-    protected static MovieAdapter getMovieAdapter() {
+    public static MovieAdapter getMovieAdapter() {
         return movieAdapter;
     }
 }
