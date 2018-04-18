@@ -13,6 +13,5 @@ public class FavoritesActivity extends AppCompatActivity {
         super.onCreate(_savedInstanceState);
         setContentView(R.layout.activity_favorites);
 
-        FavoritesModel favoritesModel = new FavoritesModel(this);
     }
 }

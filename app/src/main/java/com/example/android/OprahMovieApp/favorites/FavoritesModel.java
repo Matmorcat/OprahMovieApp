@@ -15,7 +15,7 @@ public class FavoritesModel{
     private FDBInterface db;
     private MovieAdapter movieAdapter;
 
-    FavoritesModel(Context _context) {
+    public FavoritesModel(Context _context) {
         this.db = new FDBInterface(_context);
         movieAdapter = MainActivity.getMovieAdapter();
     }
