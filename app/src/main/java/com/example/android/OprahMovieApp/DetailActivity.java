@@ -41,8 +41,8 @@ public class DetailActivity extends AppCompatActivity {
 
 
                 // Adding the movie to the favorites database
-                Log.d("DetailActivity", "Adding movie with ID: " + movie.getMovieID() + "through the detailed view...");
-                FavoritesModel favoritesModel = MovieAdapter.getFavoritesModel();
+                Log.d("DetailActivity", "Adding movie with ID: " + movie.getMovieID() + " through the detailed view...");
+                FavoritesModel favoritesModel = MainActivity.getFavoritesModel();
 
 
                 // Check to see if the movie selected is already in the favorites list

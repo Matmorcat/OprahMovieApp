@@ -42,6 +42,7 @@ public class FavoritesModel{
 
         // Loop through all the movie titles and build objects out of them
         for (int movieID : db.getEntries()) {
+            Log.d("getFavoriteMovies", "Attempting to add a movie by its ID: " + movieID + " | movieAdapter: " + movieAdapter.toString());
             movies.add(movieAdapter.getMovieByID(movieID));
         }
 

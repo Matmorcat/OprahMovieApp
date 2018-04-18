@@ -6,6 +6,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.example.android.OprahMovieApp.favorites.FavoritesActivity;
+import com.example.android.OprahMovieApp.favorites.FavoritesModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +25,7 @@ import java.util.List;
  */
 public class MainActivity extends AppCompatActivity {
     private static MovieAdapter movieAdapter;
+    private static FavoritesModel favoritesModel;
     private String sort; //preference for sorting movie
 
     /**
@@ -47,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
 
         setMainScreen(R.layout.activity_main);
 
+        // Initialize the favorites model for storing favorite movies
+        favoritesModel = new FavoritesModel(this);
+
     }
 
     protected void setMainScreen (int layout) {
@@ -60,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         List<Movie> items = new ArrayList<>();
         movieAdapter =
                 new MovieAdapter(getApplicationContext(), imageLayout, items);
+        Log.d("bindAdapterToView", "Adapter created");
 
         GridView gridView = (GridView) findViewById(viewLayout);
         gridView.setAdapter(movieAdapter);
@@ -160,6 +167,10 @@ public class MainActivity extends AppCompatActivity {
      */
     public static MovieAdapter getMovieAdapter() {
         return movieAdapter;
+    }
+
+    public static FavoritesModel getFavoritesModel(){
+        return favoritesModel;
     }
 }
 
