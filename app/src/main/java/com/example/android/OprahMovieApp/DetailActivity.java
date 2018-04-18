@@ -45,6 +45,7 @@ public class DetailActivity extends AppCompatActivity {
                 FavoritesModel favoritesModel = MainActivity.getFavoritesModel();
 
 
+                // TODO: Move this if & else part into the FavoritesModel.java as part of the add method
                 // Check to see if the movie selected is already in the favorites list
                 if (favoritesModel.isInFavoriteMovies(movie)){
 
