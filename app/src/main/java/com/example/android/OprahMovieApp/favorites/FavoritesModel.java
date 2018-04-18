@@ -48,6 +48,21 @@ public class FavoritesModel{
         return movies;
     }
 
+    /**
+     * Check to see if a specific movie is saved in the favorite movies database
+     * @return True if the movie is in favorites, false if not
+     */
+    public boolean isInFavoriteMovies(Movie movie){
+
+        for (Movie favoriteMovie : getFavoriteMovies()){
+            if (movie.getMovieID() == favoriteMovie.getMovieID()){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 
     /**
      * Remove a movie from the user's favorite movies
