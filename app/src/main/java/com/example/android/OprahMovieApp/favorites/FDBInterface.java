@@ -11,7 +11,8 @@ import java.util.List;
 
 /**
  * An interface that allows for the storage of movie IDs into a favorite movies database
- * Uses an SQLite database via SQLiteOpenHelper, built into Android
+ * Uses an SQLite database via SQLiteOpenHelper, built into Android.
+ * This is used exclusively by FavoritesModel.
  */
 public class FDBInterface extends SQLiteOpenHelper {
 
@@ -19,8 +20,7 @@ public class FDBInterface extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;                    // Database Version
     private static final String DATABASE_NAME = "FavoriteMoviesDB";   // Database Name
     private static final String TABLE_NAME = "favorite_movies";       // Table Name
-
-    private static final String KEY_MOVIE_ID = "movieid";             // Table Columns
+    private static final String KEY_MOVIE_ID = "movieid";             // Movie ID Column Name
 
     FDBInterface(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
