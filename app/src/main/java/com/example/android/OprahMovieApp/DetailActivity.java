@@ -43,11 +43,25 @@ public class DetailActivity extends AppCompatActivity {
                 // Adding the movie to the favorites database
                 Log.d("DetailActivity", "Adding movie with ID: " + movie.getMovieID() + "through the detailed view...");
                 FavoritesModel favoritesModel = MovieAdapter.getFavoritesModel();
-                favoritesModel.addMovie(movie);
 
-                //Toast to display confirmation that movie has been added to favorites
-                Toast addFavoritesToast = new Toast(getApplicationContext());
-                addFavoritesToast.makeText(getApplicationContext(), R.string.favorites_toast_text, Toast.LENGTH_SHORT).show();
+
+                // Check to see if the movie selected is already in the favorites list
+                if (favoritesModel.isInFavoriteMovies(movie)){
+
+                    //Toast to display confirmation that movie is already in favorites
+                    Toast addFavoritesToast = new Toast(getApplicationContext());
+                    addFavoritesToast.makeText(getApplicationContext(), R.string.favorites_toast_exists, Toast.LENGTH_SHORT).show();
+
+                } else {
+
+                    // If the movie is not in the favorites list, add it
+                    favoritesModel.addMovie(movie);
+
+                    //Toast to display confirmation that movie has been added to favorites
+                    Toast addFavoritesToast = new Toast(getApplicationContext());
+                    addFavoritesToast.makeText(getApplicationContext(), R.string.favorites_toast_added, Toast.LENGTH_SHORT).show();
+                }
+                // TODO: Add ability to remove movies from favorites list
             }
         }
 
