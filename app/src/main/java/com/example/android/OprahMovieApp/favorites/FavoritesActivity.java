@@ -1,9 +1,9 @@
-package com.example.android.OprahMovieApp;
+package com.example.android.OprahMovieApp.favorites;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.android.OprahMovieApp.favorites.FavoritesModel;
+import com.example.android.OprahMovieApp.R;
 
 // TODO: Implement favorites activity - code started
 public class FavoritesActivity extends AppCompatActivity {
