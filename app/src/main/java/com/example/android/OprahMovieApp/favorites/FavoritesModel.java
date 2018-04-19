@@ -97,17 +97,14 @@ public class FavoritesModel{
         //Log that a movie was removed
         Log.d("removeMovie", movie.toString());
 
-        db.removeEntry(movie.getMovieID());
-        movieCache.remove(movie);
-
         // Check to see if the movie selected is in the favorites list
         if (isInFavoriteMovies(movie)){
 
-            // If the movie is in the favorites list, remove it from the database and cache
+            // If the movie is in the favorites list, add it to the database and cache
             db.removeEntry(movie.getMovieID());
             movieCache.remove(movie);
 
-            // Toast to display confirmation that movie has been removed from favorites
+            // Toast to display confirmation that movie has been added to favorites
             Toast.makeText(context.getApplicationContext(), R.string.favorites_toast_removed, Toast.LENGTH_SHORT).show();
 
         } else {
