@@ -13,6 +13,17 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu (Menu _menu) {
         getMenuInflater().inflate(R.menu.menu_detail, _menu);
+
+        // Get the menu option to add to favorites.
+        MenuItem favorite_toggle = _menu.findItem(R.id.action_favorite);
+
+        // Check if the movie is already in the favorites list.
+        if (MainActivity.getFavoritesModel().isInFavoriteMovies(getMovieInfoFromActivity())) {
+
+            // If the movie is in favorites, set the option to remove from favorites
+            favorite_toggle.setTitle(R.string.remove_favorites);
+        }
+
         return true;
     }
     @Override
@@ -21,21 +32,53 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
     }
 
+    /**
+     * Android callback method to handle action bar item clicks. The action bar will handle
+     * clicks on the Home/Up button
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_add_favorite) {
 
-            // Intent to retrieve movie information
-            Intent intent = this.getIntent();
-            if (intent != null && intent.hasExtra(getString(R.string.movie_string))) {
-                Movie movie = (Movie) intent.getSerializableExtra(getString(R.string.movie_string));
+        // Change sorting order of movies.
+        if (id == R.id.action_favorite) {
+            if (hasActivityMovieInfo()) {
 
-                // Add the movie to the favorites list
-                MainActivity.getFavoritesModel().addMovie(movie);
+                // Find the movie that is currently being viewed by the user.
+                Movie movie = getMovieInfoFromActivity();
+
+                // If the movie is already in the favorites, remove it.
+                if (MainActivity.getFavoritesModel().isInFavoriteMovies(movie)) {
+
+                    // Remove the movie from the favorites list.
+                    MainActivity.getFavoritesModel().removeMovie(movie);
+                    item.setTitle(R.string.add_favorites);
+
+                } else {
+
+                    // Add the movie to the favorites list.
+                    MainActivity.getFavoritesModel().addMovie(movie);
+                    item.setTitle(R.string.remove_favorites);
+
+                }
             }
+
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private Movie getMovieInfoFromActivity() {
+        return (Movie) this.getIntent().getSerializableExtra(getString(R.string.movie_string));
+    }
+
+    private boolean hasActivityMovieInfo() {
+        // Intent to retrieve movie information
+        Intent intent = this.getIntent();
+
+        // This returns the movie of the activity
+        return (intent != null && intent.hasExtra(getString(R.string.movie_string)));
     }
 }
