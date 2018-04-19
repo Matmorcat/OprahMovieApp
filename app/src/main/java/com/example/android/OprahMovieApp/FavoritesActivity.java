@@ -3,8 +3,10 @@ package com.example.android.OprahMovieApp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.android.OprahMovieApp.data.FavoritesAdapter;
 import com.example.android.OprahMovieApp.data.Movie;
 import com.example.android.OprahMovieApp.favorites.FavoritesModel;
 
@@ -16,6 +18,7 @@ import java.util.List;
 public class FavoritesActivity extends AppCompatActivity {
 
     protected List<Movie> favoriteMovies;
+    protected FavoritesAdapter adapter;
 
     @Override
     protected void onCreate(Bundle _savedInstanceState) {
@@ -24,7 +27,9 @@ public class FavoritesActivity extends AppCompatActivity {
 
         favoriteMovies = MainActivity.getFavoritesModel().getFavoriteMovies();
 
-
+        adapter = new FavoritesAdapter(getApplicationContext(), R.layout.activity_favorites, favoriteMovies);
+        ListView listView = (ListView) findViewById(R.id.favorites_list);
+        listView.setAdapter(adapter);
 
 
     }
