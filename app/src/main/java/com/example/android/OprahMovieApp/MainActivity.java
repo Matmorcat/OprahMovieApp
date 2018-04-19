@@ -171,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
         return movieAdapter;
     }
 
-    public static FavoritesModel getFavoritesModel(){
+    public static FavoritesModel getFavoritesModel() {
         return favoritesModel;
     }
 }

@@ -29,13 +29,13 @@ public class FavoritesModel{
      * Add a movie to the user's favorite movies
      * @param movie The movie to add to favorites
      */
-    public void addMovie(Movie movie){
+    public void addMovie(Movie movie) {
 
         //Log that a movie was added
         Log.d("addMovie", movie.toString());
 
         // Check to see if the movie selected is already in the favorites list
-        if (isInFavoriteMovies(movie)){
+        if (isInFavoriteMovies(movie)) {
 
             //Toast to display confirmation that movie is already in favorites
             Toast.makeText(context.getApplicationContext(), R.string.favorites_toast_exists, Toast.LENGTH_SHORT).show();
@@ -55,7 +55,7 @@ public class FavoritesModel{
      * Get a list of all the user's favorite movies
      * @return The list of favorite movies
      */
-    public List<Movie> getFavoriteMovies(){
+    public List<Movie> getFavoriteMovies() {
 
         // If the data is not cached in memory (reduces queries to the database)
         // FavoritesModel is the only way movies get added/removed, so the cache should never de-sync
@@ -74,12 +74,12 @@ public class FavoritesModel{
      * Check to see if a specific movie is saved in the favorite movies database
      * @return True if the movie is in favorites, false if not
      */
-    public boolean isInFavoriteMovies(Movie movie){
+    public boolean isInFavoriteMovies(Movie movie) {
 
-        for (Movie favoriteMovie : getFavoriteMovies()){
+        for (Movie favoriteMovie : getFavoriteMovies()) {
 
             // Compare movie IDs
-            if (movie.getMovieID() == favoriteMovie.getMovieID()){
+            if (movie.getMovieID() == favoriteMovie.getMovieID()) {
                 return true;
             }
         }
@@ -92,13 +92,13 @@ public class FavoritesModel{
      * Remove a movie from the user's favorite movies
      * @param movie The movie to remove from favorites
      */
-    public void removeMovie(Movie movie){
+    public void removeMovie(Movie movie) {
 
         //Log that a movie was removed
         Log.d("removeMovie", movie.toString());
 
         // Check to see if the movie selected is in the favorites list
-        if (isInFavoriteMovies(movie)){
+        if (isInFavoriteMovies(movie)) {
 
             // If the movie is in the favorites list, add it to the database and cache
             db.removeEntry(movie.getMovieID());

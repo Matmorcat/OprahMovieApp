@@ -29,7 +29,7 @@ public class FetchMoviesTask extends AsyncTask<String, Void, List<Movie>> {
     private final int NUM_PAGES = 3;
     private WeakReference<Context> weakContext;
 
-public FetchMoviesTask(Context _context){
+public FetchMoviesTask(Context _context) {
     weakContext = new WeakReference<>(_context);
 
 }

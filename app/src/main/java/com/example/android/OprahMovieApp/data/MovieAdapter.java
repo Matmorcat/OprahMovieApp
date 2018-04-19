@@ -42,7 +42,7 @@ public class MovieAdapter extends BaseAdapter {
         for (Movie movie : movies) {
 
             // The movie matches the id provided
-            if (movie.getMovieID() == movieID){
+            if (movie.getMovieID() == movieID) {
                 return true;
             }
         }
@@ -59,7 +59,7 @@ public class MovieAdapter extends BaseAdapter {
         for (Movie movie : movies) {
 
             // The movie matches the id provided
-            if (movie.getMovieID() == movieID){
+            if (movie.getMovieID() == movieID) {
                 return movie;
             }
         }
