@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
         List<Movie> movies = (List<Movie>) getLastCustomNonConfigurationInstance();
         if (movies == null) {
-            FetchMoviesTask fetchMoviesTask = new FetchMoviesTask();
+            FetchMoviesTask fetchMoviesTask = new FetchMoviesTask(getApplicationContext());
             fetchMoviesTask.execute(sort);
         } else {
             movieAdapter.updateValues(movies);
@@ -131,12 +131,12 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_sort) {
             if (sort.equals("popular")) {
                 sort = "top_rated";
-                FetchMoviesTask fetchMoviesTask = new FetchMoviesTask();
+                FetchMoviesTask fetchMoviesTask = new FetchMoviesTask(getApplicationContext());
                 fetchMoviesTask.execute(sort);
                 item.setTitle(R.string.sort_popularity);
             } else {
                 sort = "popular";
-                FetchMoviesTask fetchMoviesTask = new FetchMoviesTask();
+                FetchMoviesTask fetchMoviesTask = new FetchMoviesTask(getApplicationContext());
                 fetchMoviesTask.execute(sort);
                 item.setTitle(R.string.sort_user_rating);
             }
