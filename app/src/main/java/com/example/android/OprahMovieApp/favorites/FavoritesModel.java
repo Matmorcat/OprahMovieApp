@@ -56,9 +56,12 @@ public class FavoritesModel{
      * @return The list of favorite movies
      */
     public List<Movie> getFavoriteMovies() {
-
+        //TODO Matt take a look at this because this clear() was just a quick fix for displaying proper information
+        //in favorites activity after a movie deletion. I'm sure there's a more appropriate way to do it
+        movieCache.clear();
         // If the data is not cached in memory (reduces queries to the database)
         // FavoritesModel is the only way movies get added/removed, so the cache should never de-sync
+
         if (movieCache.isEmpty()) {
 
             // Loop through all the movie titles and build objects out of them

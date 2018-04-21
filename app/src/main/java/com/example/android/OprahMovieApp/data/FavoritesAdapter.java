@@ -32,5 +32,4 @@ public class FavoritesAdapter extends MovieAdapter {
 
     }
 
-
 }

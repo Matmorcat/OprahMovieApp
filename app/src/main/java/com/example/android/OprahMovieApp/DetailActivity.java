@@ -56,6 +56,8 @@ public class DetailActivity extends AppCompatActivity {
                     MainActivity.getFavoritesModel().removeMovie(movie);
                     item.setTitle(R.string.add_favorites);
 
+                    FavoritesActivity.getFavoritesAdapter().updateValues(MainActivity.getFavoritesModel().getFavoriteMovies());
+
                 } else {
 
                     // Add the movie to the favorites list.

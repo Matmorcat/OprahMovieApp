@@ -18,7 +18,7 @@ import java.util.List;
 public class FavoritesActivity extends AppCompatActivity {
 
     protected List<Movie> favoriteMovies;
-    protected FavoritesAdapter adapter;
+    protected static FavoritesAdapter adapter;
 
     @Override
     protected void onCreate(Bundle _savedInstanceState) {
@@ -30,7 +30,9 @@ public class FavoritesActivity extends AppCompatActivity {
         adapter = new FavoritesAdapter(getApplicationContext(), R.layout.activity_favorites, favoriteMovies);
         ListView listView = (ListView) findViewById(R.id.favorites_list);
         listView.setAdapter(adapter);
+    }
 
-
+    public static FavoritesAdapter getFavoritesAdapter() {
+        return adapter;
     }
 }
