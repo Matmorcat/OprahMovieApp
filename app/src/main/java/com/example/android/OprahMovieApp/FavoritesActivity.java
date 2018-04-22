@@ -20,7 +20,8 @@ import java.util.List;
 public class FavoritesActivity extends AppCompatActivity {
 
     protected List<Movie> favoriteMovies;
-    protected static FavoritesAdapter adapter;
+    protected static FavoritesAdapter favoritesAdapter;
+
 
     @Override
     protected void onCreate(Bundle _savedInstanceState) {
@@ -29,12 +30,14 @@ public class FavoritesActivity extends AppCompatActivity {
 
         favoriteMovies = MainActivity.getFavoritesModel().getFavoriteMovies();
 
-        adapter = new FavoritesAdapter(getApplicationContext(), R.layout.activity_favorites, favoriteMovies);
+        favoritesAdapter = new FavoritesAdapter(getApplicationContext(), R.layout.activity_favorites, favoriteMovies);
         ListView listView = (ListView) findViewById(R.id.favorites_list);
-        listView.setAdapter(adapter);
+        listView.setAdapter(favoritesAdapter);
     }
 
     public static FavoritesAdapter getFavoritesAdapter() {
-        return adapter;
+        return favoritesAdapter;
     }
 }
+
+

@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.android.OprahMovieApp.data.Movie;
+import com.example.android.OprahMovieApp.favorites.FavoritesModel;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -42,7 +43,7 @@ public class DetailActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        // Change sorting order of movies.
+        // Remove movie from favorites
         if (id == R.id.action_favorite) {
             if (hasActivityMovieInfo()) {
 
@@ -54,9 +55,10 @@ public class DetailActivity extends AppCompatActivity {
 
                     // Remove the movie from the favorites list.
                     MainActivity.getFavoritesModel().removeMovie(movie);
+                    FavoritesActivity.getFavoritesAdapter().notifyDataSetChanged();
                     item.setTitle(R.string.add_favorites);
 
-                    FavoritesActivity.getFavoritesAdapter().updateValues(MainActivity.getFavoritesModel().getFavoriteMovies());
+
 
                 } else {
 

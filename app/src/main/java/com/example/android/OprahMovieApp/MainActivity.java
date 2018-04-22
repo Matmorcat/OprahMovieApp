@@ -86,8 +86,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent detailActivityIntent = new Intent(getApplicationContext(), DetailActivity.class);
                 detailActivityIntent.putExtra(getString(R.string.movie_string), movie);
                 startActivity(detailActivityIntent);
-
-
             }
         });
 
@@ -160,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
      * This method executes FetchMoviesTask according to the appropriate sorting method
      */
     public void executeFetchMoviesTask() {
-        if (isNetworkAvailable()) {
+        if(isNetworkAvailable()) {
             FetchMoviesTask fetchMoviesTask = new FetchMoviesTask(getApplicationContext());
             fetchMoviesTask.execute(sort);
         }
