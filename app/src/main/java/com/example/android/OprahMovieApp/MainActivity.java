@@ -131,13 +131,11 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_sort) {
             if (sort.equals("popular")) {
                 sort = "top_rated";
-                FetchMoviesTask fetchMoviesTask = new FetchMoviesTask(getApplicationContext());
-                fetchMoviesTask.execute(sort);
+                executeFetchMoviesTask();
                 item.setTitle(R.string.sort_popularity);
             } else {
                 sort = "popular";
-                FetchMoviesTask fetchMoviesTask = new FetchMoviesTask(getApplicationContext());
-                fetchMoviesTask.execute(sort);
+                executeFetchMoviesTask();
                 item.setTitle(R.string.sort_user_rating);
             }
 
@@ -145,12 +143,27 @@ public class MainActivity extends AppCompatActivity {
 
         // Take the user to the favorites view
         if (id == R.id.action_favorites) {
-            Intent favoritesActivityIntent = new Intent(getApplicationContext(), FavoritesActivity.class);
-            startActivity(favoritesActivityIntent);
+            startFavoritesActivity();
         }
 
 
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * This method executes FetchMoviesTask according to the appropriate sorting method
+     */
+    public void executeFetchMoviesTask() {
+        FetchMoviesTask fetchMoviesTask = new FetchMoviesTask(getApplicationContext());
+        fetchMoviesTask.execute(sort);
+    }
+
+    /**
+     * This method initiates Favorites Activity
+     */
+    public void startFavoritesActivity() {
+        Intent favoritesActivityIntent = new Intent(getApplicationContext(), FavoritesActivity.class);
+        startActivity(favoritesActivityIntent);
     }
 
     /**

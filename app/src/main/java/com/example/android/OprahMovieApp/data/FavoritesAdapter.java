@@ -4,9 +4,11 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.android.OprahMovieApp.MainActivity;
 import com.example.android.OprahMovieApp.R;
 import com.squareup.picasso.Picasso;
 
@@ -20,7 +22,7 @@ public class FavoritesAdapter extends MovieAdapter {
     }
 
     @Override
-    public View getView(int _position, View _convertView, ViewGroup _parent) {
+    public View getView(final int _position, View _convertView, ViewGroup _parent) {
         View view = _convertView;
 
         if (view == null) {
@@ -32,9 +34,22 @@ public class FavoritesAdapter extends MovieAdapter {
         Picasso.with(this.context).load(url).into(imageView);
         TextView textView = (TextView)view.findViewById(R.id.list_view_text);
         textView.setText(getItem(_position).getTitle());
+        Button deleteButton = (Button) view.findViewById(R.id.delete_btn);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)
+            {
+                Movie movie = getItem(_position);
+                // Remove the movie from the favorites list.
+                MainActivity.getFavoritesModel().removeMovie(movie);
+
+                notifyDataSetChanged(); //remove the item
+            }
+        });
 
         return view;
 
     }
+
+
 
 }

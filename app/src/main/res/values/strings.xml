@@ -19,6 +19,7 @@
     <string name="favorites_toast_exists">Movie is already in favorites</string>
     <string name="favorites_toast_removed">Movie removed from favorites</string>
     <string name="favorites_toast_exists_false">Movie is not in favorites</string>
+    <string name="favorites_delete">Remove from Favorites</string>
 
     <string name="db_type">SQLite</string>
 </resources>
