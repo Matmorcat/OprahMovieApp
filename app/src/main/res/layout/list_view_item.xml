@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@android:color/white"
-    android:orientation="horizontal">
-
-
-    <ImageView
-        android:id="@+id/list_view_pic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleType="fitCenter"/>
-
-    <TextView
-    android:id="@+id/list_view_text"
+<TextView
+    android:id="@+id/grid_view_pic"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="8dp"
@@ -22,9 +10,7 @@
     android:textColor="@android:color/white"
     android:textSize="32sp"
     android:fontFamily="sans-serif-medium"
-    android:textStyle="italic"
-    />
+    android:textStyle="italic">
 
+</TextView>
 
-
-</LinearLayout>

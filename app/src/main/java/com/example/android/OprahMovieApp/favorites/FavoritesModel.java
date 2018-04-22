@@ -3,15 +3,12 @@ package com.example.android.OprahMovieApp.favorites;
 import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
-
-import com.example.android.OprahMovieApp.MainActivity;
+import com.example.android.OprahMovieApp.Views.MainActivity;
 import com.example.android.OprahMovieApp.R;
 import com.example.android.OprahMovieApp.data.Movie;
 import com.example.android.OprahMovieApp.data.MovieAdapter;
-
 import java.util.LinkedList;
 import java.util.List;
-
 public class FavoritesModel{
 
     private FDBInterface db; // Reference to the database interface
@@ -56,12 +53,9 @@ public class FavoritesModel{
      * @return The list of favorite movies
      */
     public List<Movie> getFavoriteMovies() {
-        //TODO Matt take a look at this because this clear() was just a quick fix for displaying proper information
-        //in favorites activity after a movie deletion. I'm sure there's a more appropriate way to do it
-        movieCache.clear();
+
         // If the data is not cached in memory (reduces queries to the database)
         // FavoritesModel is the only way movies get added/removed, so the cache should never de-sync
-
         if (movieCache.isEmpty()) {
 
             // Loop through all the movie titles and build objects out of them

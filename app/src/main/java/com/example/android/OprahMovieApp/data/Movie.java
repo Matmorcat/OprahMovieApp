@@ -1,5 +1,4 @@
 package com.example.android.OprahMovieApp.data;
-
 import java.io.Serializable;
 
 
@@ -11,7 +10,7 @@ public class Movie implements Serializable {
     private String releaseDate;
     private String picUrl;
 
-    Movie(int _movieID, String _title, double _userRating, String _releaseDate, String _plotSynopsis, String _picUrl) {
+    public Movie(int _movieID, String _title, double _userRating, String _releaseDate, String _plotSynopsis, String _picUrl) {
         this.movieID = _movieID;
         this.title = _title;
         this.userRating = _userRating;
