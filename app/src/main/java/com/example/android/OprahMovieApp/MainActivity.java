@@ -51,20 +51,27 @@ public class MainActivity extends AppCompatActivity {
         }
 
         setMainScreen(R.layout.activity_main);
+        initializeMovieAdapter(R.layout.grid_view_pic, R.id.grid_view_layout);
 
         // Initialize the favorites model for storing favorite movies
         favoritesModel = new FavoritesModel(this);
 
     }
 
+    /**
+     * This method specifies which layout file will be set for the main screen of the app
+     * @param layout The XML layout file which specifies how the activity looks on screen
+     */
     protected void setMainScreen (int layout) {
         setContentView(layout);
-
-        bindAdapterToView(R.layout.grid_view_pic, R.id.grid_view_layout);
-
     }
 
-    protected void bindAdapterToView (int imageLayout, int viewLayout) {
+    /**
+     * This method initializes an adapter to diaplay clickable movie posters
+     * @param imageLayout The layout file which specifies image properties, i.e. size and scale type
+     * @param viewLayout The layout file which specifies which type of layout will display the images
+     */
+    protected void initializeMovieAdapter (int imageLayout, int viewLayout) {
         List<Movie> items = new ArrayList<>();
         movieAdapter =
                 new MovieAdapter(getApplicationContext(), imageLayout, items);
@@ -86,8 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
         List<Movie> movies = (List<Movie>) getLastCustomNonConfigurationInstance();
         if (movies == null) {
-            FetchMoviesTask fetchMoviesTask = new FetchMoviesTask(getApplicationContext());
-            fetchMoviesTask.execute(sort);
+            executeFetchMoviesTask();
         } else {
             movieAdapter.updateValues(movies);
         }
@@ -154,9 +160,12 @@ public class MainActivity extends AppCompatActivity {
      * This method executes FetchMoviesTask according to the appropriate sorting method
      */
     public void executeFetchMoviesTask() {
-        FetchMoviesTask fetchMoviesTask = new FetchMoviesTask(getApplicationContext());
-        fetchMoviesTask.execute(sort);
+        if (isNetworkAvailable()) {
+            FetchMoviesTask fetchMoviesTask = new FetchMoviesTask(getApplicationContext());
+            fetchMoviesTask.execute(sort);
+        }
     }
+
 
     /**
      * This method initiates Favorites Activity
@@ -184,6 +193,10 @@ public class MainActivity extends AppCompatActivity {
         return movieAdapter;
     }
 
+    /**
+     * Method to return the favoritesModel member to be displayed
+     * @return The FavoritesModel member
+     */
     public static FavoritesModel getFavoritesModel() {
         return favoritesModel;
     }
