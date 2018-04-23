@@ -122,7 +122,7 @@ public class FetchMoviesTask extends AsyncTask<String, Void, List<Movie>> {
         return moviesData;
     }
 
-    //TODO finish this and get it working propoerly -- currently hasn't been implemented in doInBackground
+    //TODO finish this and get it working properly -- currently hasn't been implemented in doInBackground
     private String getMovieByID (int _id) {
         String movieData = null;
         HttpURLConnection httpURLConnection = null;
