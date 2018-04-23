@@ -64,6 +64,7 @@ public class MovieAdapter extends BaseAdapter {
         }
 
         // TODO: Perform a search query on the server to find a movie by this ID (This is a temporary return statement)
+        // Use https://api.themoviedb.org/3/movie/{movieID}?api_key={api_key}
         return (new Movie(movieID, "Unknown", 0, null, null, null));
     }
 
