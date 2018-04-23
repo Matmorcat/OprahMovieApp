@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     Movie movie = (Movie) adapterView.getAdapter().getItem(i);
                     Intent detailActivityIntent = new Intent(getApplicationContext(), DetailActivity.class);
-                    detailActivityIntent.putExtra(getString(R.string.movie_string), movie);
+                    detailActivityIntent.putExtra(getString(R.string.intent_movie_string), movie);
                     startActivity(detailActivityIntent);
                 }
             });
@@ -162,11 +162,11 @@ public class MainActivity extends AppCompatActivity {
             if (sort.equals("popular")) {
                 sort = "top_rated";
                 executeFetchMoviesTask();
-                item.setTitle(R.string.sort_popularity);
+                item.setTitle(R.string.menu_sort_popularity);
             } else {
                 sort = "popular";
                 executeFetchMoviesTask();
-                item.setTitle(R.string.sort_user_rating);
+                item.setTitle(R.string.menu_sort_user_rating);
             }
 
         }

@@ -1,18 +1,16 @@
-
-    <menu xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        tools:context="com.example.android.OprahMovieApp.MainActivity">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.android.OprahMovieApp.MainActivity">
 
         <item
             android:id="@+id/action_sort"
             android:orderInCategory="1"
-            android:title="@string/sort_user_rating" />
+            android:title="@string/menu_sort_user_rating" />
 
         <item
             android:id="@+id/action_favorites"
             android:orderInCategory="1"
-            android:title="@string/favorites_list" />
+            android:title="@string/menu_favorites_list" />
 
     </menu>
 

@@ -21,7 +21,7 @@ public class DetailActivity extends AppCompatActivity {
         if (MainActivity.getFavoritesModel().isInFavoriteMovies(getMovieInfoFromActivity())) {
 
             // If the movie is in favorites, set the option to remove from favorites.
-            favorite_toggle.setTitle(R.string.remove_favorites);
+            favorite_toggle.setTitle(R.string.menu_favorites_remove);
         }
 
         return true;
@@ -58,14 +58,14 @@ public class DetailActivity extends AppCompatActivity {
                     // Remove the movie from the favorites list.
                     MainActivity.getFavoritesModel().removeMovie(movie);
                     FavoritesActivity.getFavoritesAdapter().notifyDataSetChanged();
-                    item.setTitle(R.string.add_favorites);
+                    item.setTitle(R.string.menu_favorites_add);
 
 
                 } else {
 
                     // Add the movie to the favorites list.
                     MainActivity.getFavoritesModel().addMovie(movie);
-                    item.setTitle(R.string.remove_favorites);
+                    item.setTitle(R.string.menu_favorites_remove);
 
                 }
             }
@@ -76,7 +76,7 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private Movie getMovieInfoFromActivity() {
-        return (Movie) this.getIntent().getSerializableExtra(getString(R.string.movie_string));
+        return (Movie) this.getIntent().getSerializableExtra(getString(R.string.intent_movie_string));
     }
 
     private boolean hasActivityMovieInfo() {
@@ -84,6 +84,6 @@ public class DetailActivity extends AppCompatActivity {
         Intent intent = this.getIntent();
 
         // This returns the movie of the activity.
-        return (intent != null && intent.hasExtra(getString(R.string.movie_string)));
+        return (intent != null && intent.hasExtra(getString(R.string.intent_movie_string)));
     }
 }

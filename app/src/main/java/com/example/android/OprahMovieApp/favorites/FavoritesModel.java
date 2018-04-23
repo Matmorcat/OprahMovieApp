@@ -36,7 +36,7 @@ public class FavoritesModel {
         if (isInFavoriteMovies(movie)) {
 
             // Toast to display confirmation that movie is already in favorites.
-            Toast.makeText(context.getApplicationContext(), R.string.favorites_toast_exists, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context.getApplicationContext(), R.string.toast_favorites_exists, Toast.LENGTH_SHORT).show();
 
         } else {
 
@@ -45,7 +45,7 @@ public class FavoritesModel {
             movieCache.add(movie.getMovieID());
 
             // Toast to display confirmation that movie has been added to favorites.
-            Toast.makeText(context.getApplicationContext(), R.string.favorites_toast_added, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context.getApplicationContext(), R.string.toast_favorites_added, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -115,12 +115,12 @@ public class FavoritesModel {
             }
 
             // Toast to display confirmation that movie has been added to favorites.
-            Toast.makeText(context.getApplicationContext(), R.string.favorites_toast_removed, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context.getApplicationContext(), R.string.toast_favorites_removed, Toast.LENGTH_SHORT).show();
 
         } else {
 
             // Toast to display confirmation that movie is already in favorites.
-            Toast.makeText(context.getApplicationContext(), R.string.favorites_toast_exists_false, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context.getApplicationContext(), R.string.toast_favorites_exists_false, Toast.LENGTH_SHORT).show();
         }
     }
 

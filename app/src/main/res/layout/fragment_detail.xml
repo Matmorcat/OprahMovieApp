@@ -63,7 +63,8 @@
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:minWidth="150dp"
-                android:scaleType="fitStart" />
+                android:scaleType="fitStart"
+                android:contentDescription="@string/desc_movie_poster" />
 
             <LinearLayout
                 android:layout_width="wrap_content"

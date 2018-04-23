@@ -26,7 +26,7 @@ public class FavoritesActivity extends AppCompatActivity {
         favoriteMovies = MainActivity.getFavoritesModel().getFavoriteMovies();
 
         favoritesAdapter = new FavoritesAdapter(getApplicationContext(), R.layout.activity_favorites, favoriteMovies);
-        ListView listView = (ListView) findViewById(R.id.favorites_list);
+        ListView listView = (ListView) findViewById(R.id.menu_favorites_list);
         if (listView != null) {
             listView.setAdapter(favoritesAdapter);
         }
