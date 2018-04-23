@@ -12,8 +12,6 @@ import com.example.android.OprahMovieApp.MainActivity;
 import com.example.android.OprahMovieApp.R;
 import com.squareup.picasso.Picasso;
 
-
-
 import java.util.List;
 
 public class FavoritesAdapter extends MovieAdapter {
@@ -39,10 +37,11 @@ public class FavoritesAdapter extends MovieAdapter {
             public void onClick(View v)
             {
                 Movie movie = getItem(_position);
+
                 // Remove the movie from the favorites list.
                 MainActivity.getFavoritesModel().removeMovie(movie);
 
-                notifyDataSetChanged(); //remove the item
+                notifyDataSetChanged(); // Remove the item.
             }
         });
 
