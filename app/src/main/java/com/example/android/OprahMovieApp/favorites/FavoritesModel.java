@@ -2,11 +2,10 @@ package com.example.android.OprahMovieApp.favorites;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.android.OprahMovieApp.MainActivity;
-import com.example.android.OprahMovieApp.R;
 import com.example.android.OprahMovieApp.data.Movie;
+import com.example.android.OprahMovieApp.exceptions.MovieFavoritesException;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -36,25 +35,22 @@ public class FavoritesModel {
      *
      * @param _movie the movie to add to favorites
      */
-    public void addMovie(Movie _movie) {
+    public void addMovie(Movie _movie) throws MovieFavoritesException {
 
         // Log that a movie was added.
         Log.d("addMovie", _movie.toString());
 
         // Check to see if the movie selected is already in the favorites list.
-        if (isInFavoriteMovies(_movie)) {
-
-            // Toast to display confirmation that movie is already in favorites.
-            Toast.makeText(this.context.getApplicationContext(), R.string.toast_favorites_exists, Toast.LENGTH_SHORT).show();
-
-        } else {
+        if (!isInFavoriteMovies(_movie)) {
 
             // If the movie is not in the favorites list, add it to the database and cache.
             this.db.addEntry(_movie.getMovieID());
             this.movieCache.add(_movie.getMovieID());
 
-            // Toast to display confirmation that movie has been added to favorites.
-            Toast.makeText(this.context.getApplicationContext(), R.string.toast_favorites_added, Toast.LENGTH_SHORT).show();
+        } else {
+
+            // If the movie is already in the favorites list, throw an exception.
+            throw new MovieFavoritesException("Tried to add movie to favorites, but the movie is already in favorites.");
         }
     }
 
@@ -109,7 +105,7 @@ public class FavoritesModel {
      *
      * @param _movie the movie to remove from favorites
      */
-    public void removeMovie(Movie _movie) {
+    public void removeMovie(Movie _movie) throws MovieFavoritesException {
 
         // Log that a movie was removed.
         Log.d("removeMovie", _movie.toString());
@@ -125,13 +121,10 @@ public class FavoritesModel {
                 }
             }
 
-            // Toast to display confirmation that movie has been added to favorites.
-            Toast.makeText(this.context.getApplicationContext(), R.string.toast_favorites_removed, Toast.LENGTH_SHORT).show();
-
         } else {
 
-            // Toast to display confirmation that movie is already in favorites.
-            Toast.makeText(this.context.getApplicationContext(), R.string.toast_favorites_exists_false, Toast.LENGTH_SHORT).show();
+            // If the movie is not in the favorites list, throw an exception.
+            throw new MovieFavoritesException("Tried to remove movie from favorites, but the movie is not in favorites.");
         }
     }
 

@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
      * Popularity and User Rating and update the view.
      *
      * @param _item the menu item clicked
-     * @return <tt>true</tt> if there is a successful recursive call
+     * @return <tt></tt>success recursive call
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem _item) {
