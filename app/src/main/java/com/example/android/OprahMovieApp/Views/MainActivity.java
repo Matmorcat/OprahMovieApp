@@ -12,12 +12,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
-
-import com.example.android.OprahMovieApp.Controllers.MainController;
 import com.example.android.OprahMovieApp.Models.MainModel;
 import com.example.android.OprahMovieApp.R;
 import com.example.android.OprahMovieApp.data.Movie;
 import com.example.android.OprahMovieApp.data.MovieAdapter;
+import com.example.android.OprahMovieApp.data.Settings;
 import com.example.android.OprahMovieApp.favorites.FavoritesModel;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +28,8 @@ public class MainActivity extends AppCompatActivity {
     private static MovieAdapter movieAdapter;
     private static FavoritesModel favoritesModel;
     private MainActivity model;
-    private String sort; //preference for sorting movie
+    private String sort;
+    //preference for sorting movie
     MenuItem item;
 
     // ServerInterface model = new ServerInterface(getApplicationContext());
@@ -43,29 +43,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         //there is some information from a previous build
-        if (savedInstanceState != null) {
-
-            //Get sort option
-            sort = savedInstanceState.getString("USER_SORT");
-        } else {
-            //Sort option - default : sort by popularity
-            sort = "popular";
-        }
-
+        Settings controller = new Settings(getApplicationContext());
+        sort=controller.getSort();
         setMainScreen(R.layout.activity_main);
-
         // Initialize the favorites model for storing favorite movies
         favoritesModel = new FavoritesModel(this);
-
     }
 
     protected void setMainScreen (int layout) {
         setContentView(layout);
-
         bindAdapterToView(R.layout.grid_view_pic, R.id.grid_view_layout);
-
     }
 
     protected void bindAdapterToView (int imageLayout, int viewLayout) {
@@ -127,12 +115,10 @@ public class MainActivity extends AppCompatActivity {
      * @param item
      * @return
      */
-  //  MainController controller = new MainController(getApplicationContext());
 
-// @Override
-    /*public boolean onOptionsItemSelected(MenuItem item) {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
         // Change sorting order of movies
         if (id == R.id.action_sort) {
             if (sort.equals("popular")) {
@@ -146,7 +132,6 @@ public class MainActivity extends AppCompatActivity {
                 model.execute(sort);
                 item.setTitle(R.string.sort_user_rating);
             }
-
         }
 
         // Take the user to the favorites view
@@ -154,11 +139,11 @@ public class MainActivity extends AppCompatActivity {
             Intent favoritesActivityIntent = new Intent(getApplicationContext(), FavoritesActivity.class);
             startActivity(favoritesActivityIntent);
         }
-
-
+        Settings controller = new Settings(getApplicationContext());
+        controller.setSort(sort);
         return super.onOptionsItemSelected(item);
     }
-*/
+
     /**
      * Method to determine whether the device being used has internet access
      * @return True if network is available, false otherwise
@@ -168,7 +153,6 @@ public class MainActivity extends AppCompatActivity {
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
-
     /**
      * Method to return the movieAdapter member to be acted upon by FetchMoviesTask and FavoritesModel
      * @return The movieAdapter member variable

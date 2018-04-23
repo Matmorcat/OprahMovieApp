@@ -7,13 +7,23 @@ import com.example.android.OprahMovieApp.Models.MainModel;
 import com.example.android.OprahMovieApp.R;
 import com.example.android.OprahMovieApp.Views.FavoritesActivity;
 import com.example.android.OprahMovieApp.Views.MainActivity;
+import com.example.android.OprahMovieApp.data.Settings;
 
 public class MainController  {
     private Context context;
     private String sort;
     private MainActivity view;
+    private Settings settings;
     public MainController(Context _context) {
+        //  Settings settings = Settings.getInstance(_context);
         context = _context;
+    }
+    public void setSort(String _string){
+        settings.setSort(_string);
+    }
+    public String getSort(){
+        String _sort = settings.getSort();
+        return _sort;
     }
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
