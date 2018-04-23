@@ -9,6 +9,9 @@ import com.example.android.OprahMovieApp.data.Movie;
 
 import java.util.List;
 
+/**
+ * This class is responsible for controlling the favorites activity of the application.
+ */
 public class FavoritesActivity extends AppCompatActivity {
 
     protected static FavoritesAdapter favoritesAdapter;

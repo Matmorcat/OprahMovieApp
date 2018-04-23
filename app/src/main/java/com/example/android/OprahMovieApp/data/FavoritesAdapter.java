@@ -1,24 +1,33 @@
 package com.example.android.OprahMovieApp.data;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.OprahMovieApp.MainActivity;
 import com.example.android.OprahMovieApp.R;
+import com.example.android.OprahMovieApp.exceptions.MovieFavoritesException;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+/**
+ * This adapter is responsible for modifying the view to update information on favorite movies.
+ */
 public class FavoritesAdapter extends MovieAdapter {
+
+    private Context context;
 
 
     public FavoritesAdapter(Context _context, int _resource, List<Movie> _movies) {
         super(_context, _resource, _movies);
+        this.context = _context;
     }
 
 
@@ -40,11 +49,27 @@ public class FavoritesAdapter extends MovieAdapter {
             public void onClick(View v) {
                 Movie movie = getItem(_position);
 
-                // Remove the movie from the favorites list.
-                MainActivity.getFavoritesModel().removeMovie(movie);
+                // Try to remove the movie from the favorites list.
+                try {
 
+                    // Remove the movie from the favorites list.
+                    MainActivity.getFavoritesModel().removeMovie(movie);
+
+                    // Toast to display confirmation that the movie has been added to favorites.
+                    Toast.makeText(context.getApplicationContext(), R.string.toast_favorites_removed, Toast.LENGTH_SHORT).show();
+
+
+                } catch (MovieFavoritesException e) {
+
+                    // If the movie is not in the favorites list, catch the exception.
+                    Log.e("DetailActivity", "onOptionsItemSelected: ", e);
+
+                    // Toast to display confirmation that the movie is already in favorites.
+                    Toast.makeText(context.getApplicationContext(), R.string.toast_favorites_exists_false, Toast.LENGTH_SHORT).show();
+                }
+                updateValues(MainActivity.getFavoritesModel().getFavoriteMovies()); // Remove the item.
                 // TODO: Does not properly update data now without closing and re-opening window.
-                notifyDataSetChanged(); // Remove the item.
+
             }
         });
 

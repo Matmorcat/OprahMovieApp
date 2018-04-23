@@ -3,10 +3,13 @@ package com.example.android.OprahMovieApp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.android.OprahMovieApp.data.Movie;
+import com.example.android.OprahMovieApp.exceptions.MovieFavoritesException;
 
 /**
  * This class controls the display of specific information of movies from the main activity.
@@ -58,8 +61,23 @@ public class DetailActivity extends AppCompatActivity {
                 // If the movie is already in the favorites, remove it.
                 if (MainActivity.getFavoritesModel().isInFavoriteMovies(movie)) {
 
-                    // Remove the movie from the favorites list.
-                    MainActivity.getFavoritesModel().removeMovie(movie);
+                    // Try to remove the movie from the favorites list
+                    try {
+
+                        // Remove the movie from the favorites list.
+                        MainActivity.getFavoritesModel().removeMovie(movie);
+
+                        // Toast to display confirmation that the movie has been added to favorites.
+                        Toast.makeText(getApplicationContext(), R.string.toast_favorites_removed, Toast.LENGTH_SHORT).show();
+
+                    } catch (MovieFavoritesException e) {
+
+                        // If the movie is not in the favorites list, catch the exception.
+                        Log.e("DetailActivity", "onOptionsItemSelected: ", e);
+
+                        // Toast to display confirmation that the movie is already in favorites.
+                        Toast.makeText(getApplicationContext(), R.string.toast_favorites_exists_false, Toast.LENGTH_SHORT).show();
+                    }
 
                     // IMPORTANT: Removed, because it was causing crashes on remove (NullPointer)
                     //FavoritesActivity.getFavoritesAdapter().notifyDataSetChanged();
@@ -69,8 +87,24 @@ public class DetailActivity extends AppCompatActivity {
 
                 } else {
 
-                    // Add the movie to the favorites list.
-                    MainActivity.getFavoritesModel().addMovie(movie);
+                    // Try to add the movie to the favorites list
+                    try {
+
+                        // Add the movie to the favorites list.
+                        MainActivity.getFavoritesModel().addMovie(movie);
+
+                        // Toast to display confirmation that movie has been added to favorites.
+                        Toast.makeText(getApplicationContext(), R.string.toast_favorites_added, Toast.LENGTH_SHORT).show();
+
+                    } catch (MovieFavoritesException e) {
+
+                        // If the movie is in the favorites list, catch the exception.
+                        Log.e("DetailActivity", "onOptionsItemSelected: ", e);
+
+                        // Toast to display confirmation that movie is already in favorites.
+                        Toast.makeText(getApplicationContext(), R.string.toast_favorites_exists, Toast.LENGTH_SHORT).show();
+                    }
+
                     _item.setTitle(R.string.menu_favorites_remove);
 
                 }

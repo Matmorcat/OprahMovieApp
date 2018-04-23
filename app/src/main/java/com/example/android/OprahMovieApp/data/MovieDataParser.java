@@ -7,7 +7,13 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * This class processes the data retrieved from the <tt>FetchMoviesTask</tt> to create <tt>Movie</tt>
+ * objects for the <tt>MovieAdapter</tt>.
+ *
+ * @see FetchMoviesTask
+ * @see MovieAdapter
+ */
 public class MovieDataParser {
     private static final String RESULTS_KEY = "results";
     private static final String PAGE_NUMBER_KEY = "page";
