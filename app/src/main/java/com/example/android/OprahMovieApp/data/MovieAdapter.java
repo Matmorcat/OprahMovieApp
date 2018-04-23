@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class MovieAdapter extends BaseAdapter {
 
-    protected Context context;
+    private Context context;
     private int resource;
     private List<Movie> movies;
 

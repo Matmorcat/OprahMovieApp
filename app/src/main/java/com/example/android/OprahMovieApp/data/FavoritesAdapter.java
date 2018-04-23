@@ -22,9 +22,12 @@ import java.util.List;
  */
 public class FavoritesAdapter extends MovieAdapter {
 
+    private Context context;
+
 
     public FavoritesAdapter(Context _context, int _resource, List<Movie> _movies) {
         super(_context, _resource, _movies);
+        this.context = _context;
     }
 
 
@@ -55,6 +58,7 @@ public class FavoritesAdapter extends MovieAdapter {
                     // Toast to display confirmation that the movie has been added to favorites.
                     Toast.makeText(context.getApplicationContext(), R.string.toast_favorites_removed, Toast.LENGTH_SHORT).show();
 
+
                 } catch (MovieFavoritesException e) {
 
                     // If the movie is not in the favorites list, catch the exception.
@@ -63,9 +67,9 @@ public class FavoritesAdapter extends MovieAdapter {
                     // Toast to display confirmation that the movie is already in favorites.
                     Toast.makeText(context.getApplicationContext(), R.string.toast_favorites_exists_false, Toast.LENGTH_SHORT).show();
                 }
-
+                updateValues(MainActivity.getFavoritesModel().getFavoriteMovies()); // Remove the item.
                 // TODO: Does not properly update data now without closing and re-opening window.
-                notifyDataSetChanged(); // Remove the item.
+
             }
         });
 
