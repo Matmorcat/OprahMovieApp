@@ -12,7 +12,10 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-
+/**
+ * This class provides and updates information in the main view to display an ordered list of movies
+ * that the user can select from or learn more about.
+ */
 public class MovieAdapter extends BaseAdapter {
 
     protected Context context;

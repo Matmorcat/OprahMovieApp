@@ -14,6 +14,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+/**
+ * This adapter is responsible for modifying the view to update information on favorite movies.
+ */
 public class FavoritesAdapter extends MovieAdapter {
 
 

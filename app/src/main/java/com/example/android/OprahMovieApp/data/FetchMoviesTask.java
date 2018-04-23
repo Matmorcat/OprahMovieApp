@@ -22,7 +22,7 @@ import java.util.List;
 
 
 /**
- * Class FetchMoviesTask creates a separate thread on which to fetch movie data from the TMDB server.
+ * This class creates a separate thread on which to fetch movie data from the TMDB server.
  */
 public class FetchMoviesTask extends AsyncTask<String, Void, List<Movie>> {
     private final int NUM_PAGES = 6;
