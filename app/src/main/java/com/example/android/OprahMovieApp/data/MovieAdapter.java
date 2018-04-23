@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
+import com.example.android.OprahMovieApp.MainActivity;
 import com.example.android.OprahMovieApp.R;
 import com.squareup.picasso.Picasso;
 
