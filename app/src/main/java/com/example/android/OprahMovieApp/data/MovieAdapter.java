@@ -30,7 +30,7 @@ public class MovieAdapter extends BaseAdapter {
     /**
      * Get the number of movies saved in the local cache
      *
-     * @return The amount of movies saved locally
+     * @return the amount of movies saved locally
      */
     public int getCount() {
         return this.movies.size();
@@ -50,8 +50,8 @@ public class MovieAdapter extends BaseAdapter {
     /**
      * Get a movie and its information by providing the movie ID
      *
-     * @param _movieID The movie ID of the movie to retrieve
-     * @return The movie information
+     * @param _movieID the movie ID of the movie to retrieve
+     * @return the movie information
      */
     public Movie getMovieByID(int _movieID) {
         for (Movie movie : this.movies) {
@@ -91,7 +91,7 @@ public class MovieAdapter extends BaseAdapter {
     /**
      * Checks to see if there is a movie by the given ID cached locally.
      *
-     * @param _movieID The id of the movie to search for in cache
+     * @param _movieID the id of the movie to search for in cache
      * @return <tt>true</tt> if the movie is locally saved
      */
     public boolean isCachedMovieByID(int _movieID) {

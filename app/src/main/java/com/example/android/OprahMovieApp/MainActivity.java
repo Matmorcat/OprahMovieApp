@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Method to return the favoritesModel member to be displayed.
      *
-     * @return The FavoritesModel member
+     * @return the FavoritesModel member
      */
     public static FavoritesModel getFavoritesModel() {
         return favoritesModel;
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Method to return the movieAdapter member to be acted upon by FetchMoviesTask and FavoritesModel.
      *
-     * @return The movieAdapter member variable
+     * @return the movieAdapter member variable
      */
     public static MovieAdapter getMovieAdapter() {
         return movieAdapter;
@@ -66,8 +66,8 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method initializes an adapter to display clickable movie posters.
      *
-     * @param _imageLayout The layout file which specifies image properties, i.e. size and scale type
-     * @param _viewLayout  The layout file which specifies which type of layout will display the images
+     * @param _imageLayout the layout file which specifies image properties, i.e. size and scale type
+     * @param _viewLayout  the layout file which specifies which type of layout will display the images
      */
     protected void initializeMovieAdapter(int _imageLayout, int _viewLayout) {
         List<Movie> items = new ArrayList<>();
@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Method to determine whether the device being used has internet access.
      *
-     * @return <tt>true</tt> if network is available, false otherwise
+     * @return <tt>true</tt> if network is available
      */
     private boolean isNetworkAvailable() throws NullPointerException {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * onCreate is the Android system callback method that is called upon creation of the application.
      *
-     * @param _savedInstanceState Any saved information from a previous run, i.e. if the device is
+     * @param _savedInstanceState any saved information from a previous run, i.e. if the device is
      *                           rotated, a new instance of the app is created with saved information
      *                           from the previous run
      */
@@ -148,8 +148,8 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Android callback method which creates a menu in the action bar in the upper-right corner of the screen.
      *
-     * @param _menu A "menu" layout file
-     * @return True by default
+     * @param _menu a "menu" layout file
+     * @return <tt>true</tt> by default
      */
     @Override
     public boolean onCreateOptionsMenu(Menu _menu) {
@@ -163,8 +163,8 @@ public class MainActivity extends AppCompatActivity {
      * When the user clicks the sort by option in the main menu, toggle the sort method between
      * Popularity and User Rating and update the view.
      *
-     * @param _item The menu item clicked
-     * @return Success recursive call
+     * @param _item the menu item clicked
+     * @return <tt>true</tt> if there is a successful recursive call
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem _item) {
@@ -197,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Android system callback method which is called when the app is terminated.
      *
-     * @param _savedInstanceState The information to be saved
+     * @param _savedInstanceState the information to be saved
      */
     @Override
     public void onSaveInstanceState(Bundle _savedInstanceState) {
@@ -211,7 +211,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method specifies which layout file will be set for the main screen of the app.
      *
-     * @param _layout The XML layout file which specifies how the activity looks on screen
+     * @param _layout the XML layout file which specifies how the activity looks on screen
      */
     protected void setMainScreen(int _layout) {
         setContentView(_layout);

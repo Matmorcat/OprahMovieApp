@@ -30,7 +30,7 @@ public class FDBInterface extends SQLiteOpenHelper {
     /**
      * Get a list of all movies in the favorite movies database.
      *
-     * @return A list of all movie IDs
+     * @return a list of all movie IDs
      */
     public List<Integer> getEntries() {
         List<Integer> movies = new LinkedList<>();
@@ -62,7 +62,7 @@ public class FDBInterface extends SQLiteOpenHelper {
     /**
      * If there is no existing table for storing favorite movies, this makes a new one.
      *
-     * @param _db The database for the app
+     * @param _db the database for the app
      */
     @Override
     public void onCreate(SQLiteDatabase _db) {
@@ -78,9 +78,9 @@ public class FDBInterface extends SQLiteOpenHelper {
     /**
      * If the database version has changed, this drops the old table and makes a new one.
      *
-     * @param _db         The database for the app
-     * @param _oldVersion The old version of the database
-     * @param _newVersion The new version of the database
+     * @param _db         the database for the app
+     * @param _oldVersion the old version of the database
+     * @param _newVersion the new version of the database
      */
     @Override
     public void onUpgrade(SQLiteDatabase _db, int _oldVersion, int _newVersion) {
@@ -96,7 +96,7 @@ public class FDBInterface extends SQLiteOpenHelper {
     /**
      * Add a movie to the favorite movies database.
      *
-     * @param _id The movie ID
+     * @param _id the movie ID
      */
     protected void addEntry(int _id) {
 
@@ -118,7 +118,7 @@ public class FDBInterface extends SQLiteOpenHelper {
     /**
      * Remove a movie from the favorite movies database
      *
-     * @param _id The movie ID
+     * @param _id the movie ID
      */
     protected void removeEntry(int _id) {
 

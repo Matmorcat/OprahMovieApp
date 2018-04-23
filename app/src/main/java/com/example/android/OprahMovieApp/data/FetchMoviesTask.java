@@ -37,8 +37,8 @@ public class FetchMoviesTask extends AsyncTask<String, Void, List<Movie>> {
     /**
      * Required method for AsyncTask that defines what operations are to be done on the thread.
      *
-     * @param _params Required parameters
-     * @return A list of movies
+     * @param _params the required parameters
+     * @return a list of movies
      */
     @Override
     protected List<Movie> doInBackground(String... _params) {
@@ -65,9 +65,9 @@ public class FetchMoviesTask extends AsyncTask<String, Void, List<Movie>> {
     /**
      * Method to fetch the movie data from the TMDB server.
      *
-     * @param _page   Data from the server are separated into pages, this determines what page is fetched
-     * @param _sortBy The method of sorting movies
-     * @return The String containing the movies data
+     * @param _page   data from the server are separated into pages, this determines what page is fetched
+     * @param _sortBy the method of sorting movies
+     * @return the String containing the movies data
      */
     private String getData(int _page, String _sortBy) {
         String moviesData = null;
@@ -127,7 +127,7 @@ public class FetchMoviesTask extends AsyncTask<String, Void, List<Movie>> {
      * AsyncTask method which defines what is to be done after finishing the task - in our case,
      * it sends the movie data to the movie adapter.
      *
-     * @param _result The list of movies to alter
+     * @param _result the list of movies to alter
      */
     @Override
     protected void onPostExecute(List<Movie> _result) {

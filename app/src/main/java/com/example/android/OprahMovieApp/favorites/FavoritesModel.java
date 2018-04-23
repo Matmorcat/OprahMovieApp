@@ -34,7 +34,7 @@ public class FavoritesModel {
     /**
      * Add a movie to the user's favorite movies.
      *
-     * @param _movie The movie to add to favorites
+     * @param _movie the movie to add to favorites
      */
     public void addMovie(Movie _movie) {
 
@@ -62,7 +62,7 @@ public class FavoritesModel {
     /**
      * Get a list of all the user's favorite movies.
      *
-     * @return The list of favorite movies
+     * @return the list of favorite movies
      */
     public List<Movie> getFavoriteMovies() {
 
@@ -88,7 +88,7 @@ public class FavoritesModel {
     /**
      * Check to see if a specific movie is saved in the favorite movies database.
      *
-     * @return <tt>true</tt> if the movie is in favorites, false if not
+     * @return <tt>true</tt> if the movie is in favorites
      */
     public boolean isInFavoriteMovies(Movie _movie) {
 
@@ -107,7 +107,7 @@ public class FavoritesModel {
     /**
      * Remove a movie from the user's favorite movies.
      *
-     * @param _movie The movie to remove from favorites
+     * @param _movie the movie to remove from favorites
      */
     public void removeMovie(Movie _movie) {
 

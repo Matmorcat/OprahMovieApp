@@ -41,8 +41,8 @@ public class DetailActivity extends AppCompatActivity {
      * view menu, add or remove the movie currently in view from the favorites list and update the
      * button in the menu.
      *
-     * @param _item The menu item clicked
-     * @return Success recursive call
+     * @param _item the menu item clicked
+     * @return <tt>true</tt> if there is a successful recursive call
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem _item) {
