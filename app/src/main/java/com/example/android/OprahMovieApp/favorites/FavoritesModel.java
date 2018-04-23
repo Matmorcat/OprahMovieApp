@@ -11,11 +11,11 @@ import com.example.android.OprahMovieApp.data.Movie;
 import java.util.LinkedList;
 import java.util.List;
 
-public class FavoritesModel{
+public class FavoritesModel {
 
-    private FDBInterface db; // Reference to the database interface
-    private Context context; // Reference to the app main
-    private List<Integer> movieCache = new LinkedList<>(); // Cache of favorite movies in the database
+    private FDBInterface db;                                // Reference to the database interface.
+    private Context context;                                // Reference to the app main.
+    private List<Integer> movieCache = new LinkedList<>();  // Cache of the favorite movies database.
 
     public FavoritesModel(Context _context) {
         this.db = new FDBInterface(_context);
@@ -24,6 +24,7 @@ public class FavoritesModel{
 
     /**
      * Add a movie to the user's favorite movies
+     *
      * @param movie The movie to add to favorites
      */
     public void addMovie(Movie movie) {
@@ -34,7 +35,7 @@ public class FavoritesModel{
         // Check to see if the movie selected is already in the favorites list.
         if (isInFavoriteMovies(movie)) {
 
-            //Toast to display confirmation that movie is already in favorites.
+            // Toast to display confirmation that movie is already in favorites.
             Toast.makeText(context.getApplicationContext(), R.string.favorites_toast_exists, Toast.LENGTH_SHORT).show();
 
         } else {
@@ -50,6 +51,7 @@ public class FavoritesModel{
 
     /**
      * Get a list of all the user's favorite movies
+     *
      * @return The list of favorite movies
      */
     public List<Movie> getFavoriteMovies() {
@@ -74,6 +76,7 @@ public class FavoritesModel{
 
     /**
      * Check to see if a specific movie is saved in the favorite movies database
+     *
      * @return True if the movie is in favorites, false if not
      */
     public boolean isInFavoriteMovies(Movie movie) {
@@ -92,6 +95,7 @@ public class FavoritesModel{
 
     /**
      * Remove a movie from the user's favorite movies
+     *
      * @param movie The movie to remove from favorites
      */
     public void removeMovie(Movie movie) {

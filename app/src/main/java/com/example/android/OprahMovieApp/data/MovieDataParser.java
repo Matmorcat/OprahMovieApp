@@ -23,7 +23,7 @@ public class MovieDataParser {
         jsonObject = new JSONObject(_data);
     }
 
-    // Each page has data for 20 movies
+    // Each page has data for 20 movies.
     public int getPage() throws JSONException {
         return jsonObject.getInt(PAGE_NUMBER_KEY);
     }

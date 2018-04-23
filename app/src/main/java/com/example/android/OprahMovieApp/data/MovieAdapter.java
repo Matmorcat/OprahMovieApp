@@ -35,36 +35,38 @@ public class MovieAdapter extends BaseAdapter {
 
     /**
      * Checks to see if there is a movie by the given ID cached locally
+     *
      * @param movieID The id of the movie to search for in cache
      * @return True if the movie is locally saved, false if not
      */
     public boolean isCachedMovieByID(int movieID) {
         for (Movie movie : movies) {
 
-            // The movie matches the id provided
+            // The movie matches the id provided.
             if (movie.getMovieID() == movieID) {
                 return true;
             }
         }
-        // No movie matches the id provided
+        // No movie matches the id provided.
         return false;
     }
 
     /**
      * Get a movie and its information by providing the movie ID
+     *
      * @param movieID The movie ID of the movie to retrieve
      * @return The movie information
      */
     public Movie getMovieByID(int movieID) {
         for (Movie movie : movies) {
 
-            // The movie matches the id provided
+            // The movie matches the id provided.
             if (movie.getMovieID() == movieID) {
                 return movie;
             }
         }
 
-        // TODO: Perform a search query on the server to find a movie by this ID (This is a temporary return statement)
+        // TODO: Perform a search query on the server to find a movie by this ID (This is a temporary return statement).
         return (new Movie(movieID, "Unknown", 0, null, null, null));
     }
 
@@ -74,6 +76,7 @@ public class MovieAdapter extends BaseAdapter {
 
     /**
      * Get the number of movies saved in the local cache
+     *
      * @return The amount of movies saved locally
      */
     public int getCount() {

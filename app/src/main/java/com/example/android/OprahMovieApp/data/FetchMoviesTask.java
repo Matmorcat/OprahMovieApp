@@ -35,12 +35,12 @@ public class FetchMoviesTask extends AsyncTask<String, Void, List<Movie>> {
     /**
      * Required method for AsyncTask that defines what operations are to be done on the thread
      *
-     * @param params
+     * @param params Required parameters
      * @return A list of movies
      */
     @Override
     protected List<Movie> doInBackground(String... params) {
-        //fetch NUM_PAGES pages of movie data
+        // Fetch NUM_PAGES pages of movie data.
         List<Movie> Movies = new ArrayList<>();
 
         try {
@@ -83,7 +83,7 @@ public class FetchMoviesTask extends AsyncTask<String, Void, List<Movie>> {
                 httpURLConnection.connect();
 
                 InputStream inputStream = httpURLConnection.getInputStream();
-                StringBuffer buffer = new StringBuffer();
+                StringBuilder buffer = new StringBuilder();
 
                 if (inputStream == null) {
                     return null;
@@ -92,7 +92,7 @@ public class FetchMoviesTask extends AsyncTask<String, Void, List<Movie>> {
 
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    buffer.append(line + "\n");
+                    buffer.append(line).append("\n");
                 }
 
                 if (buffer.length() == 0) {
@@ -125,7 +125,7 @@ public class FetchMoviesTask extends AsyncTask<String, Void, List<Movie>> {
      * AsyncTask method which defines what is to be done after finishing the task - in our case,
      * it sends the movie data to the movie adapter
      *
-     * @param result
+     * @param result The list of movies to alter
      */
     @Override
     protected void onPostExecute(List<Movie> result) {

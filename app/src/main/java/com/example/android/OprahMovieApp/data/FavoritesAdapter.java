@@ -30,18 +30,17 @@ public class FavoritesAdapter extends MovieAdapter {
         ImageView imageView = (ImageView) view.findViewById(R.id.list_view_pic);
         String url = getItem(_position).getPicUrl();
         Picasso.with(this.context).load(url).into(imageView);
-        TextView textView = (TextView)view.findViewById(R.id.list_view_text);
+        TextView textView = (TextView) view.findViewById(R.id.list_view_text);
         textView.setText(getItem(_position).getTitle());
         Button deleteButton = (Button) view.findViewById(R.id.delete_btn);
         deleteButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 Movie movie = getItem(_position);
 
                 // Remove the movie from the favorites list.
                 MainActivity.getFavoritesModel().removeMovie(movie);
 
-                // TODO: Does not properly update data now without closing and re-opening window
+                // TODO: Does not properly update data now without closing and re-opening window.
                 notifyDataSetChanged(); // Remove the item.
             }
         });
@@ -49,7 +48,6 @@ public class FavoritesAdapter extends MovieAdapter {
         return view;
 
     }
-
 
 
 }

@@ -33,10 +33,10 @@ public class DetailActivityFragment extends Fragment {
             Picasso.with(getActivity()).load(movie.getPicUrl()).into(imageView);
 
             TextView rating = (TextView) rootView.findViewById(R.id.movie_rating);
-            rating.setText(getString(R.string.rating_scale_prefix) + " " + movie.getUserRating() + " " +  getString(R.string.rating_scale));
+            rating.setText(String.format("%s %s %s", getString(R.string.rating_scale_prefix), movie.getUserRating(), getString(R.string.rating_scale)));
 
             TextView releaseDate = (TextView) rootView.findViewById(R.id.movie_release_date);
-            releaseDate.setText(getString(R.string.release_date_prefix) + " " + movie.getReleaseDate());
+            releaseDate.setText(String.format("%s %s", getString(R.string.release_date_prefix), movie.getReleaseDate()));
 
             TextView moviePlot = (TextView) rootView.findViewById(R.id.movie_plot);
             moviePlot.setText(movie.getPlotSynopsis());
