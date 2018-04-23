@@ -17,6 +17,7 @@ import com.example.android.OprahMovieApp.data.Movie;
  */
 public class DetailActivity extends AppCompatActivity {
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu _menu) {
         getMenuInflater().inflate(R.menu.menu_detail, _menu);
@@ -34,23 +35,18 @@ public class DetailActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    protected void onCreate(Bundle _savedInstanceState) {
-        super.onCreate(_savedInstanceState);
-        setContentView(R.layout.activity_detail);
-    }
 
     /**
      * When the user clicks the add to favorites or remove from favorites button in the detailed
      * view menu, add or remove the movie currently in view from the favorites list and update the
      * button in the menu.
      *
-     * @param item The menu item clicked
+     * @param _item The menu item clicked
      * @return Success recursive call
      */
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
+    public boolean onOptionsItemSelected(MenuItem _item) {
+        int id = _item.getItemId();
 
         // Remove the movie from favorites.
         if (id == R.id.action_favorite) {
@@ -68,26 +64,28 @@ public class DetailActivity extends AppCompatActivity {
                     // IMPORTANT: Removed, because it was causing crashes on remove (NullPointer)
                     //FavoritesActivity.getFavoritesAdapter().notifyDataSetChanged();
 
-                    item.setTitle(R.string.menu_favorites_add);
+                    _item.setTitle(R.string.menu_favorites_add);
 
 
                 } else {
 
                     // Add the movie to the favorites list.
                     MainActivity.getFavoritesModel().addMovie(movie);
-                    item.setTitle(R.string.menu_favorites_remove);
+                    _item.setTitle(R.string.menu_favorites_remove);
 
                 }
             }
 
         }
 
-        return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(_item);
     }
+
 
     private Movie getMovieInfoFromActivity() {
         return (Movie) this.getIntent().getSerializableExtra(getString(R.string.intent_movie_string));
     }
+
 
     private boolean hasActivityMovieInfo() {
         // Intent to retrieve movie information.
@@ -95,5 +93,12 @@ public class DetailActivity extends AppCompatActivity {
 
         // This returns the movie of the activity.
         return (intent != null && intent.hasExtra(getString(R.string.intent_movie_string)));
+    }
+
+
+    @Override
+    protected void onCreate(Bundle _savedInstanceState) {
+        super.onCreate(_savedInstanceState);
+        setContentView(R.layout.activity_detail);
     }
 }

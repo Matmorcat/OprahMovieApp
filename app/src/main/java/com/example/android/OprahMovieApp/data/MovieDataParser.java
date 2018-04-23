@@ -19,18 +19,15 @@ public class MovieDataParser {
     private static final String POSTER_PATH_KEY = "poster_path";
     private final JSONObject jsonObject;
 
+
     MovieDataParser(String _data) throws JSONException {
-        jsonObject = new JSONObject(_data);
+        this.jsonObject = new JSONObject(_data);
     }
 
-    // Each page has data for 20 movies.
-    public int getPage() throws JSONException {
-        return jsonObject.getInt(PAGE_NUMBER_KEY);
-    }
 
     public List<Movie> getMovies() throws JSONException {
         List<Movie> movies = new ArrayList<>();
-        JSONArray results = jsonObject.getJSONArray(RESULTS_KEY);
+        JSONArray results = this.jsonObject.getJSONArray(RESULTS_KEY);
         for (int i = 0; i < results.length(); i++) {
             JSONObject movieJsonObject = results.getJSONObject(i);
             Movie movie = new Movie(movieJsonObject.getInt(MOVIE_ID), movieJsonObject.getString(ORIGINAL_TITLE_KEY), movieJsonObject.getDouble(VOTE_AVERAGE_KEY), movieJsonObject.getString(RELEASE_DATE_KEY), movieJsonObject.getString(OVERVIEW_KEY), movieJsonObject.getString(POSTER_PATH_KEY));
@@ -38,6 +35,12 @@ public class MovieDataParser {
         }
 
         return movies;
+    }
+
+
+    // Each page has data for 20 movies.
+    public int getPage() throws JSONException {
+        return this.jsonObject.getInt(PAGE_NUMBER_KEY);
     }
 }
 

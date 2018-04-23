@@ -32,16 +32,16 @@ public class Movie implements Serializable {
         return this.userRating;
     }
 
+    public String getPicUrl() {
+        return this.picUrl;
+    }
+
     public String getPlotSynopsis() {
         return this.plotSynopsis;
     }
 
     public String getReleaseDate() {
         return this.releaseDate;
-    }
-
-    public String getPicUrl() {
-        return this.picUrl;
     }
 
     public String toString() {

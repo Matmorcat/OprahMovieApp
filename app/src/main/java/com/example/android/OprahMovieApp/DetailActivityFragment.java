@@ -24,7 +24,7 @@ public class DetailActivityFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater _inflater, ViewGroup _container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater _inflater, ViewGroup _container, Bundle _savedInstanceState) {
         View rootView = _inflater.inflate(R.layout.fragment_detail, _container, false);
         Intent intent = getActivity().getIntent();
         if (intent != null && intent.hasExtra(getString(R.string.intent_movie_string))) {

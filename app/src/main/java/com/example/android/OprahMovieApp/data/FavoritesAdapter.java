@@ -15,9 +15,12 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class FavoritesAdapter extends MovieAdapter {
+
+
     public FavoritesAdapter(Context _context, int _resource, List<Movie> _movies) {
         super(_context, _resource, _movies);
     }
+
 
     @Override
     public View getView(final int _position, View _convertView, ViewGroup _parent) {
