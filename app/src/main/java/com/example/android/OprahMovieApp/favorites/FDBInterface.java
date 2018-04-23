@@ -10,9 +10,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * An interface that allows for the storage of movie IDs into a favorite movies database
- * Uses an SQLite database via SQLiteOpenHelper, built into Android.
- * This is used exclusively by FavoritesModel.
+ * This is an interface that allows for the storage of movie IDs into a favorite movies database.
+ * It uses an SQLite database via SQLiteOpenHelper which is built directly into Android.
  */
 public class FDBInterface extends SQLiteOpenHelper {
 

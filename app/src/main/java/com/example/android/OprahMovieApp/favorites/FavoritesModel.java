@@ -11,6 +11,13 @@ import com.example.android.OprahMovieApp.data.Movie;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * This class has a collection of public methods that retrieve information about movies saved in the
+ * favorites list of the application. There are methods to add, remove, retrieve a list of
+ * movies, and check if a movie is stored in the database via a local database interface.
+ *
+ * @see FDBInterface
+ */
 public class FavoritesModel {
 
     private FDBInterface db;                                // Reference to the database interface.
@@ -77,7 +84,7 @@ public class FavoritesModel {
     /**
      * Check to see if a specific movie is saved in the favorite movies database
      *
-     * @return True if the movie is in favorites, false if not
+     * @return <tt>true</tt> if the movie is in favorites, false if not
      */
     public boolean isInFavoriteMovies(Movie movie) {
 

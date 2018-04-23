@@ -37,7 +37,7 @@ public class MovieAdapter extends BaseAdapter {
      * Checks to see if there is a movie by the given ID cached locally
      *
      * @param movieID The id of the movie to search for in cache
-     * @return True if the movie is locally saved, false if not
+     * @return <tt>true</tt> if the movie is locally saved
      */
     public boolean isCachedMovieByID(int movieID) {
         for (Movie movie : movies) {

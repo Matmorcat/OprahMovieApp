@@ -12,7 +12,12 @@ import android.widget.TextView;
 import com.example.android.OprahMovieApp.data.Movie;
 import com.squareup.picasso.Picasso;
 
-
+/**
+ * The class that functions to provide information about a specific movie from within the
+ * DetailActivity.
+ *
+ * @see DetailActivity
+ */
 public class DetailActivityFragment extends Fragment {
 
     public DetailActivityFragment() {

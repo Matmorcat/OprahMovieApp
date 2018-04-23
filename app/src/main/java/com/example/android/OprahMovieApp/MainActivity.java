@@ -23,7 +23,8 @@ import java.util.List;
 
 
 /**
- * Class MainActivity represents the view and controller for the main screen of the application
+ * This class is responsible for controlling the main activity of the application.
+ * The activity also includes functions that are required for Android applications.
  */
 public class MainActivity extends AppCompatActivity {
     private static MovieAdapter movieAdapter;       // Reference to the movie adapter.
@@ -201,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Method to determine whether the device being used has internet access
      *
-     * @return True if network is available, false otherwise
+     * @return <tt>true</tt> if network is available, false otherwise
      */
     private boolean isNetworkAvailable() throws NullPointerException {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
