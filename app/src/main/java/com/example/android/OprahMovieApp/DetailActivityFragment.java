@@ -12,19 +12,23 @@ import android.widget.TextView;
 import com.example.android.OprahMovieApp.data.Movie;
 import com.squareup.picasso.Picasso;
 
-
+/**
+ * The class that functions to provide information about a specific movie from within the
+ * DetailActivity.
+ *
+ * @see DetailActivity
+ */
 public class DetailActivityFragment extends Fragment {
 
     public DetailActivityFragment() {
     }
 
     @Override
-    public View onCreateView(LayoutInflater _inflater, ViewGroup _container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater _inflater, ViewGroup _container, Bundle _savedInstanceState) {
         View rootView = _inflater.inflate(R.layout.fragment_detail, _container, false);
         Intent intent = getActivity().getIntent();
-        if (intent != null && intent.hasExtra(getString(R.string.movie_string))) {
-            Movie movie = (Movie) intent.getSerializableExtra(getString(R.string.movie_string));
+        if (intent != null && intent.hasExtra(getString(R.string.intent_movie_string))) {
+            Movie movie = (Movie) intent.getSerializableExtra(getString(R.string.intent_movie_string));
 
             TextView movieTitle = (TextView) rootView.findViewById(R.id.movie_title);
             movieTitle.setText(movie.getTitle());
@@ -33,10 +37,10 @@ public class DetailActivityFragment extends Fragment {
             Picasso.with(getActivity()).load(movie.getPicUrl()).into(imageView);
 
             TextView rating = (TextView) rootView.findViewById(R.id.movie_rating);
-            rating.setText("" + movie.getUserRating() + "\n" + getString(R.string.rating_scale));
+            rating.setText(String.format("%s %s %s", getString(R.string.rating_scale_suffix_prefix), movie.getUserRating(), getString(R.string.rating_scale_suffix)));
 
             TextView releaseDate = (TextView) rootView.findViewById(R.id.movie_release_date);
-            releaseDate.setText(movie.getReleaseDate());
+            releaseDate.setText(String.format("%s %s", getString(R.string.release_date_prefix), movie.getReleaseDate()));
 
             TextView moviePlot = (TextView) rootView.findViewById(R.id.movie_plot);
             moviePlot.setText(movie.getPlotSynopsis());

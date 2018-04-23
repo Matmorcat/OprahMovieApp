@@ -15,9 +15,10 @@ import java.util.List;
 
 public class MovieAdapter extends BaseAdapter {
 
-    private Context context;
+    protected Context context;
     private int resource;
     private List<Movie> movies;
+
 
     public MovieAdapter(Context _context, int _resource, List<Movie> _movies) {
         this.context = _context;
@@ -25,60 +26,51 @@ public class MovieAdapter extends BaseAdapter {
         this.movies = _movies;
     }
 
-    public List<Movie> getMovies() {
-        return this.movies;
-    }
-
-    public Movie getItem(int position) {
-        return this.movies.get(position);
-    }
 
     /**
-     * Checks to see if there is a movie by the given ID cached locally
-     * @param movieID The id of the movie to search for in cache
-     * @return True if the movie is locally saved, false if not
+     * Get the number of movies saved in the local cache
+     *
+     * @return the amount of movies saved locally
      */
-    public boolean isCachedMovieByID(int movieID) {
-        for (Movie movie : movies) {
-
-            // The movie matches the id provided
-            if (movie.getMovieID() == movieID){
-                return true;
-            }
-        }
-        // No movie matches the id provided
-        return false;
+    public int getCount() {
+        return this.movies.size();
     }
 
-    /**
-     * Get a movie and its information by providing the movie ID
-     * @param movieID The movie ID of the movie to retrieve
-     * @return The movie information
-     */
-    public Movie getMovieByID(int movieID) {
-        for (Movie movie : movies) {
 
-            // The movie matches the id provided
-            if (movie.getMovieID() == movieID){
-                return movie;
-            }
-        }
-
-        // TODO: Perform a search query on the server to find a movie by this ID (This is a temporary return statement)
-        return (new Movie(movieID, "Unknown", 0, null, null, null));
+    public Movie getItem(int _position) {
+        return this.movies.get(_position);
     }
+
 
     public long getItemId(int _position) {
         return _position;
     }
 
+
     /**
-     * Get the number of movies saved in the local cache
-     * @return The amount of movies saved locally
+     * Get a movie and its information by providing the movie ID
+     *
+     * @param _movieID the movie ID of the movie to retrieve
+     * @return the movie information
      */
-    public int getCount() {
-        return this.movies.size();
+    public Movie getMovieByID(int _movieID) {
+        for (Movie movie : this.movies) {
+
+            // The movie matches the id provided.
+            if (movie.getMovieID() == _movieID) {
+                return movie;
+            }
+        }
+
+        // TODO: Perform a search query on the server to find a movie by this ID (This is a temporary return statement).
+        return (new Movie(_movieID, "Unknown", 0, null, null, null));
     }
+
+
+    public List<Movie> getMovies() {
+        return this.movies;
+    }
+
 
     @Override
     public View getView(int _position, View _convertView, ViewGroup _parent) {
@@ -94,6 +86,26 @@ public class MovieAdapter extends BaseAdapter {
         return view;
 
     }
+
+
+    /**
+     * Checks to see if there is a movie by the given ID cached locally.
+     *
+     * @param _movieID the id of the movie to search for in cache
+     * @return <tt>true</tt> if the movie is locally saved
+     */
+    public boolean isCachedMovieByID(int _movieID) {
+        for (Movie movie : this.movies) {
+
+            // The movie matches the id provided.
+            if (movie.getMovieID() == _movieID) {
+                return true;
+            }
+        }
+        // No movie matches the id provided.
+        return false;
+    }
+
 
     public void updateValues(List<Movie> _movies) {
         this.movies = _movies;

@@ -23,71 +23,75 @@ import java.util.List;
 
 
 /**
- * Class MainActivity represents the view and controller for the main screen of the application
+ * This class is responsible for controlling the main activity of the application.
+ * The activity also includes functions that are required for Android applications.
  */
 public class MainActivity extends AppCompatActivity {
-    private static MovieAdapter movieAdapter;
-    private static FavoritesModel favoritesModel;
-    private String sort; //preference for sorting movie
+    private static MovieAdapter movieAdapter;       // Reference to the movie adapter.
+    private static FavoritesModel favoritesModel;   // Reference to the favorites model.
+    private String sort;                            // Preference for sorting movie.
+
 
     /**
-     * onCreate is the Android system callback method that is called upon creation of the application
-     * @param savedInstanceState any saved information from a previous run, i.e. if the device is
-     *                           rotated, a new instance of the app is created with saved information
-     *                           from the previous run
+     * This method executes FetchMoviesTask according to the appropriate sorting method.
      */
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        //there is some information from a previous build
-        if (savedInstanceState != null) {
-
-            //Get sort option
-            sort = savedInstanceState.getString("USER_SORT");
-        } else {
-            //Sort option - default : sort by popularity
-            sort = "popular";
+    public void executeFetchMoviesTask() {
+        if (isNetworkAvailable()) {
+            FetchMoviesTask fetchMoviesTask = new FetchMoviesTask(getApplicationContext());
+            fetchMoviesTask.execute(this.sort);
         }
-
-        setMainScreen(R.layout.activity_main);
-
-        // Initialize the favorites model for storing favorite movies
-        favoritesModel = new FavoritesModel(this);
-
     }
 
-    protected void setMainScreen (int layout) {
-        setContentView(layout);
 
-        bindAdapterToView(R.layout.grid_view_pic, R.id.grid_view_layout);
-
+    /**
+     * Method to return the favoritesModel member to be displayed.
+     *
+     * @return the FavoritesModel member
+     */
+    public static FavoritesModel getFavoritesModel() {
+        return favoritesModel;
     }
 
-    protected void bindAdapterToView (int imageLayout, int viewLayout) {
+
+    /**
+     * Method to return the movieAdapter member to be acted upon by FetchMoviesTask and FavoritesModel.
+     *
+     * @return the movieAdapter member variable
+     */
+    public static MovieAdapter getMovieAdapter() {
+        return movieAdapter;
+    }
+
+
+    /**
+     * This method initializes an adapter to display clickable movie posters.
+     *
+     * @param _imageLayout the layout file which specifies image properties, i.e. size and scale type
+     * @param _viewLayout  the layout file which specifies which type of layout will display the images
+     */
+    protected void initializeMovieAdapter(int _imageLayout, int _viewLayout) {
         List<Movie> items = new ArrayList<>();
-        movieAdapter =
-                new MovieAdapter(getApplicationContext(), imageLayout, items);
+        movieAdapter = new MovieAdapter(getApplicationContext(), _imageLayout, items);
+
         Log.d("bindAdapterToView", "Adapter created");
 
-        GridView gridView = (GridView) findViewById(viewLayout);
-        gridView.setAdapter(movieAdapter);
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Movie movie = (Movie) adapterView.getAdapter().getItem(i);
-                Intent detailActivityIntent = new Intent(getApplicationContext(), DetailActivity.class);
-                detailActivityIntent.putExtra(getString(R.string.movie_string), movie);
-                startActivity(detailActivityIntent);
-
-
-            }
-        });
+        GridView gridView = (GridView) findViewById(_viewLayout);
+        if (gridView != null) {
+            gridView.setAdapter(movieAdapter);
+            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Movie movie = (Movie) adapterView.getAdapter().getItem(i);
+                    Intent detailActivityIntent = new Intent(getApplicationContext(), DetailActivity.class);
+                    detailActivityIntent.putExtra(getString(R.string.intent_movie_string), movie);
+                    startActivity(detailActivityIntent);
+                }
+            });
+        }
 
         List<Movie> movies = (List<Movie>) getLastCustomNonConfigurationInstance();
         if (movies == null) {
-            FetchMoviesTask fetchMoviesTask = new FetchMoviesTask();
-            fetchMoviesTask.execute(sort);
+            executeFetchMoviesTask();
         } else {
             movieAdapter.updateValues(movies);
         }
@@ -95,84 +99,131 @@ public class MainActivity extends AppCompatActivity {
 
 
     /**
-     * Android system callback method which is called when the app is terminated
-     * @param savedInstanceState The information to be saved
+     * Method to determine whether the device being used has internet access.
+     *
+     * @return <tt>true</tt> if network is available
      */
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        // Save the user's current sort state
-        savedInstanceState.putString("USER_SORT", sort);
-        super.onSaveInstanceState(savedInstanceState);
+    private boolean isNetworkAvailable() throws NullPointerException {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = null;
+        if (connectivityManager != null) {
+            activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        } else {
+            Log.e("Main Activity", "isNetworkAvailable: Connectivity manager not found or null.");
+        }
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
+
     /**
-     * Android callback method which creates a menu in the action bar in the upper-right corner of the screen
-     * @param menu A "menu" layout file
-     * @return True by default
+     * onCreate is the Android system callback method that is called upon creation of the application.
+     *
+     * @param _savedInstanceState any saved information from a previous run, i.e. if the device is
+     *                           rotated, a new instance of the app is created with saved information
+     *                           from the previous run
      */
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    protected void onCreate(Bundle _savedInstanceState) {
+        super.onCreate(_savedInstanceState);
+
+        // There is some information from a previous build.
+        if (_savedInstanceState != null) {
+
+            // Get sort option.
+            this.sort = _savedInstanceState.getString("USER_SORT");
+        } else {
+            // Sort option - default: sort by popularity.
+            this.sort = "popular";
+        }
+
+        setMainScreen(R.layout.activity_main);
+        initializeMovieAdapter(R.layout.grid_view_pic, R.id.grid_view_layout);
+
+        // Initialize the favorites model for storing favorite movies.
+        favoritesModel = new FavoritesModel(this);
+
+    }
+
+
+    /**
+     * Android callback method which creates a menu in the action bar in the upper-right corner of the screen.
+     *
+     * @param _menu a "menu" layout file
+     * @return <tt>true</tt> by default
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu _menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_main, _menu);
         return true;
     }
 
+
     /**
-     * Android callback method to handle action bar item clicks. The action bar will handle
-     * clicks on the Home/Up button
-     * @param item
-     * @return
+     * When the user clicks the sort by option in the main menu, toggle the sort method between
+     * Popularity and User Rating and update the view.
+     *
+     * @param _item the menu item clicked
+     * @return <tt>true</tt> if there is a successful recursive call
      */
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
+    public boolean onOptionsItemSelected(MenuItem _item) {
+        int id = _item.getItemId();
 
-        // Change sorting order of movies
+        // Change the sorting order of movies.
         if (id == R.id.action_sort) {
-            if (sort.equals("popular")) {
-                sort = "top_rated";
-                FetchMoviesTask fetchMoviesTask = new FetchMoviesTask();
-                fetchMoviesTask.execute(sort);
-                item.setTitle(R.string.sort_popularity);
+            if (this.sort.equals("popular")) {
+                this.sort = "top_rated";
+                executeFetchMoviesTask();
+                _item.setTitle(R.string.menu_sort_popularity);
             } else {
-                sort = "popular";
-                FetchMoviesTask fetchMoviesTask = new FetchMoviesTask();
-                fetchMoviesTask.execute(sort);
-                item.setTitle(R.string.sort_user_rating);
+                this.sort = "popular";
+                executeFetchMoviesTask();
+                _item.setTitle(R.string.menu_sort_user_rating);
             }
 
         }
 
-        // Take the user to the favorites view
+        // Take the user to the favorites view.
         if (id == R.id.action_favorites) {
-            Intent favoritesActivityIntent = new Intent(getApplicationContext(), FavoritesActivity.class);
-            startActivity(favoritesActivityIntent);
+            startFavoritesActivity();
         }
 
 
-        return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(_item);
     }
+
 
     /**
-     * Method to determine whether the device being used has internet access
-     * @return True if network is available, false otherwise
+     * Android system callback method which is called when the app is terminated.
+     *
+     * @param _savedInstanceState the information to be saved
      */
-    private boolean isNetworkAvailable() throws NullPointerException {
-        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    @Override
+    public void onSaveInstanceState(Bundle _savedInstanceState) {
+
+        // Save the user's current sort state.
+        _savedInstanceState.putString("USER_SORT", this.sort);
+        super.onSaveInstanceState(_savedInstanceState);
     }
+
 
     /**
-     * Method to return the movieAdapter member to be acted upon by FetchMoviesTask and FavoritesModel
-     * @return The movieAdapter member variable
+     * This method specifies which layout file will be set for the main screen of the app.
+     *
+     * @param _layout the XML layout file which specifies how the activity looks on screen
      */
-    public static MovieAdapter getMovieAdapter() {
-        return movieAdapter;
+    protected void setMainScreen(int _layout) {
+        setContentView(_layout);
     }
 
-    public static FavoritesModel getFavoritesModel(){
-        return favoritesModel;
+
+    /**
+     * This method initiates Favorites Activity
+     */
+    public void startFavoritesActivity() {
+        Intent favoritesActivityIntent = new Intent(getApplicationContext(), FavoritesActivity.class);
+        startActivity(favoritesActivityIntent);
     }
 }
 
