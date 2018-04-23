@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 /**
  * Class FetchMoviesTask creates a separate thread on which to fetch movie data from the TMDB server
  */
@@ -29,12 +28,13 @@ public class FetchMoviesTask extends AsyncTask<String, Void, List<Movie>> {
     private final int NUM_PAGES = 6;
     private WeakReference<Context> weakContext;
 
-public FetchMoviesTask(Context _context) {
-    weakContext = new WeakReference<>(_context);
+    public FetchMoviesTask(Context _context) {
+        weakContext = new WeakReference<>(_context);
+    }
 
-}
     /**
      * Required method for AsyncTask that defines what operations are to be done on the thread
+     *
      * @param params
      * @return A list of movies
      */
@@ -42,6 +42,7 @@ public FetchMoviesTask(Context _context) {
     protected List<Movie> doInBackground(String... params) {
         //fetch NUM_PAGES pages of movie data
         List<Movie> Movies = new ArrayList<>();
+
         try {
             for (int i = 1; i < (NUM_PAGES + 1); i++) {
                 String page = getData(i, params[0]);
@@ -50,28 +51,32 @@ public FetchMoviesTask(Context _context) {
                 Movies.addAll(movies);
             }
             return Movies;
+
         } catch (JSONException e) {
             Log.e("MainActivity", e.getMessage(), e);
         }
+
         return null;
     }
 
 
-
     /**
      * Method to fetch the movie data from the TMDB server
-     * @param page Data from the server are separated into pages, this determines what page is fetched
+     *
+     * @param page   Data from the server are separated into pages, this determines what page is fetched
      * @param sortBy The method of sorting movies
      * @return The String containing the movies data
      */
     private String getData(int page, String sortBy) {
         String moviesData = null;
+
         for (int i = 1; i <= 3; i++) {
             HttpURLConnection httpURLConnection = null;
             BufferedReader reader = null;
             final String API_KEY = weakContext.get().getResources().getString(R.string.tmdb_api_key);
             String SERVER_BASE_URL = "https://api.tmdb.org/3/movie/" + sortBy + "?language=en&api_key=" + API_KEY + "&page=" + page;
             Uri uri = Uri.parse(SERVER_BASE_URL);
+
             try {
                 httpURLConnection = (HttpURLConnection) new URL(uri.toString()).openConnection();
                 httpURLConnection.setRequestMethod("GET");
@@ -79,6 +84,7 @@ public FetchMoviesTask(Context _context) {
 
                 InputStream inputStream = httpURLConnection.getInputStream();
                 StringBuffer buffer = new StringBuffer();
+
                 if (inputStream == null) {
                     return null;
                 }
@@ -118,6 +124,7 @@ public FetchMoviesTask(Context _context) {
     /**
      * AsyncTask method which defines what is to be done after finishing the task - in our case,
      * it sends the movie data to the movie adapter
+     *
      * @param result
      */
     @Override

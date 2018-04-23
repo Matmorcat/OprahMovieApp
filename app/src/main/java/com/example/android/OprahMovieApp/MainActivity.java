@@ -73,8 +73,8 @@ public class MainActivity extends AppCompatActivity {
      */
     protected void initializeMovieAdapter (int imageLayout, int viewLayout) {
         List<Movie> items = new ArrayList<>();
-        movieAdapter =
-                new MovieAdapter(getApplicationContext(), imageLayout, items);
+        movieAdapter = new MovieAdapter(getApplicationContext(), imageLayout, items);
+
         Log.d("bindAdapterToView", "Adapter created");
 
         GridView gridView = (GridView) findViewById(viewLayout);
