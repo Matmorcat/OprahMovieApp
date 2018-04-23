@@ -57,7 +57,10 @@ public class DetailActivity extends AppCompatActivity {
 
                     // Remove the movie from the favorites list.
                     MainActivity.getFavoritesModel().removeMovie(movie);
-                    FavoritesActivity.getFavoritesAdapter().notifyDataSetChanged();
+
+                    // IMPORTANT: Removed, because it was causing crashes on remove (NullPointer)
+                    //FavoritesActivity.getFavoritesAdapter().notifyDataSetChanged();
+
                     item.setTitle(R.string.menu_favorites_add);
 
 
