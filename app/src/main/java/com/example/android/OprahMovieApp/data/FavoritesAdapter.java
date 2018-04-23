@@ -41,6 +41,7 @@ public class FavoritesAdapter extends MovieAdapter {
                 // Remove the movie from the favorites list.
                 MainActivity.getFavoritesModel().removeMovie(movie);
 
+                // TODO: Does not properly update data now without closing and re-opening window
                 notifyDataSetChanged(); // Remove the item.
             }
         });

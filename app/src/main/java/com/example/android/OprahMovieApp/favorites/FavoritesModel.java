@@ -4,12 +4,9 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.android.OprahMovieApp.FavoritesActivity;
 import com.example.android.OprahMovieApp.MainActivity;
 import com.example.android.OprahMovieApp.R;
-import com.example.android.OprahMovieApp.data.FavoritesAdapter;
 import com.example.android.OprahMovieApp.data.Movie;
-import com.example.android.OprahMovieApp.data.MovieAdapter;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -18,7 +15,7 @@ public class FavoritesModel{
 
     private FDBInterface db; // Reference to the database interface
     private Context context; // Reference to the app main
-    private List<Movie> movieCache = new LinkedList<>(); // Cache of favorite movies in the database
+    private List<Integer> movieCache = new LinkedList<>(); // Cache of favorite movies in the database
 
     public FavoritesModel(Context _context) {
         this.db = new FDBInterface(_context);
@@ -31,22 +28,22 @@ public class FavoritesModel{
      */
     public void addMovie(Movie movie) {
 
-        //Log that a movie was added
+        // Log that a movie was added.
         Log.d("addMovie", movie.toString());
 
-        // Check to see if the movie selected is already in the favorites list
+        // Check to see if the movie selected is already in the favorites list.
         if (isInFavoriteMovies(movie)) {
 
-            //Toast to display confirmation that movie is already in favorites
+            //Toast to display confirmation that movie is already in favorites.
             Toast.makeText(context.getApplicationContext(), R.string.favorites_toast_exists, Toast.LENGTH_SHORT).show();
 
         } else {
 
-            // If the movie is not in the favorites list, add it to the database and cache
+            // If the movie is not in the favorites list, add it to the database and cache.
             db.addEntry(movie.getMovieID());
-            movieCache.add(movie);
+            movieCache.add(movie.getMovieID());
 
-            // Toast to display confirmation that movie has been added to favorites
+            // Toast to display confirmation that movie has been added to favorites.
             Toast.makeText(context.getApplicationContext(), R.string.favorites_toast_added, Toast.LENGTH_SHORT).show();
         }
     }
@@ -57,18 +54,22 @@ public class FavoritesModel{
      */
     public List<Movie> getFavoriteMovies() {
 
-        // If the data is not cached in memory (reduces queries to the database)
-        // FavoritesModel is the only way movies get added/removed, so the cache should never de-sync
-
+        // Check if the data is not cached in memory (reduces queries to the database).
+        // FavoritesModel is the only way movies get added/removed, so the cache should never de-sync.
         if (movieCache.isEmpty()) {
 
-            // Loop through all the movie titles and build objects out of them
-            for (int movieID : db.getEntries()) {
-                movieCache.add(FavoritesActivity.getFavoritesAdapter().getMovieByID(movieID));
-            }
+            // Load all the movie IDs from the database into a cache.
+            movieCache.addAll(db.getEntries());
         }
 
-        return movieCache;
+        // Create a new list to assemble Movie objects from IDs in memory.
+        List<Movie> movies = new LinkedList<>();
+
+        for (int movieID : movieCache) {
+            movies.add(MainActivity.getMovieAdapter().getMovieByID(movieID));
+        }
+
+        return movies;
     }
 
     /**
@@ -79,7 +80,7 @@ public class FavoritesModel{
 
         for (Movie favoriteMovie : getFavoriteMovies()) {
 
-            // Compare movie IDs
+            // Compare movie IDs.
             if (movie.getMovieID() == favoriteMovie.getMovieID()) {
                 return true;
             }
@@ -95,22 +96,26 @@ public class FavoritesModel{
      */
     public void removeMovie(Movie movie) {
 
-        //Log that a movie was removed
+        // Log that a movie was removed.
         Log.d("removeMovie", movie.toString());
 
-        // Check to see if the movie selected is in the favorites list
+        // Check to see if the movie selected is in the favorites list.
         if (isInFavoriteMovies(movie)) {
 
-            // If the movie is in the favorites list, add it to the database and cache
+            // If the movie is in the favorites list, add it to the database and cache.
             db.removeEntry(movie.getMovieID());
-            movieCache.remove(movie);
+            for (int i = 0; i < movieCache.size(); i++) {
+                if (movieCache.get(i) == movie.getMovieID()) {
+                    movieCache.remove(i);
+                }
+            }
 
-            // Toast to display confirmation that movie has been added to favorites
+            // Toast to display confirmation that movie has been added to favorites.
             Toast.makeText(context.getApplicationContext(), R.string.favorites_toast_removed, Toast.LENGTH_SHORT).show();
 
         } else {
 
-            //Toast to display confirmation that movie is already in favorites
+            // Toast to display confirmation that movie is already in favorites.
             Toast.makeText(context.getApplicationContext(), R.string.favorites_toast_exists_false, Toast.LENGTH_SHORT).show();
         }
     }
