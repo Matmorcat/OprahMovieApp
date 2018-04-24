@@ -1,5 +1,9 @@
 package com.example.android.OprahMovieApp.Views;
-
+/**
+ * Last Date Modified:
+ * This class is responsible for controlling the favorites activity of the application.
+ * Contributing Authors:
+ */
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
@@ -10,9 +14,7 @@ import com.example.android.OprahMovieApp.MainModel.Movie;
 
 import java.util.List;
 
-/**
- * This class is responsible for controlling the favorites activity of the application.
- */
+
 public class FavoritesActivity extends AppCompatActivity {
 
     protected static FavoritesAdapter favoritesAdapter;

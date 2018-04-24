@@ -1,5 +1,11 @@
 package com.example.android.OprahMovieApp.Views;
-
+/**
+ * Last Date Modified:
+ * The class that functions to provide information about a specific movie from within the
+ * DetailActivity.
+ * Contributing Authors:
+ * @see DetailActivity
+ */
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,12 +19,7 @@ import com.example.android.OprahMovieApp.R;
 import com.example.android.OprahMovieApp.MainModel.Movie;
 import com.squareup.picasso.Picasso;
 
-/**
- * The class that functions to provide information about a specific movie from within the
- * DetailActivity.
- *
- * @see DetailActivity
- */
+
 public class DetailActivityFragment extends Fragment {
 
     public DetailActivityFragment() {

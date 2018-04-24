@@ -1,5 +1,10 @@
 package com.example.android.OprahMovieApp.Views;
-
+/**
+ * Last Date Modified:
+ * This class is responsible for controlling the main activity of the application.
+ * The activity also includes functions that are required for Android applications.
+ * Contributing Authors:
+ */
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -12,38 +17,21 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
-
 import com.example.android.OprahMovieApp.Controllers.MainController;
-import com.example.android.OprahMovieApp.R;
 import com.example.android.OprahMovieApp.MainModel.FetchMovieData;
+import com.example.android.OprahMovieApp.R;
 import com.example.android.OprahMovieApp.MainModel.Movie;
 import com.example.android.OprahMovieApp.MainModel.MovieAdapter;
-import com.example.android.OprahMovieApp.Settings.Settings;
 import com.example.android.OprahMovieApp.favorites.FavoritesModel;
-
 import java.util.ArrayList;
 import java.util.List;
 
 
-/**
- * This class is responsible for controlling the main activity of the application.
- * The activity also includes functions that are required for Android applications.
- */
+
 public class MainActivity extends AppCompatActivity {
     private static MovieAdapter movieAdapter;       // Reference to the movie adapter.
     private static FavoritesModel favoritesModel;   // Reference to the favorites model.
     private String sort;                            // Preference for sorting movie.
-
-
-    /**
-     * This method executes FetchMovieData according to the appropriate sorting method.
-     */
-    public void executeFetchMoviesTask() {
-        if (isNetworkAvailable()) {
-            FetchMovieData fetchMovieData = new FetchMovieData(getApplicationContext());
-            fetchMovieData.execute(this.sort);
-        }
-    }
 
 
     /**
@@ -55,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         return favoritesModel;
     }
 
-
     /**
      * Method to return the movieAdapter member to be acted upon by FetchMovieData and FavoritesModel.
      *
@@ -64,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
     public static MovieAdapter getMovieAdapter() {
         return movieAdapter;
     }
-
 
     /**
      * This method initializes an adapter to display clickable movie posters.
@@ -94,8 +80,10 @@ public class MainActivity extends AppCompatActivity {
 
         List<Movie> movies = (List<Movie>) getLastCustomNonConfigurationInstance();
         if (movies == null) {
+            MainController controller = new MainController(getApplicationContext());
+            if (isNetworkAvailable())
             executeFetchMoviesTask();
-        } else {
+         else
             movieAdapter.updateValues(movies);
         }
     }
@@ -138,7 +126,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     /**
      * Android callback method which creates a menu in the action bar in the upper-right corner of the screen.
      *
@@ -152,11 +139,9 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-
     /**
      * When the user clicks the sort by option in the main menu, toggle the sort method between
      * popularity and User Rating and update the view.
-     * The sort option is also saved into the settings file.
      * @param _item the menu item clicked
      * @return <tt></tt>success recursive call
      */
@@ -192,14 +177,19 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param _savedInstanceState the information to be saved
      */
+
     @Override
     public void onSaveInstanceState(Bundle _savedInstanceState) {
-
         // Save the user's current sort state.
         _savedInstanceState.putString("USER_SORT", this.sort);
         super.onSaveInstanceState(_savedInstanceState);
     }
-
+    public void executeFetchMoviesTask() {
+        if (isNetworkAvailable()) {
+            FetchMovieData fetchMovieData = new FetchMovieData(getApplicationContext());
+            fetchMovieData.execute(this.sort);
+        }
+    }
 
     /**
      * This method specifies which layout file will be set for the main screen of the app.

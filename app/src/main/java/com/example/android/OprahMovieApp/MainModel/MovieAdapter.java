@@ -1,5 +1,10 @@
 package com.example.android.OprahMovieApp.MainModel;
-
+/**
+ * Last Date Modified:
+ * This class provides and updates information in the main view to display an ordered list of movies
+ * that the user can select from or learn more about.
+ * Contributing Authors:
+ */
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,10 +17,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-/**
- * This class provides and updates information in the main view to display an ordered list of movies
- * that the user can select from or learn more about.
- */
+
 public class MovieAdapter extends BaseAdapter {
 
     private Context context;

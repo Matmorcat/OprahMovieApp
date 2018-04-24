@@ -1,5 +1,12 @@
 package com.example.android.OprahMovieApp.MainModel;
-
+/**
+ * Last Date Modified:
+ * This class processes the data retrieved from the FetchMovieData< to create <tt>Movie</tt>
+ * objects for the <tt>MovieAdapter</tt>.
+ * Contributing Authors:
+ * @see FetchMovieData
+ * @see MovieAdapter
+ */
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -7,13 +14,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * This class processes the data retrieved from the FetchMovieData< to create <tt>Movie</tt>
- * objects for the <tt>MovieAdapter</tt>.
- *
- * @see FetchMovieData
- * @see MovieAdapter
- */
+
 public class MovieDataParser {
     private static final String RESULTS_KEY = "results";
     private static final String PAGE_NUMBER_KEY = "page";

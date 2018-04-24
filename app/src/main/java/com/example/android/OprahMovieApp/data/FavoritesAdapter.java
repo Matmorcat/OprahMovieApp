@@ -1,5 +1,9 @@
 package com.example.android.OprahMovieApp.data;
-
+/**
+ * Last Date Modified:
+ * This adapter is responsible for modifying the view to update information on favorite movies.
+ * Contributing Authors:
+ */
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,9 +23,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-/**
- * This adapter is responsible for modifying the view to update information on favorite movies.
- */
+
 public class FavoritesAdapter extends MovieAdapter {
 
     private Context context;

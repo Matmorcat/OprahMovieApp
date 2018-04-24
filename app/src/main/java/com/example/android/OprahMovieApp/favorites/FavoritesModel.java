@@ -1,5 +1,13 @@
 package com.example.android.OprahMovieApp.favorites;
-
+/**
+ * Last Date Modified:
+ * This class has a collection of public methods that retrieve information about movies saved in the
+ * favorites list of the application. There are methods to add, remove, retrieve a list of
+ * movies, and check if a movie is stored in the database via a local database interface.
+ *
+ * @see FDBInterface
+ * Contributing Authors:
+ */
 import android.content.Context;
 import android.util.Log;
 
@@ -11,13 +19,7 @@ import java.lang.ref.WeakReference;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * This class has a collection of public methods that retrieve information about movies saved in the
- * favorites list of the application. There are methods to add, remove, retrieve a list of
- * movies, and check if a movie is stored in the database via a local database interface.
- *
- * @see FDBInterface
- */
+
 public class FavoritesModel {
 
     private FDBInterface db;                                // Reference to the database interface.

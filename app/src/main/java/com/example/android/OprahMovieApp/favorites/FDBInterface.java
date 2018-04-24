@@ -1,5 +1,10 @@
 package com.example.android.OprahMovieApp.favorites;
-
+/**
+ * Last Date Modified:
+ * This is an interface that allows for the storage of movie IDs into a favorite movies database.
+ * It uses an SQLite database via SQLiteOpenHelper which is built directly into Android.
+ * Contributing Authors:
+ */
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -9,10 +14,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * This is an interface that allows for the storage of movie IDs into a favorite movies database.
- * It uses an SQLite database via SQLiteOpenHelper which is built directly into Android.
- */
+
 public class FDBInterface extends SQLiteOpenHelper {
 
     // Constants for SQLite connection.

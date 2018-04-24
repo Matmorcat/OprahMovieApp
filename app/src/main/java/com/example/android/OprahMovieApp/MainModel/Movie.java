@@ -1,11 +1,13 @@
 package com.example.android.OprahMovieApp.MainModel;
-
-import java.io.Serializable;
-
 /**
+ * Last Date Modified:
  * This is the class that is responsible for holding all information about a particular movie and
  * creating the Movie object. It has getters, setters, a constructor, and a toString() override.
+ * Contributing Authors:
  */
+import java.io.Serializable;
+
+
 public class Movie implements Serializable {
     private int movieID;
     private String title;

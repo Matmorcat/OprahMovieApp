@@ -1,5 +1,9 @@
 package com.example.android.OprahMovieApp.MainModel;
-
+/**
+ * Last Date Modified:
+ * This class creates a separate thread on which to fetch movie data from the TMDB server.
+ * Contributing Authors:
+ */
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -12,9 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-/**
- * This class creates a separate thread on which to fetch movie data from the TMDB server.
- */
+
 public class FetchMovieData extends AsyncTask<String, Void, List<Movie>> {
     private final int NUM_PAGES = 6;
     private WeakReference<Context> weakContext;
