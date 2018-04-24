@@ -10,7 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.android.OprahMovieApp.MainActivity;
+import com.example.android.OprahMovieApp.MainModel.Movie;
+import com.example.android.OprahMovieApp.MainModel.MovieAdapter;
+import com.example.android.OprahMovieApp.Views.MainActivity;
 import com.example.android.OprahMovieApp.R;
 import com.example.android.OprahMovieApp.exceptions.MovieFavoritesException;
 import com.squareup.picasso.Picasso;

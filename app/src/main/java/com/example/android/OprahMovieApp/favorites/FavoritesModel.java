@@ -3,10 +3,11 @@ package com.example.android.OprahMovieApp.favorites;
 import android.content.Context;
 import android.util.Log;
 
-import com.example.android.OprahMovieApp.MainActivity;
-import com.example.android.OprahMovieApp.data.Movie;
+import com.example.android.OprahMovieApp.Views.MainActivity;
+import com.example.android.OprahMovieApp.MainModel.Movie;
 import com.example.android.OprahMovieApp.exceptions.MovieFavoritesException;
 
+import java.lang.ref.WeakReference;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,13 +21,13 @@ import java.util.List;
 public class FavoritesModel {
 
     private FDBInterface db;                                // Reference to the database interface.
-    private Context context;                                // Reference to the app main.
+    private WeakReference<Context> weakContext;                                // Reference to the app main.
     private List<Integer> movieCache = new LinkedList<>();  // Cache of the favorite movies database.
 
 
     public FavoritesModel(Context _context) {
         this.db = new FDBInterface(_context);
-        this.context = _context;
+        this.weakContext = new WeakReference<>(_context);
     }
 
 

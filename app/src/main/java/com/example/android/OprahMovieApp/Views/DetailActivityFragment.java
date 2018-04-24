@@ -1,4 +1,4 @@
-package com.example.android.OprahMovieApp;
+package com.example.android.OprahMovieApp.Views;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.android.OprahMovieApp.data.Movie;
+import com.example.android.OprahMovieApp.R;
+import com.example.android.OprahMovieApp.MainModel.Movie;
 import com.squareup.picasso.Picasso;
 
 /**

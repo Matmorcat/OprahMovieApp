@@ -1,4 +1,4 @@
-package com.example.android.OprahMovieApp.data;
+package com.example.android.OprahMovieApp.MainModel;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-import com.example.android.OprahMovieApp.MainActivity;
 import com.example.android.OprahMovieApp.R;
 import com.squareup.picasso.Picasso;
 
@@ -115,5 +114,6 @@ public class MovieAdapter extends BaseAdapter {
         this.movies = _movies;
         notifyDataSetChanged();
     }
+
 }
 

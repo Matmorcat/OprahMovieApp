@@ -1,4 +1,4 @@
-package com.example.android.OprahMovieApp.data;
+package com.example.android.OprahMovieApp.MainModel;
 
 import java.io.Serializable;
 

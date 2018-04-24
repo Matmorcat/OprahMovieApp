@@ -1,4 +1,4 @@
-package com.example.android.OprahMovieApp.data;
+package com.example.android.OprahMovieApp.MainModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class processes the data retrieved from the <tt>FetchMoviesTask</tt> to create <tt>Movie</tt>
+ * This class processes the data retrieved from the FetchMovieData< to create <tt>Movie</tt>
  * objects for the <tt>MovieAdapter</tt>.
  *
- * @see FetchMoviesTask
+ * @see FetchMovieData
  * @see MovieAdapter
  */
 public class MovieDataParser {

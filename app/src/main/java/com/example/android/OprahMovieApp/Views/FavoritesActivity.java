@@ -1,11 +1,12 @@
-package com.example.android.OprahMovieApp;
+package com.example.android.OprahMovieApp.Views;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
+import com.example.android.OprahMovieApp.R;
 import com.example.android.OprahMovieApp.data.FavoritesAdapter;
-import com.example.android.OprahMovieApp.data.Movie;
+import com.example.android.OprahMovieApp.MainModel.Movie;
 
 import java.util.List;
 

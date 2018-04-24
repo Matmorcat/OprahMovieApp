@@ -1,4 +1,4 @@
-package com.example.android.OprahMovieApp;
+package com.example.android.OprahMovieApp.Views;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,9 +13,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
-import com.example.android.OprahMovieApp.data.FetchMoviesTask;
-import com.example.android.OprahMovieApp.data.Movie;
-import com.example.android.OprahMovieApp.data.MovieAdapter;
+import com.example.android.OprahMovieApp.Controllers.MainController;
+import com.example.android.OprahMovieApp.R;
+import com.example.android.OprahMovieApp.MainModel.FetchMovieData;
+import com.example.android.OprahMovieApp.MainModel.Movie;
+import com.example.android.OprahMovieApp.MainModel.MovieAdapter;
+import com.example.android.OprahMovieApp.Settings.Settings;
 import com.example.android.OprahMovieApp.favorites.FavoritesModel;
 
 import java.util.ArrayList;
@@ -33,12 +36,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     /**
-     * This method executes FetchMoviesTask according to the appropriate sorting method.
+     * This method executes FetchMovieData according to the appropriate sorting method.
      */
     public void executeFetchMoviesTask() {
         if (isNetworkAvailable()) {
-            FetchMoviesTask fetchMoviesTask = new FetchMoviesTask(getApplicationContext());
-            fetchMoviesTask.execute(this.sort);
+            FetchMovieData fetchMovieData = new FetchMovieData(getApplicationContext());
+            fetchMovieData.execute(this.sort);
         }
     }
 
@@ -54,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     /**
-     * Method to return the movieAdapter member to be acted upon by FetchMoviesTask and FavoritesModel.
+     * Method to return the movieAdapter member to be acted upon by FetchMovieData and FavoritesModel.
      *
      * @return the movieAdapter member variable
      */
@@ -125,17 +128,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle _savedInstanceState) {
         super.onCreate(_savedInstanceState);
-
-        // There is some information from a previous build.
-        if (_savedInstanceState != null) {
-
-            // Get sort option.
-            this.sort = _savedInstanceState.getString("USER_SORT");
-        } else {
-            // Sort option - default: sort by popularity.
-            this.sort = "popular";
-        }
-
+        MainController controller = new MainController(getApplicationContext());
+        sort = controller.getSort();
         setMainScreen(R.layout.activity_main);
         initializeMovieAdapter(R.layout.grid_view_pic, R.id.grid_view_layout);
 
@@ -161,8 +155,8 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * When the user clicks the sort by option in the main menu, toggle the sort method between
-     * Popularity and User Rating and update the view.
-     *
+     * popularity and User Rating and update the view.
+     * The sort option is also saved into the settings file.
      * @param _item the menu item clicked
      * @return <tt></tt>success recursive call
      */
@@ -181,15 +175,14 @@ public class MainActivity extends AppCompatActivity {
                 executeFetchMoviesTask();
                 _item.setTitle(R.string.menu_sort_user_rating);
             }
-
+            MainController controller = new MainController(getApplicationContext());
+            controller.setSort(sort);
         }
 
         // Take the user to the favorites view.
         if (id == R.id.action_favorites) {
             startFavoritesActivity();
         }
-
-
         return super.onOptionsItemSelected(_item);
     }
 
