@@ -17,8 +17,8 @@ import java.util.List;
 
 public class FavoritesActivity extends AppCompatActivity {
 
-    protected static FavoritesAdapter favoritesAdapter;
-    protected List<Movie> favoriteMovies;
+    private static FavoritesAdapter favoritesAdapter;
+    private List<Movie> favoriteMovies;
 
 
     public static FavoritesAdapter getFavoritesAdapter() {

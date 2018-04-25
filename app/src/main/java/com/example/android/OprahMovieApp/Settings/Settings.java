@@ -1,47 +1,33 @@
 package com.example.android.OprahMovieApp.Settings;
 /**
  * Last Date Modified:
- * Settings class that is used to save user.
+ * Settings class that is used to save and retrieve some user data.
  * Contributing Authors:
  */
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 
 public class Settings extends Activity {
-    private static Settings settings;
-    public SharedPreferences sharedPreferences;
-
-
-    public static Settings getInstance (Context _context){
-        if(settings == null){
-            settings = new Settings(_context);
-        }
-        return settings;
-    }
+    private SharedPreferences sharedPreferences;
 
     public Settings(Context _context){
-        this.sharedPreferences = _context.getSharedPreferences("Settings", Context.MODE_PRIVATE);
+        this.sharedPreferences = PreferenceManager.getDefaultSharedPreferences(_context);
     }
-
     /**
      * Gets the sort state that is stored in settings.
      * @return
      */
     public String getSort(){
         if (this.sharedPreferences!= null) {
-            return this.sharedPreferences.getString ("USER_SORT", "popular");
+            return this.sharedPreferences.getString ("save_sort", "popular");
         }
         return "popular";
     }
-    /**
-     * Changes the sort state stored in settings.
-     * @param _sort
-     */
-    public void setSort(String _sort){
-        SharedPreferences.Editor editor = this.sharedPreferences.edit();
-        editor.putString("USER_SORT", _sort);
-        editor.apply();
+    public int getPages(){
+            String value = sharedPreferences.getString("number_of_pages",null);
+            return value == null ? 6 : Integer.valueOf(value);
     }
 }

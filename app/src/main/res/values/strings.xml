@@ -10,6 +10,7 @@
     <!-- Menus -->
     <string name="menu_sort_popularity">Sort By Popularity</string>
     <string name="menu_sort_user_rating">Sort By User Rating</string>
+    <string name="menu_settings">Settings</string>
 
     <string name="menu_favorites_add">Add to Favorites</string>
     <string name="menu_favorites_remove">Remove from Favorites</string>
@@ -37,5 +38,36 @@
     <!-- Others -->
     <string name="tmdb_api_key">5b64200ad380b583694cc584abe83484</string>
     <string name="db_type">SQLite</string>
+
+    <!-- Settings -->
+    <string-array name="save_sort">Determines if sort should be saved
+        <item>Popular</item>
+        <item>Top Rated</item>
+    </string-array>
+    <string-array name="save_sort_values">Determines if sort should be saved
+        <item>popular</item>
+        <item>top_rated</item>
+    </string-array>
+
+
+    <string-array name="number_of_pages">
+        <item>20</item>
+        <item>40</item>
+        <item>60</item>
+        <item>80</item>
+        <item>100</item>
+        <item>120</item>
+    </string-array>
+    <string-array name="number_of_pages_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

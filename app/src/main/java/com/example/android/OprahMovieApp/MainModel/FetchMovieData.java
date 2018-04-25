@@ -18,11 +18,12 @@ import java.util.List;
 
 
 public class FetchMovieData extends AsyncTask<String, Void, List<Movie>> {
-    private final int NUM_PAGES = 6;
+    private int NUM_PAGES;
     private WeakReference<Context> weakContext;
 
-    public FetchMovieData(Context _context) {
+    public FetchMovieData(Context _context, int _pages) {
         this.weakContext = new WeakReference<>(_context);
+        this.NUM_PAGES = _pages;
     }
     /**
      * Required method for AsyncTask that defines what operations are to be done on the thread.

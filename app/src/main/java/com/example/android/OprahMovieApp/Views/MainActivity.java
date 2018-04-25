@@ -17,8 +17,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+
 import com.example.android.OprahMovieApp.Controllers.MainController;
-import com.example.android.OprahMovieApp.MainModel.FetchMovieData;
 import com.example.android.OprahMovieApp.R;
 import com.example.android.OprahMovieApp.MainModel.Movie;
 import com.example.android.OprahMovieApp.MainModel.MovieAdapter;
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private static MovieAdapter movieAdapter;       // Reference to the movie adapter.
     private static FavoritesModel favoritesModel;   // Reference to the favorites model.
     private String sort;                            // Preference for sorting movie.
-
+    private MainController controller;
 
     /**
      * Method to return the favoritesModel member to be displayed.
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
      * @param _imageLayout the layout file which specifies image properties, i.e. size and scale type
      * @param _viewLayout  the layout file which specifies which type of layout will display the images
      */
-    protected void initializeMovieAdapter(int _imageLayout, int _viewLayout) {
+    private void initializeMovieAdapter(int _imageLayout, int _viewLayout) {
         List<Movie> items = new ArrayList<>();
         movieAdapter = new MovieAdapter(getApplicationContext(), _imageLayout, items);
 
@@ -80,14 +80,16 @@ public class MainActivity extends AppCompatActivity {
 
         List<Movie> movies = (List<Movie>) getLastCustomNonConfigurationInstance();
         if (movies == null) {
-            MainController controller = new MainController(getApplicationContext());
-            if (isNetworkAvailable())
-            executeFetchMoviesTask();
+            if (isNetworkAvailable()) {
+                //if (controller.getSaveBoolean()) {
+                    controller.executeFetchMoviesTask(controller.getDefaultSort());
+                }
+               // else controller.executeFetchMoviesTask("popular");
+           // }
          else
             movieAdapter.updateValues(movies);
         }
     }
-
 
     /**
      * Method to determine whether the device being used has internet access.
@@ -116,14 +118,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle _savedInstanceState) {
         super.onCreate(_savedInstanceState);
-        MainController controller = new MainController(getApplicationContext());
-        sort = controller.getSort();
+        controller = new MainController(getApplicationContext());
         setMainScreen(R.layout.activity_main);
         initializeMovieAdapter(R.layout.grid_view_pic, R.id.grid_view_layout);
 
         // Initialize the favorites model for storing favorite movies.
         favoritesModel = new FavoritesModel(this);
-
     }
 
     /**
@@ -148,25 +148,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem _item) {
         int id = _item.getItemId();
-
         // Change the sorting order of movies.
         if (id == R.id.action_sort) {
-            if (this.sort.equals("popular")) {
-                this.sort = "top_rated";
-                executeFetchMoviesTask();
-                _item.setTitle(R.string.menu_sort_popularity);
-            } else {
-                this.sort = "popular";
-                executeFetchMoviesTask();
-                _item.setTitle(R.string.menu_sort_user_rating);
-            }
-            MainController controller = new MainController(getApplicationContext());
-            controller.setSort(sort);
+            controller.onClick(_item);
         }
-
         // Take the user to the favorites view.
         if (id == R.id.action_favorites) {
             startFavoritesActivity();
+        }
+        if(id == R.id.action_settings){
+            Intent intent = new Intent(this, SettingsView.class);
+            startActivity(intent);
+            return true;
         }
         return super.onOptionsItemSelected(_item);
     }
@@ -184,19 +177,19 @@ public class MainActivity extends AppCompatActivity {
         _savedInstanceState.putString("USER_SORT", this.sort);
         super.onSaveInstanceState(_savedInstanceState);
     }
-    public void executeFetchMoviesTask() {
+    /*public void executeFetchMoviesTask() {
         if (isNetworkAvailable()) {
             FetchMovieData fetchMovieData = new FetchMovieData(getApplicationContext());
             fetchMovieData.execute(this.sort);
         }
-    }
+    }*/
 
     /**
      * This method specifies which layout file will be set for the main screen of the app.
      *
      * @param _layout the XML layout file which specifies how the activity looks on screen
      */
-    protected void setMainScreen(int _layout) {
+    private void setMainScreen(int _layout) {
         setContentView(_layout);
     }
 
@@ -204,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method initiates Favorites Activity
      */
-    public void startFavoritesActivity() {
+    private void startFavoritesActivity() {
         Intent favoritesActivityIntent = new Intent(getApplicationContext(), FavoritesActivity.class);
         startActivity(favoritesActivityIntent);
     }

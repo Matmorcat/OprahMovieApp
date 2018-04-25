@@ -40,6 +40,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.android.OprahMovieApp.Views.MainActivity" />
         </activity>
+
+        <activity android:name=".Views.SettingsView"
+        android:label="Settings"
+        android:parentActivityName=".Views.MainActivity">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".Views.MainActivity"/>
+        </activity>
     </application>
 
 </manifest>
