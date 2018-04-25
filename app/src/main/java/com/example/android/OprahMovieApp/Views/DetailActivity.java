@@ -15,9 +15,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.android.OprahMovieApp.Interfaces.ServerInterface;
+import com.example.android.OprahMovieApp.MainModel.MovieDataParser;
 import com.example.android.OprahMovieApp.R;
 import com.example.android.OprahMovieApp.MainModel.Movie;
 import com.example.android.OprahMovieApp.exceptions.MovieFavoritesException;
+
+import java.lang.ref.WeakReference;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -58,6 +62,7 @@ public class DetailActivity extends AppCompatActivity {
 
                 // Find the movie that is currently being viewed by the user.
                 Movie movie = getMovieInfoFromActivity();
+
 
                 // If the movie is already in the favorites, remove it.
                 if (MainActivity.getFavoritesModel().isInFavoriteMovies(movie)) {

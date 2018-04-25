@@ -12,9 +12,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
+import com.example.android.OprahMovieApp.Interfaces.ServerInterface;
 import com.example.android.OprahMovieApp.R;
 import com.squareup.picasso.Picasso;
 
+import java.lang.ref.WeakReference;
 import java.util.List;
 
 
@@ -68,6 +70,16 @@ public class MovieAdapter extends BaseAdapter {
         }
 
         // TODO: Perform a search query on the server to find a movie by this ID (This is a temporary return statement).
+        ServerInterface serverInterface = new ServerInterface(new WeakReference<>(context));
+        String data = serverInterface.getMovieByID(_movieID);
+        try {
+            MovieDataParser movieDataParser = new MovieDataParser(data);
+            Movie movie = movieDataParser.getMovies().get(0);
+            return (movie);
+        } catch (Exception e) {
+            e.toString();
+        }
+
         return (new Movie(_movieID, "Unknown", 0, null, null, null));
     }
 

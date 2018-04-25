@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-class MovieDataParser {
+public class MovieDataParser {
     private static final String RESULTS_KEY = "results";
     private static final String PAGE_NUMBER_KEY = "page";
     private static final String MOVIE_ID = "id";
@@ -27,7 +27,7 @@ class MovieDataParser {
     private final JSONObject jsonObject;
 
 
-    MovieDataParser(String _data) throws JSONException {
+    public MovieDataParser(String _data) throws JSONException {
         this.jsonObject = new JSONObject(_data);
     }
 

@@ -38,7 +38,7 @@ public class FetchMovieData extends AsyncTask<String, Void, List<Movie>> {
         // Fetch (NUM_PAGES) pages of movie data.
         try {
             for (int i = 1; i < (this.NUM_PAGES + 1); i++) {
-                ServerInterface serverInterface = new ServerInterface(weakContext, "tmdb_api_key");
+                ServerInterface serverInterface = new ServerInterface(weakContext);
                 String page = serverInterface.getSortedMovies(i, _params[0]);
                 MovieDataParser dataParser = new MovieDataParser(page);
                 List<Movie> movies = dataParser.getMovies();

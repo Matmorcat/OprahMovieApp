@@ -9,6 +9,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
 
+import com.example.android.OprahMovieApp.MainModel.MovieDataParser;
 import com.example.android.OprahMovieApp.R;
 
 import java.io.BufferedReader;
@@ -22,7 +23,7 @@ import java.net.URL;
 
 public class ServerInterface {
     private WeakReference<Context> weakContext;
-    public ServerInterface(WeakReference<Context> _weakContext, String _API_KEY) {
+    public ServerInterface(WeakReference<Context> _weakContext) {
         this.weakContext = _weakContext;
     }
     /**
@@ -85,8 +86,8 @@ public class ServerInterface {
         return moviesData;
     }
     //TODO finish this and get it working properly -- currently hasn't been implemented in doInBackground
-    private String getMovieByID (int _id) {
-        String movieData = null;
+    public String getMovieByID (int _id) {
+        String movieData;
         HttpURLConnection httpURLConnection = null;
         BufferedReader reader = null;
         final String API_KEY = weakContext.get().getResources().getString(R.string.tmdb_api_key);
