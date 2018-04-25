@@ -1,9 +1,9 @@
 package com.example.android.OprahMovieApp.exceptions;
 /**
- * Last Date Modified:
  * This is thrown when something attempts to remove a movie from the favorites list, but the movie
  * does not exist.
- * Contributing Authors:
+ * @authors
+ * @date
  */
 import java.io.IOException;
 

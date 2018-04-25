@@ -1,8 +1,8 @@
 package com.example.android.OprahMovieApp.Views;
 /**
- * Last Date Modified:
  * Settings fragment
- * Contributing Authors:
+ * @authors
+ * @date
  */
 
 import android.os.Bundle;

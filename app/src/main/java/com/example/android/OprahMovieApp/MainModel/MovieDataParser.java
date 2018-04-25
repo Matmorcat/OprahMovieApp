@@ -1,9 +1,9 @@
 package com.example.android.OprahMovieApp.MainModel;
 /**
- * Last Date Modified:
  * This class processes the data retrieved from the FetchMovieData< to create <tt>Movie</tt>
  * objects for the <tt>MovieAdapter</tt>.
- * Contributing Authors:
+ * @authors
+ * @date
  * @see FetchMovieData
  * @see MovieAdapter
  */

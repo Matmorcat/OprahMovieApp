@@ -1,8 +1,8 @@
 package com.example.android.OprahMovieApp.data;
 /**
- * Last Date Modified:
  * This adapter is responsible for modifying the view to update information on favorite movies.
- * Contributing Authors:
+ * @authors
+ * @date
  */
 import android.content.Context;
 import android.util.Log;

@@ -1,9 +1,9 @@
 package com.example.android.OprahMovieApp.MainModel;
 /**
- * Last Date Modified:
  * This class provides and updates information in the main view to display an ordered list of movies
  * that the user can select from or learn more about.
- * Contributing Authors:
+ * @authors
+ * @date
  */
 import android.content.Context;
 import android.view.LayoutInflater;

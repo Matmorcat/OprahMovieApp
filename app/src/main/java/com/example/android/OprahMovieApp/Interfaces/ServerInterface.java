@@ -1,8 +1,8 @@
 package com.example.android.OprahMovieApp.Interfaces;
 /**
- * Last Date Modified:
  * This is an interface that is used to access and fetch movie data from a server.
- * Contributing Authors:
+ * @authors
+ * @date
  *
  */
 import android.content.Context;

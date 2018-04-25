@@ -1,9 +1,9 @@
 package com.example.android.OprahMovieApp.MainModel;
 /**
- * Last Date Modified:
  * This is the class that is responsible for holding all information about a particular movie and
  * creating the Movie object. It has getters, setters, a constructor, and a toString() override.
- * Contributing Authors:
+ * @authors
+ * @date
  */
 import java.io.Serializable;
 

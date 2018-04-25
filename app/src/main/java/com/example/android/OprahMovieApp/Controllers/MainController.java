@@ -1,8 +1,8 @@
 package com.example.android.OprahMovieApp.Controllers;
 /**
- * Last Date Modified:
  * MainController class
- * Contributing Authors:
+ * @authors
+ * @date
  */
 import android.content.Context;
 import android.view.MenuItem;
@@ -32,13 +32,14 @@ public class MainController {
         /**
          * Retrieves the sort state from the settings class.
          *
-         * @return
+         * @return the sort type of the view
          */
         private String getSort(){
             return this.sort;
         }
     /**
      * Retrieves the default sort from settings.
+     *
      * @return
      */
         public String getDefaultSort(){

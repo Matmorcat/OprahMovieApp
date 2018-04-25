@@ -1,8 +1,8 @@
 package com.example.android.OprahMovieApp.Views;
 /**
- * Last Date Modified:
  * This class is responsible for the settings activity of the application.
- * Contributing Authors:
+ * @authors
+ * @date
  */
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

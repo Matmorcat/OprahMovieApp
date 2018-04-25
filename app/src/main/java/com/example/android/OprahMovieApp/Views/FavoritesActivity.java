@@ -1,8 +1,8 @@
 package com.example.android.OprahMovieApp.Views;
 /**
- * Last Date Modified:
  * This class is responsible for controlling the favorites activity of the application.
- * Contributing Authors:
+ * @authors
+ * @date
  */
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

@@ -1,9 +1,9 @@
 package com.example.android.OprahMovieApp.Views;
 /**
- * Last Date Modified:
  * The class that functions to provide information about a specific movie from within the
  * DetailActivity.
- * Contributing Authors:
+ * @authors
+ * @date
  * @see DetailActivity
  */
 import android.content.Intent;

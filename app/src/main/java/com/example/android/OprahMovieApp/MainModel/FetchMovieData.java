@@ -1,8 +1,8 @@
 package com.example.android.OprahMovieApp.MainModel;
 /**
- * Last Date Modified:
  * This class creates a separate thread on which to fetch movie data from the TMDB server.
- * Contributing Authors:
+ * @authors
+ * @date
  */
 import android.content.Context;
 import android.os.AsyncTask;

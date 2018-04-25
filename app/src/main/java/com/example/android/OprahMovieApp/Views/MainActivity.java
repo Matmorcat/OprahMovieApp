@@ -1,9 +1,9 @@
 package com.example.android.OprahMovieApp.Views;
 /**
- * Last Date Modified:
  * This class is responsible for controlling the main activity of the application.
  * The activity also includes functions that are required for Android applications.
- * Contributing Authors:
+ * @authors
+ * @date
  */
 import android.content.Context;
 import android.content.Intent;

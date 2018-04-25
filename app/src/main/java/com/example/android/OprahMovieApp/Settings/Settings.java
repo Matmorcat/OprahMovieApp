@@ -1,8 +1,8 @@
 package com.example.android.OprahMovieApp.Settings;
 /**
- * Last Date Modified:
  * Settings class that is used to save and retrieve some user data.
- * Contributing Authors:
+ * @authors
+ * @date
  */
 import android.app.Activity;
 import android.content.Context;
