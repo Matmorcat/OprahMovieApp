@@ -1,4 +1,4 @@
-package com.example.android.OprahMovieApp.Views;
+package com.oprahs_voice.android.movies.activities;
 /**
  * The class that functions to provide information about a specific movie from within the
  * DetailActivity.
@@ -15,8 +15,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.android.OprahMovieApp.R;
-import com.example.android.OprahMovieApp.MainModel.Movie;
+import com.oprahs_voice.android.movies.R;
+import com.oprahs_voice.android.movies.utilities.Movie;
 import com.squareup.picasso.Picasso;
 
 

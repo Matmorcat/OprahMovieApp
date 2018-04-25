@@ -1,6 +1,6 @@
-package com.example.android.OprahMovieApp.Settings;
+package com.oprahs_voice.android.movies.settings;
 /**
- * Settings class that is used to save and retrieve some user data.
+ * settings class that is used to save and retrieve some user data.
  * @authors
  * @date
  */
@@ -28,6 +28,6 @@ public class Settings extends Activity {
     }
     public int getPages(){
             String value = sharedPreferences.getString("number_of_pages",null);
-            return value == null ? 6 : Integer.valueOf(value);
+            return value == null ? 6 : Integer.getInteger(value);
     }
 }

@@ -1,5 +1,5 @@
 <fragment android:id="@+id/fragment"
-    android:name="com.example.android.OprahMovieApp.Views.DetailActivityFragment"
+    android:name="com.oprahs_voice.android.movies.activities.DetailActivityFragment"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"

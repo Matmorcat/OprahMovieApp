@@ -39,7 +39,7 @@
     <string name="tmdb_api_key">5b64200ad380b583694cc584abe83484</string>
     <string name="db_type">SQLite</string>
 
-    <!-- Settings -->
+    <!-- settings -->
     <string-array name="save_sort">Determines if sort should be saved
         <item>Popular</item>
         <item>Top Rated</item>

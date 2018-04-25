@@ -1,4 +1,4 @@
-package com.example.android.OprahMovieApp.favorites;
+package com.oprahs_voice.android.movies.models.favorites;
 /**
  * This class has a collection of public methods that retrieve information about movies saved in the
  * favorites list of the application. There are methods to add, remove, retrieve a list of
@@ -11,9 +11,10 @@ package com.example.android.OprahMovieApp.favorites;
 import android.content.Context;
 import android.util.Log;
 
-import com.example.android.OprahMovieApp.Views.MainActivity;
-import com.example.android.OprahMovieApp.MainModel.Movie;
-import com.example.android.OprahMovieApp.exceptions.MovieFavoritesException;
+import com.oprahs_voice.android.movies.activities.MainActivity;
+import com.oprahs_voice.android.movies.interfaces.FDBInterface;
+import com.oprahs_voice.android.movies.utilities.Movie;
+import com.oprahs_voice.android.movies.utilities.exceptions.MovieFavoritesException;
 
 import java.lang.ref.WeakReference;
 import java.util.LinkedList;

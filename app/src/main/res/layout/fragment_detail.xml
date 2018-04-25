@@ -12,7 +12,7 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:paddingTop="16dp"
-        tools:context="com.example.android.OprahMovieApp.com.example.android.OprahMovieApp.DetailActivityFragment">
+        tools:context="com.oprahs_voice.android.movies.activities.DetailActivityFragment">
 
 
         <TextView

@@ -1,4 +1,4 @@
-package com.example.android.OprahMovieApp.favorites;
+package com.oprahs_voice.android.movies.interfaces;
 /**
  * This is an interface that allows for the storage of movie IDs into a favorite movies database.
  * It uses an SQLite database via SQLiteOpenHelper which is built directly into Android.
@@ -24,7 +24,7 @@ public class FDBInterface extends SQLiteOpenHelper {
     private static final String KEY_MOVIE_ID = "movieid";             // Movie ID Column Name.
 
 
-    FDBInterface(Context _context) {
+    public FDBInterface(Context _context) {
         super(_context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -100,7 +100,7 @@ public class FDBInterface extends SQLiteOpenHelper {
      *
      * @param _id the movie ID
      */
-    protected void addEntry(int _id) {
+    public void addEntry(int _id) {
 
         // Get the reference to writable database.
         SQLiteDatabase db = getWritableDatabase();
@@ -122,7 +122,7 @@ public class FDBInterface extends SQLiteOpenHelper {
      *
      * @param _id the movie ID
      */
-    protected void removeEntry(int _id) {
+    public void removeEntry(int _id) {
 
         // Get the reference to writable database.
         SQLiteDatabase db = getWritableDatabase();

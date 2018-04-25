@@ -1,15 +1,16 @@
-package com.example.android.OprahMovieApp.Controllers;
+package com.oprahs_voice.android.movies.controllers;
 /**
  * MainController class
  * @authors
  * @date
  */
+
 import android.content.Context;
 import android.view.MenuItem;
 
-import com.example.android.OprahMovieApp.MainModel.FetchMovieData;
-import com.example.android.OprahMovieApp.R;
-import com.example.android.OprahMovieApp.Settings.Settings;
+import com.oprahs_voice.android.movies.R;
+import com.oprahs_voice.android.movies.models.main.FetchMovieData;
+import com.oprahs_voice.android.movies.settings.Settings;
 
 
 public class MainController {

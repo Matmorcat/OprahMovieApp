@@ -1,4 +1,4 @@
-package com.example.android.OprahMovieApp.MainModel;
+package com.oprahs_voice.android.movies.utilities;
 /**
  * This is the class that is responsible for holding all information about a particular movie and
  * creating the Movie object. It has getters, setters, a constructor, and a toString() override.
@@ -16,7 +16,7 @@ public class Movie implements Serializable {
     private String releaseDate;
     private String picUrl;
 
-    Movie(int _movieID, String _title, double _userRating, String _releaseDate, String _plotSynopsis, String _picUrl) {
+    public Movie(int _movieID, String _title, double _userRating, String _releaseDate, String _plotSynopsis, String _picUrl) {
         this.movieID = _movieID;
         this.title = _title;
         this.userRating = _userRating;

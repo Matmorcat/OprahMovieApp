@@ -1,4 +1,4 @@
-package com.example.android.OprahMovieApp.MainModel;
+package com.oprahs_voice.android.movies.models.main;
 /**
  * This class provides and updates information in the main view to display an ordered list of movies
  * that the user can select from or learn more about.
@@ -12,7 +12,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-import com.example.android.OprahMovieApp.R;
+import com.oprahs_voice.android.movies.R;
+import com.oprahs_voice.android.movies.utilities.Movie;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

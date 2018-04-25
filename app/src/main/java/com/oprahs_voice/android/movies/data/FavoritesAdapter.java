@@ -1,9 +1,10 @@
-package com.example.android.OprahMovieApp.data;
+package com.oprahs_voice.android.movies.data;
 /**
  * This adapter is responsible for modifying the view to update information on favorite movies.
  * @authors
  * @date
  */
+
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,11 +15,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.android.OprahMovieApp.MainModel.Movie;
-import com.example.android.OprahMovieApp.MainModel.MovieAdapter;
-import com.example.android.OprahMovieApp.Views.MainActivity;
-import com.example.android.OprahMovieApp.R;
-import com.example.android.OprahMovieApp.exceptions.MovieFavoritesException;
+import com.oprahs_voice.android.movies.R;
+import com.oprahs_voice.android.movies.activities.MainActivity;
+import com.oprahs_voice.android.movies.models.main.MovieAdapter;
+import com.oprahs_voice.android.movies.utilities.Movie;
+import com.oprahs_voice.android.movies.utilities.exceptions.MovieFavoritesException;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

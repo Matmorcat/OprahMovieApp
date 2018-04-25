@@ -1,11 +1,12 @@
-package com.example.android.OprahMovieApp.Views;
+package com.oprahs_voice.android.movies.activities;
 /**
  * This class is responsible for the settings activity of the application.
  * @authors
  * @date
  */
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 public class SettingsView extends AppCompatActivity {
 

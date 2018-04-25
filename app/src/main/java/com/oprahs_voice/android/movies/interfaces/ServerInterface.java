@@ -1,4 +1,4 @@
-package com.example.android.OprahMovieApp.Interfaces;
+package com.oprahs_voice.android.movies.interfaces;
 /**
  * This is an interface that is used to access and fetch movie data from a server.
  * @authors
@@ -9,7 +9,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
 
-import com.example.android.OprahMovieApp.R;
+import com.oprahs_voice.android.movies.R;
 
 import java.io.BufferedReader;
 import java.io.IOException;
