@@ -1,4 +1,4 @@
-package com.example.android.OprahMovieApp.Views;
+package com.oprahs_voice.android.movies.activities;
 /**
  * This class controls the display of specific information of movies from the main activity.
  * Menu options for things such as adding and removing movies from favorites are
@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.oprahs_voice.android.movies.R;
+import com.oprahs_voice.android.movies.activities.MainActivity;
 import com.oprahs_voice.android.movies.utilities.Movie;
 import com.oprahs_voice.android.movies.utilities.exceptions.MovieFavoritesException;
 
