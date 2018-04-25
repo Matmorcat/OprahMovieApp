@@ -2,6 +2,7 @@ package com.oprahs_voice.android.movies.models.main;
 /**
  * This class provides and updates information in the main view to display an ordered list of movies
  * that the user can select from or learn more about.
+ *
  * @authors
  * @date
  */

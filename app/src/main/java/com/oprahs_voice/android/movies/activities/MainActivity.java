@@ -2,6 +2,7 @@ package com.oprahs_voice.android.movies.activities;
 /**
  * This class is responsible for controlling the main activity of the application.
  * The activity also includes functions that are required for Android applications.
+ *
  * @authors
  * @date
  */

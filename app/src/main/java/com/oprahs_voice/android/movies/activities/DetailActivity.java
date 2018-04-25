@@ -3,6 +3,7 @@ package com.oprahs_voice.android.movies.activities;
  * This class controls the display of specific information of movies from the main activity.
  * Menu options for things such as adding and removing movies from favorites are
  * handled in this class. Movie displays are handled by a fragment that runs within this view.
+ *
  * @authors
  * @date
  * @see DetailActivityFragment

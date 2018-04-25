@@ -2,6 +2,7 @@ package com.oprahs_voice.android.movies.utilities;
 /**
  * This is the class that is responsible for holding all information about a particular movie and
  * creating the Movie object. It has getters, setters, a constructor, and a toString() override.
+ *
  * @authors
  * @date
  */

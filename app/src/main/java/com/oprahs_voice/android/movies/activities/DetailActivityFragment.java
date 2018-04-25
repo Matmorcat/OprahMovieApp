@@ -2,6 +2,7 @@ package com.oprahs_voice.android.movies.activities;
 /**
  * The class that functions to provide information about a specific movie from within the
  * DetailActivity.
+ *
  * @authors
  * @date
  * @see DetailActivity

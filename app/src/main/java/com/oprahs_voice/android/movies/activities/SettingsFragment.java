@@ -1,6 +1,7 @@
 package com.oprahs_voice.android.movies.activities;
 /**
- * settings fragment
+ * Fragment to handle settings from within the settings activity
+ *
  * @authors
  * @date
  */

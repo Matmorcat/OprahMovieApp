@@ -1,6 +1,7 @@
 package com.oprahs_voice.android.movies.models.main;
 /**
  * This class creates a separate thread on which to fetch movie data from the TMDB server.
+ *
  * @authors
  * @date
  */

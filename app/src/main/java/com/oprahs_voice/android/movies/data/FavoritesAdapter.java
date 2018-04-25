@@ -1,6 +1,7 @@
 package com.oprahs_voice.android.movies.data;
 /**
  * This adapter is responsible for modifying the view to update information on favorite movies.
+ *
  * @authors
  * @date
  */

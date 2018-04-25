@@ -1,6 +1,7 @@
 package com.oprahs_voice.android.movies.activities;
 /**
  * This class is responsible for the settings activity of the application.
+ *
  * @authors
  * @date
  */

@@ -1,6 +1,7 @@
 package com.oprahs_voice.android.movies.interfaces;
 /**
  * This is an interface that is used to access and fetch movie data from a server.
+ *
  * @authors
  * @date
  *

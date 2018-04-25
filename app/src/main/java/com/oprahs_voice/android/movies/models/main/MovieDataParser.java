@@ -2,6 +2,7 @@ package com.oprahs_voice.android.movies.models.main;
 /**
  * This class processes the data retrieved from the FetchMovieData< to create <tt>Movie</tt>
  * objects for the <tt>MovieAdapter</tt>.
+ *
  * @authors
  * @date
  * @see FetchMovieData
