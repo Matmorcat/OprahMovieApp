@@ -1,15 +1,14 @@
-package com.example.android.OprahMovieApp.Views;
+package com.oprahs_voice.android.movies.activities;
 /**
- * Last Date Modified:
- * Settings fragment
- * Contributing Authors:
+ * settings fragment
+ * @authors
+ * @date
  */
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.preference.PreferenceFragmentCompat;
 
-import com.example.android.OprahMovieApp.R;
+import com.oprahs_voice.android.movies.R;
 
 
 public class SettingsFragment extends PreferenceFragmentCompat {

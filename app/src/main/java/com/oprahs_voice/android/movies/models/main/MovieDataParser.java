@@ -1,12 +1,14 @@
-package com.example.android.OprahMovieApp.MainModel;
+package com.oprahs_voice.android.movies.models.main;
 /**
- * Last Date Modified:
  * This class processes the data retrieved from the FetchMovieData< to create <tt>Movie</tt>
  * objects for the <tt>MovieAdapter</tt>.
- * Contributing Authors:
+ * @authors
+ * @date
  * @see FetchMovieData
  * @see MovieAdapter
  */
+import com.oprahs_voice.android.movies.utilities.Movie;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

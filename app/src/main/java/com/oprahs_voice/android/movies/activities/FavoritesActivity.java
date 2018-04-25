@@ -1,16 +1,16 @@
-package com.example.android.OprahMovieApp.Views;
+package com.oprahs_voice.android.movies.activities;
 /**
- * Last Date Modified:
  * This class is responsible for controlling the favorites activity of the application.
- * Contributing Authors:
+ * @authors
+ * @date
  */
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
-import com.example.android.OprahMovieApp.R;
-import com.example.android.OprahMovieApp.data.FavoritesAdapter;
-import com.example.android.OprahMovieApp.MainModel.Movie;
+import com.oprahs_voice.android.movies.R;
+import com.oprahs_voice.android.movies.data.FavoritesAdapter;
+import com.oprahs_voice.android.movies.utilities.Movie;
 
 import java.util.List;
 

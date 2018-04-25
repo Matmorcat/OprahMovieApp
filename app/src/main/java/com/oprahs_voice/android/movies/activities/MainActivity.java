@@ -1,10 +1,11 @@
-package com.example.android.OprahMovieApp.Views;
+package com.oprahs_voice.android.movies.activities;
 /**
- * Last Date Modified:
  * This class is responsible for controlling the main activity of the application.
  * The activity also includes functions that are required for Android applications.
- * Contributing Authors:
+ * @authors
+ * @date
  */
+
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -18,11 +19,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
-import com.example.android.OprahMovieApp.Controllers.MainController;
-import com.example.android.OprahMovieApp.R;
-import com.example.android.OprahMovieApp.MainModel.Movie;
-import com.example.android.OprahMovieApp.MainModel.MovieAdapter;
-import com.example.android.OprahMovieApp.favorites.FavoritesModel;
+import com.oprahs_voice.android.movies.R;
+import com.oprahs_voice.android.movies.controllers.MainController;
+import com.oprahs_voice.android.movies.models.favorites.FavoritesModel;
+import com.oprahs_voice.android.movies.models.main.MovieAdapter;
+import com.oprahs_voice.android.movies.utilities.Movie;
+
 import java.util.ArrayList;
 import java.util.List;
 

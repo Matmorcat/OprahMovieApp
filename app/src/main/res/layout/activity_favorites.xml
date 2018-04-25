@@ -4,5 +4,5 @@
     android:id="@+id/menu_favorites_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.OprahMovieApp.Views.FavoritesActivity">
+    tools:context="com.oprahs_voice.android.movies.activities.FavoritesActivity">
 </ListView>

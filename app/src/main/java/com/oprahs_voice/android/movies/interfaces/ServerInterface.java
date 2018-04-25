@@ -1,16 +1,15 @@
-package com.example.android.OprahMovieApp.Interfaces;
+package com.oprahs_voice.android.movies.interfaces;
 /**
- * Last Date Modified:
  * This is an interface that is used to access and fetch movie data from a server.
- * Contributing Authors:
+ * @authors
+ * @date
  *
  */
 import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
 
-import com.example.android.OprahMovieApp.MainModel.MovieDataParser;
-import com.example.android.OprahMovieApp.R;
+import com.oprahs_voice.android.movies.R;
 
 import java.io.BufferedReader;
 import java.io.IOException;

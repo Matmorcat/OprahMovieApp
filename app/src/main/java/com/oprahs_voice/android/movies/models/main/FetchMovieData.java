@@ -1,16 +1,20 @@
-package com.example.android.OprahMovieApp.MainModel;
+package com.oprahs_voice.android.movies.models.main;
 /**
- * Last Date Modified:
  * This class creates a separate thread on which to fetch movie data from the TMDB server.
- * Contributing Authors:
+ * @authors
+ * @date
  */
+
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.example.android.OprahMovieApp.Interfaces.ServerInterface;
-import com.example.android.OprahMovieApp.Views.MainActivity;
+import com.oprahs_voice.android.movies.activities.MainActivity;
+import com.oprahs_voice.android.movies.interfaces.ServerInterface;
+import com.oprahs_voice.android.movies.utilities.Movie;
+
 import org.json.JSONException;
+
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;

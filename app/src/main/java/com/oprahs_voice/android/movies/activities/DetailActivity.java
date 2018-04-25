@@ -1,10 +1,10 @@
 package com.example.android.OprahMovieApp.Views;
 /**
- * Last Date Modified:
  * This class controls the display of specific information of movies from the main activity.
  * Menu options for things such as adding and removing movies from favorites are
  * handled in this class. Movie displays are handled by a fragment that runs within this view.
- * Contributing Authors:
+ * @authors
+ * @date
  * @see DetailActivityFragment
  */
 import android.content.Intent;
@@ -15,13 +15,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.android.OprahMovieApp.Interfaces.ServerInterface;
-import com.example.android.OprahMovieApp.MainModel.MovieDataParser;
-import com.example.android.OprahMovieApp.R;
-import com.example.android.OprahMovieApp.MainModel.Movie;
-import com.example.android.OprahMovieApp.exceptions.MovieFavoritesException;
-
-import java.lang.ref.WeakReference;
+import com.oprahs_voice.android.movies.R;
+import com.oprahs_voice.android.movies.utilities.Movie;
+import com.oprahs_voice.android.movies.utilities.exceptions.MovieFavoritesException;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -62,7 +58,6 @@ public class DetailActivity extends AppCompatActivity {
 
                 // Find the movie that is currently being viewed by the user.
                 Movie movie = getMovieInfoFromActivity();
-
 
                 // If the movie is already in the favorites, remove it.
                 if (MainActivity.getFavoritesModel().isInFavoriteMovies(movie)) {

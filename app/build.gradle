@@ -5,7 +5,7 @@ android {
     buildToolsVersion '27.0.3'
 
     defaultConfig {
-        applicationId "com.example.android.OprahMovieApp"
+        applicationId "com.oprahs_voice.android.movies"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
@@ -32,5 +32,5 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:23.4.0'
     implementation 'com.android.support:design:23.4.0'
     implementation 'com.squareup.picasso:picasso:2.5.2'
-    compile 'com.android.support:preference-v7:23.4.0'
+    implementation 'com.android.support:preference-v7:23.4.0'
 }
