@@ -35,7 +35,6 @@ public class ServerInterface {
     public String getSortedMovies(int _page, String _sortBy) {
         String moviesData = null;
 
-        for (int i = 1; i <= 3; i++) {
             HttpURLConnection httpURLConnection = null;
             BufferedReader reader = null;
            final String API_KEY = weakContext.get().getResources().getString(R.string.tmdb_api_key);
@@ -80,7 +79,7 @@ public class ServerInterface {
                     }
                 }
             }
-        }
+
 
         return moviesData;
     }

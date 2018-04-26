@@ -6,6 +6,7 @@ package com.oprahs_voice.android.movies.models.main;
  * @date
  */
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,6 +74,7 @@ public class MovieAdapter extends BaseAdapter {
         // TODO: Perform a search query on the server to find a movie by this ID (This is a temporary return statement).
         ServerInterface serverInterface = new ServerInterface(new WeakReference<>(context));
         String data = serverInterface.getMovieByID(_movieID);
+        //Log.d("this is a test",data);
         try {
             MovieDataParser movieDataParser = new MovieDataParser(data);
             Movie movie = movieDataParser.getMovies().get(0);
