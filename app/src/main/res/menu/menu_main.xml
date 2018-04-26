@@ -5,8 +5,14 @@
         <item
             android:id="@+id/action_sort"
             android:orderInCategory="1"
-            android:title="@string/menu_sort_user_rating" />
+            android:title="@string/menu_sort_user_rating"
+            android:visible = "true"/>
 
+        <item
+        android:id="@+id/action_sort_rating"
+        android:orderInCategory="1"
+        android:title="@string/menu_sort_popularity"
+        android:visible = "false"/>
         <item
             android:id="@+id/action_favorites"
             android:orderInCategory="1"
