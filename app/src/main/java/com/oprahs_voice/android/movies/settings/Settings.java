@@ -19,7 +19,7 @@ public class Settings extends Activity {
     }
     /**
      * Gets the sort state that is stored in settings.
-     * @return
+     * @return sharedPreference
      */
     public String getSort(){
         if (this.sharedPreferences!= null) {
@@ -28,7 +28,7 @@ public class Settings extends Activity {
         return "popular";
     }
     public int getPages(){
-        String value = sharedPreferences.getString("number_of_pages",null);
+        String value = this.sharedPreferences.getString("number_of_pages",null);
         return value == null ? 6 : Integer.valueOf(value);
     }
 }

@@ -37,7 +37,7 @@ public class MovieDataParser {
 
     public List<Movie> getMovies() throws JSONException {
         List<Movie> movies = new ArrayList<>();
-        JSONArray results = this.jsonObject.getJSONArray(RESULTS_KEY);
+        JSONArray results = jsonObject.getJSONArray(RESULTS_KEY);
         for (int i = 0; i < results.length(); i++) {
             JSONObject movieJsonObject = results.getJSONObject(i);
             Movie movie = new Movie(movieJsonObject.getInt(MOVIE_ID), movieJsonObject.getString(ORIGINAL_TITLE_KEY), movieJsonObject.getDouble(VOTE_AVERAGE_KEY), movieJsonObject.getString(RELEASE_DATE_KEY), movieJsonObject.getString(OVERVIEW_KEY), movieJsonObject.getString(POSTER_PATH_KEY));

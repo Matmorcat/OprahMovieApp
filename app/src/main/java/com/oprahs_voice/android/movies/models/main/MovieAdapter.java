@@ -72,7 +72,7 @@ public class MovieAdapter extends BaseAdapter {
         }
 
         // TODO: Perform a search query on the server to find a movie by this ID (This is a temporary return statement).
-        ServerInterface serverInterface = new ServerInterface(new WeakReference<>(context));
+        ServerInterface serverInterface = new ServerInterface(new WeakReference<>(this.context));
         String data = serverInterface.getMovieByID(_movieID);
         try {
             MovieDataParser movieDataParser = new MovieDataParser(data);

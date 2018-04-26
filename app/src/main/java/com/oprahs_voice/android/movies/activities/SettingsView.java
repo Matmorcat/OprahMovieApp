@@ -12,8 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 public class SettingsView extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle _savedInstanceState) {
+            super.onCreate(_savedInstanceState);
             getSupportFragmentManager().beginTransaction().replace(android.R.id.content, new SettingsFragment()) .commit();
     }
 }

@@ -121,8 +121,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle _savedInstanceState) {
         super.onCreate(_savedInstanceState);
-        settings = new Settings(getApplicationContext());
-        this.sort = settings.getSort();
+        this.settings = new Settings(getApplicationContext());
+        this.sort = this.settings.getSort();
         setMainScreen(R.layout.activity_main);
         initializeMovieAdapter(R.layout.grid_view_pic, R.id.grid_view_layout);
 
@@ -202,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void executeFetchMoviesTask() {
         if (isNetworkAvailable()) {
-            FetchMovieData fetchMovieData = new FetchMovieData(getApplicationContext(), settings.getPages());
+            FetchMovieData fetchMovieData = new FetchMovieData(getApplicationContext(), this.settings.getPages());
             fetchMovieData.execute(this.sort);
         }
     }

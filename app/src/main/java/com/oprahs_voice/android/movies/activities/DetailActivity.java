@@ -17,7 +17,6 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.oprahs_voice.android.movies.R;
-import com.oprahs_voice.android.movies.activities.MainActivity;
 import com.oprahs_voice.android.movies.utilities.Movie;
 import com.oprahs_voice.android.movies.utilities.exceptions.MovieFavoritesException;
 

@@ -10,7 +10,7 @@ import java.io.IOException;
 
 
 public class MovieFavoritesException extends IOException {
-    public MovieFavoritesException(String message) {
-        super(message);
+    public MovieFavoritesException(String _message) {
+        super(_message);
     }
 }
