@@ -1,6 +1,7 @@
 package com.oprahs_voice.android.movies.models.main;
 /**
  * This class creates a separate thread on which to fetch movie data from the TMDB server.
+ *
  * @authors
  * @date
  */
@@ -42,7 +43,7 @@ public class FetchMovieData extends AsyncTask<String, Void, List<Movie>> {
         // Fetch (NUM_PAGES) pages of movie data.
         try {
             for (int i = 1; i < (this.NUM_PAGES + 1); i++) {
-                ServerInterface serverInterface = new ServerInterface(weakContext);
+                ServerInterface serverInterface = new ServerInterface(this.weakContext);
                 String page = serverInterface.getSortedMovies(i, _params[0]);
                 MovieDataParser dataParser = new MovieDataParser(page);
                 List<Movie> movies = dataParser.getMovies();

@@ -2,6 +2,7 @@ package com.oprahs_voice.android.movies.models.main;
 /**
  * This class provides and updates information in the main view to display an ordered list of movies
  * that the user can select from or learn more about.
+ *
  * @authors
  * @date
  */
@@ -72,7 +73,7 @@ public class MovieAdapter extends BaseAdapter {
         }
 
         // TODO: Perform a search query on the server to find a movie by this ID (This is a temporary return statement).
-        ServerInterface serverInterface = new ServerInterface(new WeakReference<>(context));
+        ServerInterface serverInterface = new ServerInterface(new WeakReference<>(this.context));
         String data = serverInterface.getMovieByID(_movieID);
         //Log.d("this is a test",data);
         try {

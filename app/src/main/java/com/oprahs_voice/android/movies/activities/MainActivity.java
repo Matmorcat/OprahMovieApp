@@ -2,6 +2,7 @@ package com.oprahs_voice.android.movies.activities;
 /**
  * This class is responsible for controlling the main activity of the application.
  * The activity also includes functions that are required for Android applications.
+ *
  * @authors
  * @date
  */
@@ -20,10 +21,11 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.oprahs_voice.android.movies.R;
-import com.oprahs_voice.android.movies.controllers.MainController;
 import com.oprahs_voice.android.movies.models.favorites.FavoritesModel;
 import com.oprahs_voice.android.movies.models.main.MovieAdapter;
 import com.oprahs_voice.android.movies.utilities.Movie;
+import com.oprahs_voice.android.movies.models.main.FetchMovieData;
+import com.oprahs_voice.android.movies.settings.Settings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,8 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private static MovieAdapter movieAdapter;       // Reference to the movie adapter.
     private static FavoritesModel favoritesModel;   // Reference to the favorites model.
     private String sort;                            // Preference for sorting movie.
-    private MainController controller;
-
+    private Settings settings;
     /**
      * Method to return the favoritesModel member to be displayed.
      *
@@ -84,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         if (movies == null) {
             if (isNetworkAvailable()) {
                 //if (controller.getSaveBoolean()) {
-                    controller.executeFetchMoviesTask(controller.getDefaultSort());
+                    executeFetchMoviesTask();
                 }
                // else controller.executeFetchMoviesTask("popular");
            // }
@@ -120,7 +121,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle _savedInstanceState) {
         super.onCreate(_savedInstanceState);
-        controller = new MainController(getApplicationContext());
+        this.settings = new Settings(getApplicationContext());
+        this.sort = this.settings.getSort();
         setMainScreen(R.layout.activity_main);
         initializeMovieAdapter(R.layout.grid_view_pic, R.id.grid_view_layout);
 
@@ -138,9 +140,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu _menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, _menu);
+        switchSortTitle(_menu);
         return true;
     }
-
     /**
      * When the user clicks the sort by option in the main menu, toggle the sort method between
      * popularity and User Rating and update the view.
@@ -149,23 +151,42 @@ public class MainActivity extends AppCompatActivity {
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem _item) {
+
         int id = _item.getItemId();
         // Change the sorting order of movies.
         if (id == R.id.action_sort) {
-            controller.onClick(_item);
+           /*if (this.sort.equals("popular")) {*/
+            this.sort = "top_rated";
+            executeFetchMoviesTask();
+            //_item.setTitle(R.string.menu_sort_popularity);
+        }
+        else if(id == R.id.action_sort_rating){
+            this.sort="popular";
+            executeFetchMoviesTask();
+            //_item.setTitle(R.string.menu_sort_user_rating);
         }
         // Take the user to the favorites view.
-        if (id == R.id.action_favorites) {
+        else if (id == R.id.action_favorites) {
             startFavoritesActivity();
         }
-        if(id == R.id.action_settings){
+        else{
             Intent intent = new Intent(this, SettingsView.class);
             startActivity(intent);
             return true;
         }
         return super.onOptionsItemSelected(_item);
     }
-
+    /**
+     * This method allows the menu to be edited while the application is running.
+     * @param _menu a "menu" layout file
+     * @return super.onPrepareOptionsMenu(menu)
+     */
+    @Override
+    public boolean onPrepareOptionsMenu(Menu _menu) {
+        switchSortTitle(_menu);
+        invalidateOptionsMenu();
+        return super.onPrepareOptionsMenu(_menu);
+    }
 
     /**
      * Android system callback method which is called when the app is terminated.
@@ -179,12 +200,12 @@ public class MainActivity extends AppCompatActivity {
         _savedInstanceState.putString("USER_SORT", this.sort);
         super.onSaveInstanceState(_savedInstanceState);
     }
-    /*public void executeFetchMoviesTask() {
+    public void executeFetchMoviesTask() {
         if (isNetworkAvailable()) {
-            FetchMovieData fetchMovieData = new FetchMovieData(getApplicationContext());
+            FetchMovieData fetchMovieData = new FetchMovieData(getApplicationContext(), this.settings.getPages());
             fetchMovieData.execute(this.sort);
         }
-    }*/
+    }
 
     /**
      * This method specifies which layout file will be set for the main screen of the app.
@@ -194,14 +215,26 @@ public class MainActivity extends AppCompatActivity {
     private void setMainScreen(int _layout) {
         setContentView(_layout);
     }
-
-
     /**
      * This method initiates Favorites Activity
      */
     private void startFavoritesActivity() {
         Intent favoritesActivityIntent = new Intent(getApplicationContext(), FavoritesActivity.class);
         startActivity(favoritesActivityIntent);
+    }
+
+    /**
+     * This method takes in a menu item and based on the sort state will hide one of the menu options.
+     * @param _menu a "menu" item
+     */
+    private void switchSortTitle(Menu _menu){
+        if (this.sort.equals("top_rated")) {
+            _menu.findItem(R.id.action_sort).setVisible(false);
+            _menu.findItem(R.id.action_sort_rating).setVisible(true);
+        } else {
+            _menu.findItem(R.id.action_sort).setVisible(true);
+            _menu.findItem(R.id.action_sort_rating).setVisible(false);
+        }
     }
 }
 

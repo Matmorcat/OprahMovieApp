@@ -2,6 +2,7 @@ package com.oprahs_voice.android.movies.interfaces;
 /**
  * This is an interface that allows for the storage of movie IDs into a favorite movies database.
  * It uses an SQLite database via SQLiteOpenHelper which is built directly into Android.
+ *
  * @authors
  * @date
  */
