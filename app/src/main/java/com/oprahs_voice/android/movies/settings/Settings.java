@@ -1,6 +1,6 @@
 package com.oprahs_voice.android.movies.settings;
 /**
- * Settings class that is used to save and retrieve some user data.
+ * Settings class that is used to retrieve data from the sharedPreferences file.
  *
  * @authors
  * @date
@@ -18,7 +18,7 @@ public class Settings extends Activity {
         this.sharedPreferences = PreferenceManager.getDefaultSharedPreferences(_context);
     }
     /**
-     * Gets the sort state that is stored in settings.
+     * Gets the sort state that is stored in SharedPreferences file.
      * @return sharedPreference
      */
     public String getSort(){
@@ -27,6 +27,11 @@ public class Settings extends Activity {
         }
         return "popular";
     }
+
+    /**
+     * Gets the pages that is stored in the SharedPreferences file.
+     * @return value
+     */
     public int getPages(){
         String value = this.sharedPreferences.getString("number_of_pages",null);
         return value == null ? 6 : Integer.valueOf(value);

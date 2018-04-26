@@ -30,7 +30,7 @@ public class DetailActivity extends AppCompatActivity {
         // Get the menu option to add to favorites.
         MenuItem favorite_toggle = _menu.findItem(R.id.action_favorite);
 
-        // Check if the movie is already in the favorites list.
+        // Check if the movie  is already in the favorites list.
         if (MainActivity.getFavoritesModel().isInFavoriteMovies(getMovieInfoFromActivity())) {
 
             // If the movie is in favorites, set the option to remove from favorites.
