@@ -63,7 +63,8 @@ public class FetchMovieData extends AsyncTask<String, Void, List<Movie>> {
         } else {
             try {
                 ServerInterface serverInterface = new ServerInterface(this.weakContext);
-                String page = serverInterface.getMovieByID(NUM_PAGES);
+                String page = serverInterface.getMovieByID(NUM_PAGES);//<--This would not actually be num_pages, but movie ID
+                //Testing to see if we got a proper response from the server
                 Log.d("Error:", page);
                 MovieDataParser dataParser = new MovieDataParser(page);
                 Movies = dataParser.getMovies();
