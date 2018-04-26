@@ -22,6 +22,9 @@ import java.net.URL;
 
 
 public class ServerInterface {
+    //Reference to class name for logging purposes
+    final String TAG = "" + getClass();
+
     private WeakReference<Context> weakContext;
     public ServerInterface(WeakReference<Context> _weakContext) {
         this.weakContext = _weakContext;
@@ -76,7 +79,7 @@ public class ServerInterface {
                     try {
                         reader.close();
                     } catch (final IOException e) {
-                        Log.e("MainActivity", "Error closing stream", e);
+                        Log.e(TAG, "Error closing stream", e);
                     }
                 }
             }
@@ -90,7 +93,7 @@ public class ServerInterface {
         HttpURLConnection httpURLConnection = null;
         BufferedReader reader = null;
         final String API_KEY = weakContext.get().getResources().getString(R.string.tmdb_api_key);
-        String SERVER_BASE_URL ="api.themoviedb.org/3/movie/" + _id + "?api_key=" + API_KEY;
+        String SERVER_BASE_URL = "https://api.themoviedb.org/3/movie/" + _id + "?api_key=" + API_KEY;
         Uri uri = Uri.parse(SERVER_BASE_URL);
 
         try {
@@ -102,6 +105,7 @@ public class ServerInterface {
             StringBuilder buffer = new StringBuilder();
 
             if (inputStream == null) {
+                Log.d(TAG,"No data received from server");
                 return null;
             }
             reader = new BufferedReader(new InputStreamReader(inputStream));
@@ -112,12 +116,14 @@ public class ServerInterface {
             }
 
             if (buffer.length() == 0) {
+                Log.d(TAG,"Error parsing data from server");
                 return null;
             }
 
             movieData = buffer.toString();
 
         } catch (IOException e) {
+            Log.d("Error:", uri.toString());
             return null;
         } finally {
             if (httpURLConnection != null) {

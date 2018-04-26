@@ -73,18 +73,11 @@ public class MovieAdapter extends BaseAdapter {
         }
 
         // TODO: Perform a search query on the server to find a movie by this ID (This is a temporary return statement).
-        ServerInterface serverInterface = new ServerInterface(new WeakReference<>(this.context));
-        String data = serverInterface.getMovieByID(_movieID);
-        //Log.d("this is a test",data);
-        try {
-            MovieDataParser movieDataParser = new MovieDataParser(data);
-            Movie movie = movieDataParser.getMovies().get(0);
-            return (movie);
-        } catch (Exception e) {
-            e.toString();
-        }
+        FetchMovieData fetchMovieData = new FetchMovieData(context, _movieID, true);
+        return fetchMovieData.doInBackground().get(0);
 
-        return (new Movie(_movieID, "Unknown", 0, null, null, null));
+
+        //return (new Movie(_movieID, "Unknown", 0, null, null, null));
     }
 
 

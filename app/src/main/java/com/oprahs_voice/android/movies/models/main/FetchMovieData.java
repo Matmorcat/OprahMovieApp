@@ -23,12 +23,15 @@ import java.util.List;
 
 
 public class FetchMovieData extends AsyncTask<String, Void, List<Movie>> {
+    private final String TAG = "" + getClass();
     private int NUM_PAGES;
     private WeakReference<Context> weakContext;
+    private boolean isSingleMovie;
 
-    public FetchMovieData(Context _context, int _pages) {
+    public FetchMovieData(Context _context, int _pages, boolean _isSingleMovie) {
         this.weakContext = new WeakReference<>(_context);
         this.NUM_PAGES = _pages;
+        this.isSingleMovie = _isSingleMovie;
     }
     /**
      * Required method for AsyncTask that defines what operations are to be done on the thread.
@@ -40,19 +43,34 @@ public class FetchMovieData extends AsyncTask<String, Void, List<Movie>> {
     protected List<Movie> doInBackground(String... _params) {
         List<Movie> Movies = new ArrayList<>();
 
-        // Fetch (NUM_PAGES) pages of movie data.
-        try {
-            for (int i = 1; i < (this.NUM_PAGES + 1); i++) {
-                ServerInterface serverInterface = new ServerInterface(this.weakContext);
-                String page = serverInterface.getSortedMovies(i, _params[0]);
-                MovieDataParser dataParser = new MovieDataParser(page);
-                List<Movie> movies = dataParser.getMovies();
-                Movies.addAll(movies);
-            }
-            return Movies;
+        if (!isSingleMovie) {
 
-        } catch (JSONException e) {
-            Log.e("MainActivity", e.getMessage(), e);
+            // Fetch (NUM_PAGES) pages of movie data.
+            try {
+                for (int i = 1; i < (this.NUM_PAGES + 1); i++) {
+                    ServerInterface serverInterface = new ServerInterface(this.weakContext);
+                    String page = serverInterface.getSortedMovies(i, _params[0]);
+                    MovieDataParser dataParser = new MovieDataParser(page);
+                    List<Movie> movies = dataParser.getMovies();
+                    Movies.addAll(movies);
+                }
+                return Movies;
+
+            } catch (JSONException e) {
+                Log.e(TAG, e.getMessage(), e);
+            }
+            //we are searching for a single movie by its ID
+        } else {
+            try {
+                ServerInterface serverInterface = new ServerInterface(this.weakContext);
+                String page = serverInterface.getMovieByID(NUM_PAGES);
+                Log.d("Error:", page);
+                MovieDataParser dataParser = new MovieDataParser(page);
+                Movies = dataParser.getMovies();
+                return Movies;
+            } catch (JSONException e) {
+                Log.d(TAG, e.toString());
+            }
         }
 
         return null;

@@ -202,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void executeFetchMoviesTask() {
         if (isNetworkAvailable()) {
-            FetchMovieData fetchMovieData = new FetchMovieData(getApplicationContext(), this.settings.getPages());
+            FetchMovieData fetchMovieData = new FetchMovieData(getApplicationContext(), this.settings.getPages(), false);
             fetchMovieData.execute(this.sort);
         }
     }
