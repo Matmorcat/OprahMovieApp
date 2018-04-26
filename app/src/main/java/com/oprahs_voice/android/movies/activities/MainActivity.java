@@ -11,7 +11,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -38,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
     private static FavoritesModel favoritesModel;   // Reference to the favorites model.
     private String sort;                            // Preference for sorting movie.
     private Settings settings;
-    private FetchMovieData controller;
-    private Menu activityMenu;
     /**
      * Method to return the favoritesModel member to be displayed.
      *
