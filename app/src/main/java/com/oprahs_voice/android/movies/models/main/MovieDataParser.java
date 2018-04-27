@@ -47,6 +47,11 @@ public class MovieDataParser {
         return movies;
     }
 
+    public Movie getMovie() throws JSONException {
+        Movie movie = new Movie(jsonObject.getInt(MOVIE_ID), jsonObject.getString(ORIGINAL_TITLE_KEY), jsonObject.getDouble(VOTE_AVERAGE_KEY), jsonObject.getString(RELEASE_DATE_KEY), jsonObject.getString(OVERVIEW_KEY), jsonObject.getString(POSTER_PATH_KEY));
+        return movie;
+    }
+
 
     // Each page has data for 20 movies.
     public int getPage() throws JSONException {

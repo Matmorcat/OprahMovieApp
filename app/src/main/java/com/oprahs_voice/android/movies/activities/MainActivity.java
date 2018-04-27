@@ -22,6 +22,7 @@ import android.widget.GridView;
 
 import com.oprahs_voice.android.movies.R;
 import com.oprahs_voice.android.movies.models.favorites.FavoritesModel;
+import com.oprahs_voice.android.movies.models.main.FetchMoviesData;
 import com.oprahs_voice.android.movies.models.main.MovieAdapter;
 import com.oprahs_voice.android.movies.utilities.Movie;
 import com.oprahs_voice.android.movies.models.main.FetchMovieData;
@@ -202,8 +203,8 @@ public class MainActivity extends AppCompatActivity {
     }
     public void executeFetchMoviesTask() {
         if (isNetworkAvailable()) {
-            FetchMovieData fetchMovieData = new FetchMovieData(getApplicationContext(), this.settings.getPages(), false);
-            fetchMovieData.execute(this.sort);
+            FetchMoviesData fetchMoviesData = new FetchMoviesData(getApplicationContext(), this.settings.getPages());
+            fetchMoviesData.execute(this.sort);
         }
     }
 

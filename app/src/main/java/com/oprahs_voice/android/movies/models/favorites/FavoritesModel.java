@@ -11,6 +11,7 @@ package com.oprahs_voice.android.movies.models.favorites;
 import android.content.Context;
 import android.util.Log;
 
+import com.oprahs_voice.android.movies.activities.FavoritesActivity;
 import com.oprahs_voice.android.movies.activities.MainActivity;
 import com.oprahs_voice.android.movies.interfaces.FDBInterface;
 import com.oprahs_voice.android.movies.utilities.Movie;

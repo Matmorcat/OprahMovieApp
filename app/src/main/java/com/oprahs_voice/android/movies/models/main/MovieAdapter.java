@@ -73,10 +73,11 @@ public class MovieAdapter extends BaseAdapter {
         }
 
         // TODO: Perform a search query on the server to find a movie by this ID (This is a temporary return statement).
-        FetchMovieData fetchMovieData = new FetchMovieData(context, _movieID, true);
-        return fetchMovieData.doInBackground().get(0);
+        FetchMovieData fetchMovieData = new FetchMovieData(context, _movieID);
+        fetchMovieData.execute();
 
-
+        Log.d("test;","this is where it is");
+        return fetchMovieData.doInBackground();
         //return (new Movie(_movieID, "Unknown", 0, null, null, null));
     }
 
@@ -123,6 +124,11 @@ public class MovieAdapter extends BaseAdapter {
 
     public void updateValues(List<Movie> _movies) {
         this.movies = _movies;
+        notifyDataSetChanged();
+    }
+
+
+    public void updateValuesSet(List<Movie> _movies) {
         notifyDataSetChanged();
     }
 
