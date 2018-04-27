@@ -100,14 +100,11 @@ public class MainActivity extends AppCompatActivity {
         int id = _item.getItemId();
         // Change the sorting order of movies.
         if (id == R.id.action_sort) {
-            /*if (this.sort.equals("popular")) {*/
             this.sort = "top_rated";
             executeFetchMoviesTask();
-            //_item.setTitle(R.string.menu_sort_popularity);
         } else if (id == R.id.action_sort_rating) {
             this.sort = "popular";
             executeFetchMoviesTask();
-            //_item.setTitle(R.string.menu_sort_user_rating);
         }
         // Take the user to the favorites view.
         else if (id == R.id.action_favorites) {
@@ -177,11 +174,8 @@ public class MainActivity extends AppCompatActivity {
         List<Movie> movies = (List<Movie>) getLastCustomNonConfigurationInstance();
         if (movies == null) {
             if (isNetworkAvailable()) {
-                //if (controller.getSaveBoolean()) {
                 executeFetchMoviesTask();
             }
-            // else controller.executeFetchMoviesTask("popular");
-            // }
             else
                 movieAdapter.updateValues(movies);
         }
