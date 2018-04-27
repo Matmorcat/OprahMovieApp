@@ -1,13 +1,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.android.OprahMovieApp.com.example.android.OprahMovieApp.DetailActivity">
+    tools:context="com.oprahs_voice.android.movies.activities.DetailActivity">
 
 
     <item
         android:id="@+id/action_favorite"
         android:orderInCategory="1"
         android:title="@string/menu_favorites_add" />
-
 
 
 </menu>

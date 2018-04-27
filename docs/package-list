@@ -1,3 +1,8 @@
-com.example.android.OprahMovieApp
-com.example.android.OprahMovieApp.data
-com.example.android.OprahMovieApp.favorites
+com.oprahs_voice.android.movies.activities
+com.oprahs_voice.android.movies.data
+com.oprahs_voice.android.movies.interfaces
+com.oprahs_voice.android.movies.models.favorites
+com.oprahs_voice.android.movies.models.main
+com.oprahs_voice.android.movies.settings
+com.oprahs_voice.android.movies.utilities
+com.oprahs_voice.android.movies.utilities.exceptions
