@@ -1,10 +1,4 @@
 package com.oprahs_voice.android.movies.models.main;
-/**
- * This class creates a separate thread on which to fetch movie data from the TMDB server.
- *
- * @authors
- * @date
- */
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -21,7 +15,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
+/**
+ * This class creates a separate thread on which to fetch movie data from the TMDB server.
+ *
+ * @author John Weber
+ * @author Matthew Moretz
+ * @author Luke Orr
+ * @date April 27th, 2018
+ */
 public class FetchMovieData extends AsyncTask<String, Void, List<Movie>> {
     private int NUM_PAGES;
     private WeakReference<Context> weakContext;

@@ -1,13 +1,5 @@
 package com.oprahs_voice.android.movies.models.main;
-/**
- * This class processes the data retrieved from the FetchMovieData< to create <tt>Movie</tt>
- * objects for the <tt>MovieAdapter</tt>.
- *
- * @authors
- * @date
- * @see FetchMovieData
- * @see MovieAdapter
- */
+
 import com.oprahs_voice.android.movies.utilities.Movie;
 
 import org.json.JSONArray;
@@ -18,6 +10,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * This class processes the data retrieved from the FetchMovieData< to create <tt>Movie</tt> objects
+ * for the <tt>MovieAdapter</tt>.
+ *
+ * @author John Weber
+ * @author Matthew Moretz
+ * @author Luke Orr
+ * @date April 27th, 2018
+ * @see FetchMovieData
+ * @see MovieAdapter
+ */
 public class MovieDataParser {
     private static final String RESULTS_KEY = "results";
     private static final String PAGE_NUMBER_KEY = "page";

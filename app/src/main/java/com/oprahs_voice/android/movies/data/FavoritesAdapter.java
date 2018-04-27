@@ -1,10 +1,4 @@
 package com.oprahs_voice.android.movies.data;
-/**
- * This adapter is responsible for modifying the view to update information on favorite movies.
- *
- * @authors
- * @date
- */
 
 import android.content.Context;
 import android.util.Log;
@@ -26,6 +20,12 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 
+/**
+ * This adapter is responsible for modifying the view to update information on favorite movies.
+ *
+ * @author Matthew Moretz
+ * @date April 27th, 2018
+ */
 public class FavoritesAdapter extends MovieAdapter {
 
     private Context context;
@@ -37,6 +37,14 @@ public class FavoritesAdapter extends MovieAdapter {
     }
 
 
+    /**
+     * Processess the information for each movie in the movie list.
+     *
+     * @param _position    the position in the favorites list
+     * @param _convertView the view
+     * @param _parent      the parent view group
+     * @return the view after processing
+     */
     @Override
     public View getView(final int _position, View _convertView, ViewGroup _parent) {
         View view = _convertView;

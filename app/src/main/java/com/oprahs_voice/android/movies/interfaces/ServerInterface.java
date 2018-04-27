@@ -1,11 +1,5 @@
 package com.oprahs_voice.android.movies.interfaces;
-/**
- * This is an interface that is used to access and fetch movie data from a server.
- *
- * @authors
- * @date
- *
- */
+
 import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
@@ -21,11 +15,22 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 
+/**
+ * This is an interface that is used to access and fetch movie data from a server.
+ *
+ * @author John Weber
+ * @author Matthew Moretz
+ * @date April 27th, 2018
+ */
 public class ServerInterface {
     private WeakReference<Context> weakContext;
+
+
     public ServerInterface(WeakReference<Context> _weakContext) {
         this.weakContext = _weakContext;
     }
+
+
     /**
      * Method to fetch the movie data from the TMDB server.
      *
@@ -39,7 +44,7 @@ public class ServerInterface {
         for (int i = 1; i <= 3; i++) {
             HttpURLConnection httpURLConnection = null;
             BufferedReader reader = null;
-           final String API_KEY = weakContext.get().getResources().getString(R.string.tmdb_api_key);
+            final String API_KEY = weakContext.get().getResources().getString(R.string.tmdb_api_key);
             String SERVER_BASE_URL = "https://api.tmdb.org/3/movie/" + _sortBy + "?language=en&api_key=" + API_KEY + "&page=" + _page;
             Uri uri = Uri.parse(SERVER_BASE_URL);
 
@@ -85,6 +90,8 @@ public class ServerInterface {
 
         return moviesData;
     }
+
+
     //TODO finish this and get it working properly -- currently hasn't been implemented in doInBackground
     public String getMovieByID (int _id) {
         String movieData;

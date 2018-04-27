@@ -1,11 +1,5 @@
 package com.oprahs_voice.android.movies.models.main;
-/**
- * This class provides and updates information in the main view to display an ordered list of movies
- * that the user can select from or learn more about.
- *
- * @authors
- * @date
- */
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +16,15 @@ import java.lang.ref.WeakReference;
 import java.util.List;
 
 
+/**
+ * This class provides and updates information in the main view to display an ordered list of movies
+ * that the user can select from or learn more about.
+ *
+ * @author John Weber
+ * @author Matthew Moretz
+ * @author Luke Orr
+ * @date April 27th, 2018
+ */
 public class MovieAdapter extends BaseAdapter {
 
     private Context context;
@@ -76,8 +79,7 @@ public class MovieAdapter extends BaseAdapter {
         String data = serverInterface.getMovieByID(_movieID);
         try {
             MovieDataParser movieDataParser = new MovieDataParser(data);
-            Movie movie = movieDataParser.getMovies().get(0);
-            return (movie);
+            return (movieDataParser.getMovies().get(0));
         } catch (Exception e) {
             e.toString();
         }

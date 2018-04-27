@@ -1,12 +1,5 @@
 package com.oprahs_voice.android.movies.activities;
-/**
- * The class that functions to provide information about a specific movie from within the
- * DetailActivity.
- *
- * @authors
- * @date
- * @see DetailActivity
- */
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -21,10 +14,18 @@ import com.oprahs_voice.android.movies.utilities.Movie;
 import com.squareup.picasso.Picasso;
 
 
+/**
+ * The class that functions to provide information about a specific movie from within the
+ * DetailActivity.
+ *
+ * @author John Weber
+ * @author Matthew Moretz
+ * @author Luke Orr
+ * @date April 27th, 2018
+ * @see DetailActivity
+ */
 public class DetailActivityFragment extends Fragment {
 
-    public DetailActivityFragment() {
-    }
 
     @Override
     public View onCreateView(LayoutInflater _inflater, ViewGroup _container, Bundle _savedInstanceState) {

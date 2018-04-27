@@ -1,10 +1,5 @@
 package com.oprahs_voice.android.movies.activities;
-/**
- * This class is responsible for controlling the favorites activity of the application.
- *
- * @authors
- * @date
- */
+
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
@@ -16,17 +11,25 @@ import com.oprahs_voice.android.movies.utilities.Movie;
 import java.util.List;
 
 
+/**
+ * This class is responsible for controlling the favorites activity of the application.
+ *
+ * @author John Weber
+ * @author Matthew Moretz
+ * @author Luke Orr
+ * @date April 27th, 2018
+ */
 public class FavoritesActivity extends AppCompatActivity {
 
     private static FavoritesAdapter favoritesAdapter;
     private List<Movie> favoriteMovies;
 
 
-    public static FavoritesAdapter getFavoritesAdapter() {
-        return favoritesAdapter;
-    }
-
-
+    /**
+     * Creates a view with movie information on favorite movies and displays it to the user.
+     *
+     * @param _savedInstanceState Android's instance state
+     */
     @Override
     protected void onCreate(Bundle _savedInstanceState) {
         super.onCreate(_savedInstanceState);

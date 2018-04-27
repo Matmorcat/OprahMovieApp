@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.oprahs_voice.android.movies">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -26,7 +27,8 @@
             android:name=".activities.DetailActivity"
             android:label="@string/title_activity_detail"
             android:parentActivityName=".activities.MainActivity"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            tools:targetApi="jelly_bean">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.MainActivity" />
@@ -41,12 +43,13 @@
                 android:value=".activities.MainActivity" />
         </activity>
 
-        <activity android:name=".activities.SettingsView"
-        android:label="Settings"
-        android:parentActivityName=".activities.MainActivity">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".activities.MainActivity"/>
+        <activity
+            android:name=".activities.SettingsActivity"
+            android:label="Settings"
+            android:parentActivityName=".activities.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.MainActivity" />
         </activity>
     </application>
 

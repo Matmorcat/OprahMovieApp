@@ -1,14 +1,17 @@
 package com.oprahs_voice.android.movies.utilities;
+
+import java.io.Serializable;
+
+
 /**
  * This is the class that is responsible for holding all information about a particular movie and
  * creating the Movie object. It has getters, setters, a constructor, and a toString() override.
  *
- * @authors
- * @date
+ * @author John Weber
+ * @author Matthew Moretz
+ * @author Luke Orr
+ * @date April 27th, 2018
  */
-import java.io.Serializable;
-
-
 public class Movie implements Serializable {
     private int movieID;
     private String title;
@@ -16,6 +19,7 @@ public class Movie implements Serializable {
     private String plotSynopsis;
     private String releaseDate;
     private String picUrl;
+
 
     public Movie(int _movieID, String _title, double _userRating, String _releaseDate, String _plotSynopsis, String _picUrl) {
         this.movieID = _movieID;
@@ -26,29 +30,36 @@ public class Movie implements Serializable {
         this.picUrl = "http://image.tmdb.org/t/p/w185/" + _picUrl;
     }
 
+
     public int getMovieID() {
         return this.movieID;
     }
+
 
     public String getTitle() {
         return this.title;
     }
 
+
     public double getUserRating() {
         return this.userRating;
     }
+
 
     public String getPicUrl() {
         return this.picUrl;
     }
 
+
     public String getPlotSynopsis() {
         return this.plotSynopsis;
     }
 
+
     public String getReleaseDate() {
         return this.releaseDate;
     }
+
 
     public String toString() {
         return "Movie ID: " + this.movieID +
