@@ -77,8 +77,8 @@ public class MovieAdapter extends BaseAdapter {
         fetchMovieData.execute();
 
         Log.d("test;","this is where it is");
-        return fetchMovieData.doInBackground();
-        //return (new Movie(_movieID, "Unknown", 0, null, null, null));
+        //return fetchMovieData.doInBackground();
+        return (new Movie(_movieID, "Unknown", 0, null, null, null));
     }
 
 

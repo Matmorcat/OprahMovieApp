@@ -58,9 +58,7 @@ public class FetchMovieData extends AsyncTask<String, Void, Movie> {
     @Override
     protected void onPostExecute(Movie _result) {
         if (_result != null) {
-            List<Movie> movie = new ArrayList<>();
-            movie.add(_result);
-            MainActivity.getMovieAdapter().updateValuesSet(movie);
+           FavoritesActivity.getFavoritesAdapter().updateValues(FavoritesActivity.getFavoritesAdapter().getMovies());
         }
     }
 
