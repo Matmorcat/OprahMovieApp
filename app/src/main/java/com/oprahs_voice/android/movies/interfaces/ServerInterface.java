@@ -92,7 +92,6 @@ public class ServerInterface {
     }
 
 
-    //TODO finish this and get it working properly -- currently hasn't been implemented in doInBackground
     public String getMovieByID (int _id) {
         String movieData;
         HttpURLConnection httpURLConnection = null;
