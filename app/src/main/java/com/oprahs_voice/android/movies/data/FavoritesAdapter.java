@@ -82,7 +82,6 @@ public class FavoritesAdapter extends MovieAdapter {
                     Toast.makeText(context.getApplicationContext(), R.string.toast_favorites_exists_false, Toast.LENGTH_SHORT).show();
                 }
                 updateValues(MainActivity.getFavoritesModel().getFavoriteMovies()); // Remove the item.
-                // TODO: Does not properly update data now without closing and re-opening window.
 
             }
         });
